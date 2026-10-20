@@ -140,29 +140,43 @@
 <!-- ============ FLOOR PLANS ============ -->
 <section class="section plans" id="floor-plans">
   <div class="wrap">
-    <div class="head">
-      <p class="eyebrow reveal">02 — Floor Plans</p>
-      <h2 class="title reveal">Residences, <span class="gold-text">thoughtfully composed</span></h2>
-      <p class="head__sub reveal">Spacious layouts with floor-to-ceiling glazing and private balconies. Select a configuration to request its detailed floor plan.</p>
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow reveal">02 — Floor Plans · The Horizon</p>
+        <h2 class="title reveal">Residences, <span class="gold-text">thoughtfully composed</span></h2>
+      </div>
+      <p class="head__sub reveal">Twenty layouts across one and two bedroom residences, each with private balconies and floor-to-ceiling glazing. Share your details once to unlock every plan.</p>
     </div>
 
-    <div class="tabs reveal" role="tablist" aria-label="Floor plan configurations">
-      <button class="tab is-active" role="tab" aria-selected="true" data-plan="1">1 BHK</button>
-      <button class="tab" role="tab" aria-selected="false" data-plan="2">2 BHK</button>
-      <button class="tab" role="tab" aria-selected="false" data-plan="3">3 BHK</button>
+    <div class="fp-bar reveal">
+      <div class="tabs" role="tablist" aria-label="Bedroom configurations">
+        <button class="tab is-active" role="tab" aria-selected="true" data-beds="1">1 Bedroom</button>
+        <button class="tab" role="tab" aria-selected="false" data-beds="2">2 Bedroom</button>
+        <button class="tab" role="tab" aria-selected="false" data-beds="3">3 Bedroom</button>
+      </div>
+      <div class="fp-summary" id="fpSummary" aria-live="polite"></div>
     </div>
 
-    <div class="plan reveal">
-      <div class="plan__drawing" id="planDrawing" aria-hidden="true"></div>
-      <div class="plan__lock">
-        <span class="plan__lock-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-        </span>
-        <p class="plan__type" id="planType">1 Bedroom Residence</p>
-        <p class="plan__price">Starting <strong id="planPrice">AED 1.78 Million</strong></p>
-        <button class="btn btn--gold" id="planBtn" data-enquire="floor-plan" data-unit="1 BHK">View Floor Plan</button>
+    <div class="fp-status reveal" id="fpStatus">
+      <span class="fp-status__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+      <p class="fp-status__text">Floor plans are reserved for registered enquiries.</p>
+      <button class="btn btn--gold btn--sm" data-enquire="floor-plan" data-unit="All floor plans">Unlock All Plans</button>
+    </div>
+
+    <div class="fp-grid" id="fpGrid"></div>
+
+    <div class="fp-plates reveal" id="fpPlates">
+      <button class="fp-plates__img" data-fp-open="floor-plates" aria-label="View typical floor plates">
+        <img src="assets/floorplans/floor-plates-blur.jpg" data-full="assets/floorplans/floor-plates.jpg" alt="Typical floor plates, levels 14 to 75">
+      </button>
+      <div class="fp-plates__copy">
+        <p class="eyebrow">Typical Floor Plates</p>
+        <h3>Levels 14 – 75</h3>
+        <p>Twenty residences per floor, arranged around a central core with views to Sheikh Zayed Road, the Marina and sea, Emirates Hills and the community.</p>
+        <button class="btn btn--line btn--sm" data-fp-open="floor-plates">View Floor Plates</button>
       </div>
     </div>
+    <p class="note reveal">Plans are from the official sales brochure for The Horizon at Sobha Central. Dimensions are in millimetres and approximate; areas are saleable areas in sq.ft. Drawings are not to scale and are subject to change.</p>
   </div>
 </section>
 
@@ -461,6 +475,39 @@
   </div>
 </div>
 
+<!-- ============ FLOOR PLAN VIEWER ============ -->
+<div class="fpv" id="fpv" aria-hidden="true">
+  <div class="fpv__backdrop" data-fpv-close></div>
+  <div class="fpv__panel" role="dialog" aria-modal="true" aria-labelledby="fpvTitle">
+    <button class="modal__close" data-fpv-close aria-label="Close">×</button>
+    <div class="fpv__stage">
+      <div class="fpv__toggle" role="tablist" aria-label="Plan view">
+        <button class="is-active" data-fpv-view="plan" role="tab" aria-selected="true">Unit Plan</button>
+        <button data-fpv-view="key" role="tab" aria-selected="false">Key Plan</button>
+      </div>
+      <a class="fpv__img" id="fpvImgLink" href="#" target="_blank" rel="noopener" title="Open full size">
+        <img id="fpvImg" alt="">
+      </a>
+      <div class="fpv__nav">
+        <button id="fpvPrev" aria-label="Previous layout">‹ Prev</button>
+        <span id="fpvCount"></span>
+        <button id="fpvNext" aria-label="Next layout">Next ›</button>
+      </div>
+    </div>
+    <div class="fpv__info">
+      <p class="eyebrow" id="fpvEyebrow"></p>
+      <h3 class="fpv__title" id="fpvTitle"></h3>
+      <p class="fpv__feat" id="fpvFeat"></p>
+      <dl class="fpv__areas" id="fpvAreas"></dl>
+      <div class="fpv__views" id="fpvViews"></div>
+      <div class="fpv__actions">
+        <button class="btn btn--gold btn--block" id="fpvEnquire" data-enquire="payment-plan">Get Price &amp; Availability</button>
+        <a class="btn btn--line btn--block" id="fpvWa" target="_blank" rel="noopener">Ask on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lightbox__close" aria-label="Close">×</button>
@@ -469,6 +516,7 @@
   <button class="lightbox__nav lightbox__nav--next" aria-label="Next">›</button>
 </div>
 
+<script src="assets/js/floorplans.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

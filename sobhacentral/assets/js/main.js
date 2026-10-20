@@ -16,11 +16,9 @@
     WHATSAPP: '917980702399'
   };
 
-  var PLANS = {
-    '1': { unit: '1 BHK', type: '1 Bedroom Residence', price: 'AED 1.78 Million' },
-    '2': { unit: '2 BHK', type: '2 Bedroom Residence', price: 'AED 2.47 Million' },
-    '3': { unit: '3 BHK', type: '3 Bedroom Residence', price: 'AED 4.78 Million' }
-  };
+  var START_PRICE = { 1: 'AED 1.78 Million', 2: 'AED 2.47 Million', 3: 'AED 4.78 Million' };
+  var UNITS = window.SC_UNITS || [];
+  var ACCESS_KEY = 'sc_floorplan_access';
 
   var CONTEXTS = {
     'brochure':     { eyebrow: 'Brochure',     title: 'Download the Factbook', sub: 'Fill in your details — your download begins as soon as you submit.', cta: 'Submit & Download', subject: 'Brochure Download' },
@@ -70,48 +68,174 @@
     $$('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* ---------------- floor plan drawings ---------------- */
-  function planSVG(beds) {
-    var g = '#c9a35f', l = 'rgba(244,239,230,.55)', t = 'rgba(244,239,230,.5)';
-    var W = 600, H = 400, rooms = [];
-    if (beds === 1) {
-      rooms = [[20, 20, 300, 220, 'LIVING / DINING'], [320, 20, 260, 220, 'BEDROOM'], [20, 240, 180, 140, 'KITCHEN'], [200, 240, 120, 140, 'BATH'], [320, 240, 260, 140, 'BALCONY']];
-    } else if (beds === 2) {
-      rooms = [[20, 20, 280, 230, 'LIVING / DINING'], [300, 20, 280, 170, 'MASTER BEDROOM'], [300, 190, 160, 190, 'BEDROOM 2'], [460, 190, 120, 95, 'BATH'], [460, 285, 120, 95, 'BATH'], [20, 250, 170, 130, 'KITCHEN'], [190, 250, 110, 130, 'BALCONY']];
-    } else {
-      rooms = [[20, 20, 250, 210, 'LIVING'], [270, 20, 160, 210, 'DINING'], [430, 20, 150, 150, 'MASTER'], [430, 170, 150, 100, 'BATH'], [20, 230, 150, 150, 'BEDROOM 2'], [170, 230, 140, 150, 'BEDROOM 3'], [310, 230, 120, 75, 'BATH'], [310, 305, 120, 75, 'KITCHEN'], [430, 270, 150, 110, 'BALCONY']];
+  /* ---------------- floor plans ---------------- */
+  var unlocked = false;
+  try { unlocked = localStorage.getItem(ACCESS_KEY) === '1'; } catch (e) {}
+  var pendingFp = null;
+  var fpGrid = $('#fpGrid'), fpSummary = $('#fpSummary'), fpStatus = $('#fpStatus');
+  var LOCK_SVG = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+
+  function esc(v) { return String(v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function sqft(range) {
+    var n = range.split(' - ').map(function (x) { return Math.round(parseFloat(x.replace(/,/g, ''))); });
+    return (n.length > 1 && n[1] !== n[0] ? n[0].toLocaleString() + ' – ' + n[1].toLocaleString() : n[0].toLocaleString()) + ' sq.ft.';
+  }
+  function firstNum(range) { return parseFloat(range.split(' - ')[0].replace(/,/g, '')); }
+  function viewTags(u) {
+    var seen = {}, tags = [];
+    u.views.forEach(function (v) {
+      v.view.split(', ').forEach(function (t) {
+        t = t.replace('120 degree view', '120° view');
+        if (!seen[t]) { seen[t] = 1; tags.push(t); }
+      });
+    });
+    return tags;
+  }
+  function unitCount(u) { return u.views.reduce(function (n, v) { return n + v.units.length; }, 0); }
+  function bedLabel(b) { return b + ' Bedroom'; }
+  function unitLabel(u) { return u.beds + ' BR ' + u.type; }
+  function byBeds(b) { return UNITS.filter(function (u) { return u.beds === b; }); }
+
+  function renderGrid(beds) {
+    var list = byBeds(beds);
+    if (!list.length) {
+      fpSummary.textContent = 'From ' + START_PRICE[beds];
+      fpGrid.innerHTML = '<article class="fp-card fp-card--request"><div class="fp-card__body">' +
+        '<p class="fp-card__beds">3 Bedroom</p><h3>Layouts on Request</h3>' +
+        '<p class="fp-card__feat">Three bedroom residences are released on request. Our advisor will share current layouts, sizes and availability.</p>' +
+        '<p class="fp-card__price">From <strong>' + START_PRICE[3] + '</strong></p>' +
+        '<button class="btn btn--gold btn--sm" data-enquire="floor-plan" data-unit="3 BHK">Request 3 Bedroom Plans</button></div></article>';
+      return;
     }
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" fill="none">';
-    s += '<rect x="10" y="10" width="580" height="380" stroke="' + g + '" stroke-width="5"/>';
-    rooms.forEach(function (r) {
-      s += '<rect x="' + r[0] + '" y="' + r[1] + '" width="' + r[2] + '" height="' + r[3] + '" stroke="' + l + '" stroke-width="2"/>';
-      s += '<text x="' + (r[0] + r[2] / 2) + '" y="' + (r[1] + r[3] / 2) + '" fill="' + t + '" font-family="Jost, sans-serif" font-size="12" letter-spacing="3" text-anchor="middle">' + r[4] + '</text>';
-      s += '<path d="M' + (r[0] + 14) + ' ' + (r[1] + r[3]) + ' a26 26 0 0 1 26 -26" stroke="' + l + '" stroke-width="1"/>';
-    });
-    for (var i = 0; i < 6; i++) s += '<line x1="' + (40 + i * 90) + '" y1="10" x2="' + (90 + i * 90) + '" y2="10" stroke="#f1dcaa" stroke-width="7"/>';
-    s += '</svg>';
-    return s;
+    var areas = list.map(function (u) { return firstNum(u.total); });
+    fpSummary.innerHTML = '<b>' + list.length + '</b> layouts &nbsp;·&nbsp; ' + Math.round(Math.min.apply(null, areas)).toLocaleString() + ' – ' +
+      Math.round(Math.max.apply(null, areas)).toLocaleString() + ' sq.ft. &nbsp;·&nbsp; From <b>' + START_PRICE[beds] + '</b>';
+    fpGrid.innerHTML = list.map(function (u) {
+      var src = 'assets/floorplans/' + u.id + (unlocked ? '.jpg' : '-blur.jpg');
+      return '<article class="fp-card">' +
+        '<button class="fp-card__img" data-fp-open="' + u.id + '" aria-label="View floor plan ' + esc(unitLabel(u)) + '">' +
+          '<img src="' + src + '" data-full="assets/floorplans/' + u.id + '.jpg" alt="' + esc(bedLabel(u.beds) + ' ' + u.type) + ' floor plan" loading="lazy">' +
+          '<span class="fp-card__lock">' + LOCK_SVG + '<span>Unlock Plan</span></span>' +
+        '</button>' +
+        '<div class="fp-card__body">' +
+          '<p class="fp-card__beds">' + bedLabel(u.beds) + '</p>' +
+          '<h3>' + esc(u.type) + '</h3>' +
+          '<p class="fp-card__feat">' + esc(u.features) + '</p>' +
+          '<dl class="fp-card__meta"><div><dt>Total Area</dt><dd>' + sqft(u.total) + '</dd></div><div><dt>Units</dt><dd>' + unitCount(u) + '</dd></div></dl>' +
+          '<p class="fp-card__tags">' + viewTags(u).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</p>' +
+          '<button class="btn btn--line btn--sm btn--block" data-fp-open="' + u.id + '">View Floor Plan</button>' +
+        '</div></article>';
+    }).join('');
   }
-  var drawing = $('#planDrawing'), planType = $('#planType'), planPrice = $('#planPrice'), planBtn = $('#planBtn');
-  function setPlan(k) {
-    var p = PLANS[k];
-    drawing.classList.add('is-swapping');
-    setTimeout(function () {
-      drawing.innerHTML = planSVG(+k);
-      drawing.classList.remove('is-swapping');
-    }, 220);
-    planType.textContent = p.type;
-    planPrice.textContent = p.price;
-    planBtn.setAttribute('data-unit', p.unit);
+
+  function applyAccess() {
+    document.body.classList.toggle('fp-unlocked', unlocked);
+    $$('img[data-full]').forEach(function (img) { if (unlocked) img.src = img.getAttribute('data-full'); });
+    if (unlocked) {
+      fpStatus.querySelector('.fp-status__text').textContent = 'All floor plans are unlocked for you — tap any layout to view it in detail.';
+      var b = fpStatus.querySelector('button'); if (b) b.remove();
+    }
   }
-  drawing.innerHTML = planSVG(1);
-  $$('.tab').forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      $$('.tab').forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-      tab.classList.add('is-active'); tab.setAttribute('aria-selected', 'true');
-      setPlan(tab.getAttribute('data-plan'));
+  function grantAccess() {
+    unlocked = true;
+    try { localStorage.setItem(ACCESS_KEY, '1'); } catch (e) {}
+    applyAccess();
+  }
+
+  var curBeds = 1;
+  function selectBeds(b) {
+    curBeds = b;
+    $$('#floor-plans .tab').forEach(function (t) {
+      var on = +t.getAttribute('data-beds') === b;
+      t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on);
     });
+    renderGrid(b);
+  }
+  $$('#floor-plans .tab').forEach(function (tab) {
+    tab.addEventListener('click', function () { selectBeds(+tab.getAttribute('data-beds')); });
   });
+  selectBeds(1);
+  applyAccess();
+
+  /* viewer */
+  var fpv = $('#fpv'), fpvImg = $('#fpvImg'), fpvLink = $('#fpvImgLink'), fpvList = [], fpvIdx = 0, fpvMode = 'plan';
+  function fpvRender() {
+    var u = fpvList[fpvIdx], plates = u === 'floor-plates';
+    fpv.classList.toggle('is-plates', plates);
+    var src = plates ? 'assets/floorplans/floor-plates.jpg' : 'assets/floorplans/' + u.id + (fpvMode === 'key' ? '-key.jpg' : '.jpg');
+    fpvImg.src = src; fpvLink.href = src;
+    $$('[data-fpv-view]', fpv).forEach(function (b) {
+      var on = b.getAttribute('data-fpv-view') === fpvMode;
+      b.classList.toggle('is-active', on); b.setAttribute('aria-selected', on);
+    });
+    if (plates) {
+      fpvImg.alt = 'Typical floor plates';
+      $('#fpvEyebrow').textContent = 'The Horizon · Sobha Central';
+      $('#fpvTitle').textContent = 'Typical Floor Plates';
+      $('#fpvFeat').textContent = 'Levels 14–34, 35–40, 43–53 and 54–75. Twenty residences per floor: one bedroom units in light gold, two bedroom units in deep copper.';
+      $('#fpvAreas').innerHTML = ''; $('#fpvViews').innerHTML = '';
+      $('#fpvEnquire').setAttribute('data-unit', 'Floor plates');
+    } else {
+      fpvImg.alt = bedLabel(u.beds) + ' ' + u.type + (fpvMode === 'key' ? ' key plan' : ' floor plan');
+      $('#fpvEyebrow').textContent = bedLabel(u.beds) + ' Apartment · The Horizon';
+      $('#fpvTitle').textContent = u.type;
+      $('#fpvFeat').textContent = u.features;
+      $('#fpvAreas').innerHTML =
+        '<div><dt>Suite</dt><dd>' + sqft(u.suite) + '</dd></div>' +
+        '<div><dt>Balcony</dt><dd>' + sqft(u.balcony) + '</dd></div>' +
+        '<div class="is-total"><dt>Total Saleable</dt><dd>' + sqft(u.total) + '</dd></div>';
+      $('#fpvViews').innerHTML = '<p class="fpv__label">Views &amp; Unit Numbers</p>' + u.views.map(function (v) {
+        return '<details><summary><span>' + esc(v.view.replace('120 degree view', '120° view')) + '</span><b>' + v.units.length + ' units</b></summary>' +
+          '<p>' + v.units.join(', ') + '</p></details>';
+      }).join('');
+      $('#fpvEnquire').setAttribute('data-unit', unitLabel(u));
+      $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like the price and availability for Sobha Central ' + bedLabel(u.beds) + ' ' + u.type + ' (' + sqft(u.total) + ').');
+      $('#fpvCount').textContent = (fpvIdx + 1) + ' / ' + fpvList.length;
+    }
+    if (plates) $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like details on Sobha Central floor plans.');
+  }
+  function openViewer(id) {
+    if (id === 'floor-plates') { fpvList = ['floor-plates']; fpvIdx = 0; }
+    else {
+      var u = UNITS.filter(function (x) { return x.id === id; })[0];
+      if (!u) return;
+      fpvList = byBeds(u.beds); fpvIdx = fpvList.indexOf(u);
+    }
+    fpvMode = 'plan'; fpvRender();
+    fpv.classList.add('is-open'); fpv.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lock');
+    setTimeout(function () { $('.modal__close', fpv).focus(); }, 80);
+  }
+  function closeViewer() {
+    fpv.classList.remove('is-open'); fpv.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lock');
+  }
+  function fpvStep(d) { if (fpvList.length > 1) { fpvIdx = (fpvIdx + d + fpvList.length) % fpvList.length; fpvRender(); } }
+  $('#fpvPrev').addEventListener('click', function () { fpvStep(-1); });
+  $('#fpvNext').addEventListener('click', function () { fpvStep(1); });
+  $$('[data-fpv-view]', fpv).forEach(function (b) { b.addEventListener('click', function () { fpvMode = b.getAttribute('data-fpv-view'); fpvRender(); }); });
+  $$('[data-fpv-close]', fpv).forEach(function (b) { b.addEventListener('click', closeViewer); });
+  $('#fpvEnquire').addEventListener('click', closeViewer);
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-fp-open]');
+    if (!t) return;
+    e.preventDefault();
+    var id = t.getAttribute('data-fp-open');
+    if (unlocked) { openViewer(id); return; }
+    var u = UNITS.filter(function (x) { return x.id === id; })[0];
+    pendingFp = id;
+    openModal('floor-plan', u ? unitLabel(u) : 'Floor plates');
+  });
+
+  // Called once a visitor has submitted their details for a floor plan
+  function afterFloorPlanLead(unit) {
+    closeModal();
+    if (pendingFp) { var id = pendingFp; pendingFp = null; openViewer(id); return; }
+    var m = /^(\d)/.exec(unit || '');
+    selectBeds(m ? +m[1] : curBeds);
+    document.getElementById('floor-plans').scrollIntoView({ behavior: 'smooth' });
+  }
 
   /* ---------------- modal ---------------- */
   var modal = $('#modal'), modalForm = $('#modalForm'), lastFocus = null;
@@ -136,7 +260,17 @@
   }
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-enquire]');
-    if (t) { e.preventDefault(); openModal(t.getAttribute('data-enquire'), t.getAttribute('data-unit')); }
+    if (!t) return;
+    e.preventDefault();
+    var ctx = t.getAttribute('data-enquire'), unit = t.getAttribute('data-unit');
+    if (ctx === 'floor-plan' && unlocked && unit !== '3 BHK') {
+      var m = /^(\d)/.exec(unit || '');
+      if (m) selectBeds(+m[1]);
+      document.getElementById('floor-plans').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (ctx !== 'floor-plan') pendingFp = null;
+    openModal(ctx, unit);
   });
   $$('[data-close]', modal).forEach(function (b) { b.addEventListener('click', closeModal); });
 
@@ -200,16 +334,21 @@
 
       // The brochure is delivered whatever the network does — never block the visitor.
       if (ctx === 'brochure') downloadBrochure();
+      // Any registered enquiry unlocks the floor plans, even if the email relay is down.
+      grantAccess();
 
       send(data).then(function (res) {
         var success = res.ok && String(res.body.success) !== 'false';
         if (!success) throw new Error(res.body.message || 'send failed');
         msg.classList.add('is-ok');
-        msg.textContent = ctx === 'brochure'
+        msg.textContent = ctx === 'floor-plan'
+          ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
+          : ctx === 'brochure'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Your brochure is downloading — an advisor will follow up shortly.'
           : 'Thank you, ' + data.name.split(' ')[0] + '. Our advisor will contact you shortly.';
         form.reset();
-        if (form === modalForm) setTimeout(closeModal, 3200);
+        if (form === modalForm && ctx === 'floor-plan') setTimeout(function () { afterFloorPlanLead(unit); }, 900);
+        else if (form === modalForm) setTimeout(closeModal, 3200);
       }).catch(function () {
         msg.classList.add('is-err');
         msg.innerHTML = 'We couldn’t send that just now. Please <a href="https://wa.me/' + CONFIG.WHATSAPP +
@@ -235,7 +374,15 @@
   $('.lightbox__nav--next', lb).addEventListener('click', function () { showLb(lbIdx + 1); });
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { if (lb.classList.contains('is-open')) closeLb(); else if (modal.classList.contains('is-open')) closeModal(); }
+    if (e.key === 'Escape') {
+      if (lb.classList.contains('is-open')) closeLb();
+      else if (modal.classList.contains('is-open')) closeModal();
+      else if (fpv.classList.contains('is-open')) closeViewer();
+    }
+    if (fpv.classList.contains('is-open') && !modal.classList.contains('is-open')) {
+      if (e.key === 'ArrowLeft') fpvStep(-1);
+      if (e.key === 'ArrowRight') fpvStep(1);
+    }
     if (lb.classList.contains('is-open') && lbList.length > 1) {
       if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
       if (e.key === 'ArrowRight') showLb(lbIdx + 1);
