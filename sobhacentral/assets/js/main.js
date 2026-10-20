@@ -9,6 +9,9 @@
      arrives automatically.
      SHEET_URL — the Google Apps Script Web app URL (see google-sheet/Code.gs).
      When set, every lead is also added as a row in your Google Sheet.
+     META_PIXEL_ID — your Meta (Facebook) Pixel ID from Events Manager. When set,
+     the page reports PageView, ViewContent (floor plans), Lead and Contact
+     events so Meta can optimise ads towards people who actually enquire.
   ------------------------------------------------------------------ */
   var CONFIG = {
     LEAD_EMAIL: 'masroorshad@gmail.com',
@@ -16,8 +19,33 @@
     SHEET_URL: 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec',
     BROCHURE_URL: 'assets/docs/Sobha-Central-Brochure.pdf',
     BROCHURE_NAME: 'Sobha-Central-Brochure.pdf',
-    WHATSAPP: '917980702399'
+    WHATSAPP: '917980702399',
+    META_PIXEL_ID: ''
   };
+
+  /* ---------------- Meta Pixel ---------------- */
+  function track(event, params, eventId) {
+    if (!window.fbq) return;
+    if (eventId) window.fbq('track', event, params || {}, { eventID: eventId });
+    else window.fbq('track', event, params || {});
+  }
+  if (CONFIG.META_PIXEL_ID) {
+    /* eslint-disable */
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+    window.fbq('init', CONFIG.META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
+  // WhatsApp, call and email taps are high-intent signals for the ad algorithm.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href');
+    var channel = /wa\.me/.test(h) ? 'WhatsApp' : /^tel:/.test(h) ? 'Phone' : /^mailto:/.test(h) ? 'Email' : '';
+    if (channel) track('Contact', { content_name: 'Sobha Central', content_category: channel });
+  }, true);
 
   var START_PRICE = { 1: 'AED 1.78 Million', 2: 'AED 2.47 Million', 3: 'AED 4.78 Million' };
   var UNITS = window.SC_UNITS || [];
@@ -205,6 +233,10 @@
       fpvList = byBeds(u.beds); fpvIdx = fpvList.indexOf(u);
     }
     fpvMode = 'plan'; fpvRender();
+    var vu = fpvList[fpvIdx];
+    track('ViewContent', vu === 'floor-plates'
+      ? { content_name: 'Floor plates', content_category: 'Floor plan' }
+      : { content_name: unitLabel(vu), content_category: bedLabel(vu.beds), content_type: 'product', content_ids: [vu.id] });
     fpv.classList.add('is-open'); fpv.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lock');
     setTimeout(function () { $('.modal__close', fpv).focus(); }, 80);
@@ -354,6 +386,7 @@
         page: location.href,
         source: leadSource(),
         submitted_at: new Date().toString(),
+        event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
         _subject: 'New Lead: ' + c.subject + (unit ? ' (' + unit + ')' : '') + ' — Sobha Central',
         _replyto: f.get('email').trim(),
         _template: 'table',
@@ -369,6 +402,12 @@
       grantAccess();
 
       send(data).then(function () {
+        if (window.fbq) {
+          // Advanced matching: the Pixel hashes these before sending them to Meta.
+          var digits = data.phone.replace(/\D/g, '');
+          window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase(), ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') });
+          track('Lead', { content_name: c.subject, content_category: unit || 'General', currency: 'AED', value: 0 }, data.event_id);
+        }
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'floor-plan'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
