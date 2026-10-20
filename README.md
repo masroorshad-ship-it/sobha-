@@ -1,7 +1,7 @@
 # Espousal × Sobha — Sobha Central
 
 Static landing page for **Sobha Central by Sobha Realty** (Sheikh Zayed Road, Dubai), presented by Espousal.
-Live at **https://espousalsobha.com** (GitHub Pages, published from the `sobha` branch; `CNAME` sets the domain).
+Live at **https://espousalsobha.com/sobhacentral/** (GitHub Pages, published from the `sobha` branch; `CNAME` sets the domain). The root `index.html` redirects to `/sobhacentral/`.
 
 ## Sections
 About · Exclusive 20/80 offer · Floor plans (1/2/3 BHK tabs) · Price list · Amenities · Gallery · Location & master plan · Virtual tour (YouTube + reel) · Brochure download · WhatsApp / site visit / meeting.
@@ -13,9 +13,9 @@ Every form (floor plan, payment plan, site visit, brochure, inline enquiry) coll
 **One-time activation:** after the site is live, submit any form once. FormSubmit sends an "Activate Form" email to
 masroorshad@gmail.com — click it. From then on every lead arrives automatically.
 
-To change the receiving inbox, edit `LEAD_EMAIL` / `ENDPOINT` at the top of `assets/js/main.js`.
+To change the receiving inbox, edit `LEAD_EMAIL` / `ENDPOINT` at the top of `sobhacentral/assets/js/main.js`.
 
-The brochure (`assets/docs/Sobha-Central-Factbook.pdf`, compressed to 2.5 MB) downloads as soon as a valid form is submitted.
+The brochure (`sobhacentral/assets/docs/Sobha-Central-Factbook.pdf`, compressed to 2.5 MB) downloads as soon as a valid form is submitted.
 
 ## Contacts wired in
 - WhatsApp: +91 79807 02399
