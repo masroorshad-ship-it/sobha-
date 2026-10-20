@@ -7,10 +7,13 @@
      (https://formsubmit.co). The very first submission triggers a one-time
      activation email to that inbox; click "Activate" and every later lead
      arrives automatically.
+     SHEET_URL — the Google Apps Script Web app URL (see google-sheet/Code.gs).
+     When set, every lead is also added as a row in your Google Sheet.
   ------------------------------------------------------------------ */
   var CONFIG = {
     LEAD_EMAIL: 'masroorshad@gmail.com',
     ENDPOINT: 'https://formsubmit.co/ajax/masroorshad@gmail.com',
+    SHEET_URL: '',
     BROCHURE_URL: 'assets/docs/Sobha-Central-Factbook.pdf',
     BROCHURE_NAME: 'Sobha-Central-Factbook.pdf',
     WHATSAPP: '917980702399'
@@ -291,12 +294,39 @@
     a.href = CONFIG.BROCHURE_URL; a.download = CONFIG.BROCHURE_NAME;
     document.body.appendChild(a); a.click(); a.remove();
   }
-  function send(data) {
+  function sendEmail(data) {
     return fetch(CONFIG.ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data)
     }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, body: j }; }); });
+  }
+  // Apps Script does not answer CORS preflights, so post a simple form body
+  // and treat a delivered request as success (the response is opaque).
+  function sendSheet(data) {
+    if (!CONFIG.SHEET_URL) return Promise.resolve(false);
+    var body = new URLSearchParams();
+    Object.keys(data).forEach(function (k) { if (k.charAt(0) !== '_') body.append(k, data[k]); });
+    return fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', body: body })
+      .then(function () { return true; }, function () { return false; });
+  }
+  // Resolves when the lead reached at least one destination; rejects if none.
+  function send(data) {
+    var email = sendEmail(data).then(function (res) {
+      if (!(res.ok && String(res.body.success) !== 'false')) throw new Error(res.body.message || 'send failed');
+      return true;
+    }).catch(function () { return false; });
+    return Promise.all([email, sendSheet(data)]).then(function (r) {
+      if (!r[0] && !r[1]) throw new Error('send failed');
+    });
+  }
+  function leadSource() {
+    var q = new URLSearchParams(location.search), parts = [];
+    ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'fbclid'].forEach(function (k) {
+      if (q.get(k)) parts.push(k.replace('utm_', '') + '=' + q.get(k));
+    });
+    if (document.referrer && document.referrer.indexOf(location.host) === -1) parts.push('ref=' + document.referrer);
+    return parts.join(' · ') || 'direct';
   }
 
   $$('.js-enquiry').forEach(function (form) {
@@ -322,6 +352,7 @@
         unit_type: unit || '—',
         project: 'Sobha Central by Sobha Realty',
         page: location.href,
+        source: leadSource(),
         submitted_at: new Date().toString(),
         _subject: 'New Lead: ' + c.subject + (unit ? ' (' + unit + ')' : '') + ' — Sobha Central',
         _replyto: f.get('email').trim(),
@@ -337,9 +368,7 @@
       // Any registered enquiry unlocks the floor plans, even if the email relay is down.
       grantAccess();
 
-      send(data).then(function (res) {
-        var success = res.ok && String(res.body.success) !== 'false';
-        if (!success) throw new Error(res.body.message || 'send failed');
+      send(data).then(function () {
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'floor-plan'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
