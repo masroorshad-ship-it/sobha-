@@ -15,7 +15,7 @@ masroorshad@gmail.com — click it. From then on every lead arrives automaticall
 
 To change the receiving inbox, edit `LEAD_EMAIL` / `ENDPOINT` at the top of `sobhacentral/assets/js/main.js`.
 
-The brochure (`sobhacentral/assets/docs/Sobha-Central-Factbook.pdf`, compressed to 2.5 MB) downloads as soon as a valid form is submitted.
+The brochure (`sobhacentral/assets/docs/Sobha-Central-Brochure.pdf`, 77 pages, 6.6 MB) downloads as soon as a valid form is submitted.
 
 ## Google Sheet (lead log)
 Every lead can also be added as a row in a Google Sheet (time, name, email, phone, city, enquiry, unit, source/UTM, page).
