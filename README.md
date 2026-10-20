@@ -1,7 +1,7 @@
 # Espousal × Sobha — Sobha Central
 
 Static landing page for **Sobha Central by Sobha Realty** (Sheikh Zayed Road, Dubai), presented by Espousal.
-No build step: upload the folder contents to any web host (e.g. a `/sobha-central/` folder on espousalconstruction.com).
+Live at **https://espousalsobha.com** (GitHub Pages, published from the `sobha` branch; `CNAME` sets the domain).
 
 ## Sections
 About · Exclusive 20/80 offer · Floor plans (1/2/3 BHK tabs) · Price list · Amenities · Gallery · Location & master plan · Virtual tour (YouTube + reel) · Brochure download · WhatsApp / site visit / meeting.
