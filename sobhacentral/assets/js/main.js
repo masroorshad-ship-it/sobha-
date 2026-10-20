@@ -13,7 +13,7 @@
   var CONFIG = {
     LEAD_EMAIL: 'masroorshad@gmail.com',
     ENDPOINT: 'https://formsubmit.co/ajax/masroorshad@gmail.com',
-    SHEET_URL: '',
+    SHEET_URL: 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec',
     BROCHURE_URL: 'assets/docs/Sobha-Central-Factbook.pdf',
     BROCHURE_NAME: 'Sobha-Central-Factbook.pdf',
     WHATSAPP: '917980702399'
