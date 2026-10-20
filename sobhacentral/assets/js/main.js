@@ -14,8 +14,8 @@
     LEAD_EMAIL: 'masroorshad@gmail.com',
     ENDPOINT: 'https://formsubmit.co/ajax/masroorshad@gmail.com',
     SHEET_URL: 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec',
-    BROCHURE_URL: 'assets/docs/Sobha-Central-Factbook.pdf',
-    BROCHURE_NAME: 'Sobha-Central-Factbook.pdf',
+    BROCHURE_URL: 'assets/docs/Sobha-Central-Brochure.pdf',
+    BROCHURE_NAME: 'Sobha-Central-Brochure.pdf',
     WHATSAPP: '917980702399'
   };
 
@@ -24,7 +24,7 @@
   var ACCESS_KEY = 'sc_floorplan_access';
 
   var CONTEXTS = {
-    'brochure':     { eyebrow: 'Brochure',     title: 'Download the Factbook', sub: 'Fill in your details — your download begins as soon as you submit.', cta: 'Submit & Download', subject: 'Brochure Download' },
+    'brochure':     { eyebrow: 'Brochure',     title: 'Download the Brochure', sub: 'Fill in your details — your download begins as soon as you submit.', cta: 'Submit & Download', subject: 'Brochure Download' },
     'floor-plan':   { eyebrow: 'Floor Plan',   title: 'View Floor Plan',       sub: 'Share your details and we will send the detailed floor plan to you right away.', cta: 'Get Floor Plan', subject: 'Floor Plan Request' },
     'payment-plan': { eyebrow: 'Payment Plan', title: 'View Payment Plan',     sub: 'Receive the complete payment schedule and current availability.', cta: 'Get Payment Plan', subject: 'Payment Plan Request' },
     'site-visit':   { eyebrow: 'Site Visit',   title: 'Request a Site Visit',  sub: 'Choose a time that suits you — our advisor will confirm your private viewing.', cta: 'Request Visit', subject: 'Site Visit Request' },
