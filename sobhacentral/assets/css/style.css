@@ -482,6 +482,8 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
 .modal__title { margin: -6px 0 0; font: 400 30px/1.15 var(--display); text-transform: uppercase; letter-spacing: .04em; }
 .modal__sub { margin: -4px 0 6px; font-size: 14px; }
 .modal__privacy { margin: 0; font-size: 11px; color: rgba(244, 239, 230, .38); letter-spacing: .04em; }
+.modal__privacy a { color: rgba(244, 239, 230, .6); text-decoration: underline; text-underline-offset: 2px; }
+.inline-form .modal__privacy { margin-top: 14px; }
 .modal .form-msg { margin: 0; }
 
 /* ---------- lightbox ---------- */
