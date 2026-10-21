@@ -29,7 +29,8 @@
     if (eventId) window.fbq('track', event, params || {}, { eventID: eventId });
     else window.fbq('track', event, params || {});
   }
-  if (CONFIG.META_PIXEL_ID) {
+  // The base Pixel code also sits in <head> of index.html; only load it here if that is missing.
+  if (CONFIG.META_PIXEL_ID && !window.fbq) {
     /* eslint-disable */
     !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
