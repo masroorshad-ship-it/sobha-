@@ -20,7 +20,7 @@
     BROCHURE_URL: 'assets/docs/Sobha-Central-Brochure.pdf',
     BROCHURE_NAME: 'Sobha-Central-Brochure.pdf',
     WHATSAPP: '917980702399',
-    META_PIXEL_ID: '3696494210488653'
+    META_PIXEL_ID: '806806699194177'
   };
 
   /* ---------------- Meta Pixel ---------------- */
