@@ -19,6 +19,13 @@
     SHEET_URL: 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec',
     BROCHURE_URL: 'assets/docs/Sobha-Central-Brochure.pdf',
     BROCHURE_NAME: 'Sobha-Central-Brochure.pdf',
+    // Per-tower brochures, chosen with data-brochure="<key>" on a Download button.
+    TOWER_BROCHURES: {
+      horizon: 'assets/docs/The-Horizon-Sobha-Central.pdf',
+      mirage: 'assets/docs/The-Mirage-Sobha-Central.pdf',
+      pinnacle: 'assets/docs/The-Pinnacle-Sobha-Central.pdf',
+      serene: 'assets/docs/The-Serene-Sobha-Central-3BR.pdf'
+    },
     WHATSAPP: '917980702399',
     META_PIXEL_ID: '806806699194177'
   };
@@ -99,6 +106,23 @@
   } else {
     $$('.reveal').forEach(function (el) { el.classList.add('is-in'); });
   }
+
+  /* ---------------- towers ---------------- */
+  var twTabs = $$('.tw-tab');
+  twTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var key = tab.getAttribute('data-tower');
+      twTabs.forEach(function (b) {
+        var on = b === tab;
+        b.classList.toggle('is-active', on); b.setAttribute('aria-selected', on);
+      });
+      $$('.tw').forEach(function (p) {
+        var on = p.id === 'tw-' + key;
+        p.hidden = !on; p.classList.toggle('is-active', on);
+      });
+      track('ViewContent', { content_name: 'Tower: ' + tab.textContent, content_category: 'Tower' });
+    });
+  });
 
   /* ---------------- floor plans ---------------- */
   var unlocked = false;
@@ -275,10 +299,11 @@
 
   /* ---------------- modal ---------------- */
   var modal = $('#modal'), modalForm = $('#modalForm'), lastFocus = null;
-  function openModal(ctx, unit) {
+  function openModal(ctx, unit, brochure) {
     var c = CONTEXTS[ctx] || CONTEXTS.general;
     modalForm.setAttribute('data-context', ctx);
     modalForm.setAttribute('data-unit', unit || '');
+    modalForm.setAttribute('data-brochure', brochure || '');
     $('#modalEyebrow').textContent = c.eyebrow + (unit ? ' · ' + unit : '');
     $('#modalTitle').textContent = c.title;
     $('#modalSub').textContent = c.sub;
@@ -306,7 +331,7 @@
       return;
     }
     if (ctx !== 'floor-plan') pendingFp = null;
-    openModal(ctx, unit);
+    openModal(ctx, unit, t.getAttribute('data-brochure'));
   });
   $$('[data-close]', modal).forEach(function (b) { b.addEventListener('click', closeModal); });
 
@@ -322,9 +347,10 @@
     });
     return ok;
   }
-  function downloadBrochure() {
+  function downloadBrochure(key) {
     var a = document.createElement('a');
-    a.href = CONFIG.BROCHURE_URL; a.download = CONFIG.BROCHURE_NAME;
+    var url = (key && CONFIG.TOWER_BROCHURES[key]) || CONFIG.BROCHURE_URL;
+    a.href = url; a.download = url.split('/').pop();
     document.body.appendChild(a); a.click(); a.remove();
   }
   function sendEmail(data) {
@@ -398,7 +424,7 @@
       btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…';
 
       // The brochure is delivered whatever the network does — never block the visitor.
-      if (ctx === 'brochure') downloadBrochure();
+      if (ctx === 'brochure') downloadBrochure(form.getAttribute('data-brochure'));
       // Any registered enquiry unlocks the floor plans, even if the email relay is down.
       grantAccess();
 
