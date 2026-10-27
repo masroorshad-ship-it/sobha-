@@ -63,6 +63,7 @@
     'brochure':     { eyebrow: 'Brochure',     title: 'Download the Brochure', sub: 'Fill in your details — your download begins as soon as you submit.', cta: 'Submit & Download', subject: 'Brochure Download' },
     'floor-plan':   { eyebrow: 'Floor Plan',   title: 'View Floor Plan',       sub: 'Share your details and we will send the detailed floor plan to you right away.', cta: 'Get Floor Plan', subject: 'Floor Plan Request' },
     'payment-plan': { eyebrow: 'Payment Plan', title: 'View Payment Plan',     sub: 'Receive the complete payment schedule and current availability.', cta: 'Get Payment Plan', subject: 'Payment Plan Request' },
+    'price-list':   { eyebrow: 'Price List',   title: 'Get Price List & Floor Plans', sub: 'Receive the current price list, floor plans and payment plan for every tower.', cta: 'Send Me the Price List', subject: 'Price List Request' },
     'site-visit':   { eyebrow: 'Site Visit',   title: 'Request a Site Visit',  sub: 'Choose a time that suits you — our advisor will confirm your private viewing.', cta: 'Request Visit', subject: 'Site Visit Request' },
     'general':      { eyebrow: 'Enquire',      title: 'Request Details',       sub: 'Share your details and our advisor will be in touch shortly.', cta: 'Submit', subject: 'General Enquiry' }
   };
@@ -344,9 +345,10 @@
   /* ---------------- form submission ---------------- */
   function validate(form) {
     var ok = true;
-    $$('input[required]', form).forEach(function (inp) {
-      var v = inp.value.trim(), bad = !v;
-      if (inp.type === 'email') bad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    // Only name and phone are required; email is checked only when filled in.
+    $$('input', form).forEach(function (inp) {
+      var v = inp.value.trim(), bad = inp.required && !v;
+      if (inp.type === 'email' && v) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
       if (inp.type === 'tel') bad = v.replace(/\D/g, '').length < 7;
       inp.closest('.field').classList.toggle('is-invalid', bad);
       if (bad) ok = false;
@@ -402,7 +404,7 @@
       e.preventDefault();
       var msg = $('.form-msg', form), btn = $('button[type="submit"]', form);
       msg.className = 'form-msg'; msg.textContent = '';
-      if (!validate(form)) { msg.classList.add('is-err'); msg.textContent = 'Please complete all fields with valid details.'; return; }
+      if (!validate(form)) { msg.classList.add('is-err'); msg.textContent = 'Please check the highlighted field — name and a valid phone number are required.'; return; }
 
       var ctx = form.getAttribute('data-context') || 'general';
       var unit = form.getAttribute('data-unit') || '';
@@ -421,7 +423,7 @@
         submitted_at: new Date().toString(),
         event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
         _subject: 'New Lead: ' + c.subject + (unit ? ' (' + unit + ')' : '') + ' — Sobha Central',
-        _replyto: f.get('email').trim(),
+        _replyto: f.get('email').trim() || undefined,
         _template: 'table',
         _captcha: 'false'
       };
@@ -438,7 +440,7 @@
         if (window.fbq) {
           // Advanced matching: the Pixel hashes these before sending them to Meta.
           var digits = data.phone.replace(/\D/g, '');
-          window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase(), ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') });
+          window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase() || undefined, ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') || undefined });
           track('Lead', { content_name: c.subject, content_category: unit || 'General', currency: 'AED', value: 0 }, data.event_id);
         }
         msg.classList.add('is-ok');
@@ -453,7 +455,7 @@
       }).catch(function () {
         msg.classList.add('is-err');
         msg.innerHTML = 'We couldn’t send that just now. Please <a href="https://wa.me/' + CONFIG.WHATSAPP +
-          '?text=' + encodeURIComponent('Hi, I am ' + data.name + ' from ' + data.city + '. ' + data._subject) +
+          '?text=' + encodeURIComponent('Hi, I am ' + data.name + (data.city ? ' from ' + data.city : '') + '. ' + data._subject) +
           '" target="_blank" rel="noopener" style="color:#f1dcaa;text-decoration:underline">message us on WhatsApp</a> instead.';
       }).then(function () {
         btn.removeAttribute('aria-busy'); btn.textContent = original;
