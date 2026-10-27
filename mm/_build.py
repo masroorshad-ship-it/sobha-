@@ -11,7 +11,11 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 IMG = '/sobhacentral/assets/img/'
 PIXEL_ID = '806806699194177'
-VER = '20261027'
+VER = '20261027b'
+# Kyat figures use the Central Bank of Myanmar reference rate (1 AED ≈ 571.8 MMK, Oct 2026).
+# The informal market rate is roughly double, so every page says the MMK amount is approximate.
+MMK_NOTE_MY = 'ကျပ်ငွေ ပမာဏများသည် ဗဟိုဘဏ် ရည်ညွှန်းနှုန်း (1 AED ≈ 572 ကျပ်) ဖြင့် ခန့်မှန်းချက်သာ ဖြစ်ပါသည်။'
+MMK_NOTE_EN = 'MMK amounts are approximate, at the Central Bank reference rate (1 AED ≈ 572 MMK).'
 
 T = {
     'my': {
@@ -31,7 +35,7 @@ T = {
         'proj_sub': 'ပရောဂျက်တစ်ခုကို ရွေးချယ်ပြီး အသေးစိတ်၊ စျေးနှုန်းနှင့် brochure များကို ကြည့်ရှုပါ။',
         'flag_new': 'ယခု ရောင်းချနေပြီ',
         'sc_meta': 'Sobha Realty · Sheikh Zayed Road, ဒူဘိုင်း',
-        'sc_text': 'Sheikh Zayed Road ပေါ်ရှိ မျှော်စင် 6 ခု။ အိပ်ခန်း 1, 2 နှင့် 3 ခန်း နေအိမ်များ။ AED 1.78 သန်းမှ စတင် (≈ USD 484,000)။',
+        'sc_text': 'Sheikh Zayed Road ပေါ်ရှိ မျှော်စင် 6 ခု။ အိပ်ခန်း 1, 2 နှင့် 3 ခန်း နေအိမ်များ။ AED 1.78 သန်း (≈ ကျပ်သိန်း 10,180) မှ စတင်။',
         'view_project': 'ပရောဂျက် ကြည့်ရန်',
         'soon_title': 'နောက်ထပ် ပရောဂျက်များ မကြာမီ',
         'soon_text': 'အခြား ထိပ်တန်း developer များ၏ ပရောဂျက်များကို မကြာမီ ထည့်သွင်းပါမည်။ စာရင်းသွင်းထားပါက ဦးစွာ အသိပေးပါမည်။',
@@ -62,7 +66,7 @@ T = {
         'privacy_link': 'ကိုယ်ရေးအချက်အလက် မူဝါဒ (English)',
         'email_us': 'သို့မဟုတ် အီးမေးလ် ပို့ရန်',
         'footer_by': 'Espousal — Sobha Realty ၏ Authorised Channel Partner',
-        'disclaimer': 'ဤဝက်ဘ်ဆိုက်ကို Espousal မှ လုပ်ဆောင်ပြီး developer များ၏ တရားဝင် ဝက်ဘ်ဆိုက် မဟုတ်ပါ။ ပုံများသည် ကွန်ပျူတာဖြင့် ဖန်တီးထားသော ပုံဖော်ချက်များ ဖြစ်ပါသည်။ စျေးနှုန်း၊ ငွေပေးချေမှု အစီအစဉ်၊ အရွယ်အစားနှင့် ပြီးစီးမည့်ရက်များသည် ခန့်မှန်းချက်သာ ဖြစ်ပြီး ကြိုတင် အသိပေးခြင်း မရှိဘဲ ပြောင်းလဲနိုင်ပါသည်။ USD ပမာဏများသည် ခန့်မှန်း ပြောင်းလဲထားခြင်းသာ ဖြစ်ပါသည်။ ဝယ်ယူမှုတိုင်းသည် developer ၏ KYC/AML စစ်ဆေးမှုများနှင့် သက်ဆိုင်ပါသည်။',
+        'disclaimer': 'ဤဝက်ဘ်ဆိုက်ကို Espousal မှ လုပ်ဆောင်ပြီး developer များ၏ တရားဝင် ဝက်ဘ်ဆိုက် မဟုတ်ပါ။ ပုံများသည် ကွန်ပျူတာဖြင့် ဖန်တီးထားသော ပုံဖော်ချက်များ ဖြစ်ပါသည်။ စျေးနှုန်း၊ ငွေပေးချေမှု အစီအစဉ်၊ အရွယ်အစားနှင့် ပြီးစီးမည့်ရက်များသည် ခန့်မှန်းချက်သာ ဖြစ်ပြီး ကြိုတင် အသိပေးခြင်း မရှိဘဲ ပြောင်းလဲနိုင်ပါသည်။ ကျပ်ငွေ ပမာဏများသည် ဗဟိုဘဏ် ရည်ညွှန်းနှုန်း (1 AED ≈ 572 ကျပ်) ဖြင့် ခန့်မှန်း ပြောင်းလဲထားခြင်းသာ ဖြစ်ပြီး အမှန်တကယ် ငွေလဲနှုန်းနှင့် များစွာ ကွာခြားနိုင်ပါသည်။ ဝယ်ယူမှုတိုင်းသည် developer ၏ KYC/AML စစ်ဆေးမှုများနှင့် သက်ဆိုင်ပါသည်။',
         'js': {
             'invalid': 'အမည်နှင့် မှန်ကန်သော အီးမေးလ်ကို ဖြည့်ပေးပါ။',
             'sending': 'ပေးပို့နေသည်…',
@@ -83,7 +87,7 @@ T = {
         'sc_eyebrow': 'Sobha Realty · Sheikh Zayed Road · ဒူဘိုင်း',
         'sc_tag': 'အားလုံး ချိတ်ဆက်ရာ နေရာ',
         'sc_sub': 'ဒူဘိုင်း၏ အထင်ကရ Sheikh Zayed Road ပေါ်တွင် အချင်းချင်း ချိတ်ဆက်ထားသော မျှော်စင် 6 ခု — မြင့်မားသော ပန်းခြံများ၊ ဈေးဝယ်စင်တာနှင့် ရုံးခန်းများကို နေရာတစ်ခုတည်းတွင် ရရှိနိုင်ပါသည်။',
-        'from': 'စတင် စျေးနှုန်း', 'approx_usd': '≈ USD 484,000',
+        'from': 'စတင် စျေးနှုန်း', 'approx_usd': '≈ ကျပ်သိန်း 10,180',
         'plan_short': '40% ဆောက်လုပ်ဆဲ · 60% ပြီးစီးချိန်',
         'cta_price': 'စျေးနှုန်းစာရင်း ရယူရန်', 'cta_brochure': 'Brochure ဒေါင်းလုဒ်',
         'facts': [('6', 'မျှော်စင်'), ('G+94', 'အမြင့်ဆုံး မျှော်စင်'), ('175K', 'sq.ft. ရုံးခန်းနေရာ'), ('2029–30', 'ပြီးစီးမည့်နှစ်')],
@@ -102,7 +106,7 @@ T = {
         'plan_eyebrow': 'ငွေပေးချေမှု အစီအစဉ်',
         'plan_title': 'လွယ်ကူသော <span class="gold">ငွေပေးချေမှု</span>',
         'plan_a': 'ဆောက်လုပ်ဆဲ ကာလအတွင်း', 'plan_b': 'ပြီးစီးချိန်တွင်',
-        'plan_note': 'အိပ်ခန်း 1 ခန်း AED 1.78 သန်း (≈ USD 484,000) မှ၊ အိပ်ခန်း 2 ခန်း AED 2.47 သန်း (≈ USD 672,000) မှ စတင်ပါသည်။ စျေးနှုန်းများသည် မျှော်စင်၊ အထပ်နှင့် ရှုခင်းအလိုက် ကွာခြားပါသည်။ USD ပမာဏများသည် ခန့်မှန်းချက်သာ ဖြစ်ပါသည်။',
+        'plan_note': 'အိပ်ခန်း 1 ခန်း AED 1.78 သန်း (≈ ကျပ်သိန်း 10,180) မှ၊ အိပ်ခန်း 2 ခန်း AED 2.47 သန်း (≈ ကျပ်သိန်း 14,120) မှ စတင်ပါသည်။ စျေးနှုန်းများသည် မျှော်စင်၊ အထပ်နှင့် ရှုခင်းအလိုက် ကွာခြားပါသည်။ ' + MMK_NOTE_MY,
         'amen_eyebrow': 'အထောက်အကူပြု ပစ္စည်းများ',
         'amen_title': 'အိမ်အောက်တွင် <span class="gold">အားလုံးရှိသည်</span>',
         'amen': ['ရေကူးကန်များ', 'ကလေး ရေကူးကန်', 'ဘောလုံးကွင်း', 'ခရစ်ကတ် ကွင်း', 'အားကစားခန်း', 'ယောဂ စတူဒီယို', 'အပြင်ဘက် ရုပ်ရှင်ရုံ', 'မိသားစု BBQ နေရာ', 'ကလေး ကစားကွင်း', 'ပန်းခြံများ', 'ခွေး ပန်းခြံ', 'စာကြည့်တိုက်', 'ရေနွေးငွေ့နှင့် ဆောနာ', 'ဈေးဝယ်စင်တာ'],
@@ -139,7 +143,7 @@ T = {
         'proj_sub': 'Choose a project to see its details, prices and brochures.',
         'flag_new': 'Now selling',
         'sc_meta': 'Sobha Realty · Sheikh Zayed Road, Dubai',
-        'sc_text': 'Six towers on Sheikh Zayed Road. One, two and three bedroom residences from AED 1.78M (≈ USD 484,000).',
+        'sc_text': 'Six towers on Sheikh Zayed Road. One, two and three bedroom residences from AED 1.78M (≈ MMK 1,018 million).',
         'view_project': 'View Project',
         'soon_title': 'More projects coming soon',
         'soon_text': 'Projects by other leading developers will be added soon. Register and we will tell you first.',
@@ -170,7 +174,7 @@ T = {
         'privacy_link': 'Privacy Policy',
         'email_us': 'Or email us at',
         'footer_by': 'Espousal — Authorised Channel Partner of Sobha Realty',
-        'disclaimer': 'This website is operated by Espousal and is not the official website of any developer. Images are computer-generated renderings. Prices, payment plans, sizes and completion dates are indicative and may change without notice. USD amounts are approximate conversions. Every purchase is subject to the developer’s KYC/AML checks.',
+        'disclaimer': 'This website is operated by Espousal and is not the official website of any developer. Images are computer-generated renderings. Prices, payment plans, sizes and completion dates are indicative and may change without notice. MMK amounts are approximate conversions at the Central Bank reference rate (1 AED ≈ 572 MMK) and can differ significantly from the rate you actually receive. Every purchase is subject to the developer’s KYC/AML checks.',
         'js': {
             'invalid': 'Please enter your name and a valid email address.',
             'sending': 'Sending…',
@@ -190,7 +194,7 @@ T = {
         'sc_eyebrow': 'Sobha Realty · Sheikh Zayed Road · Dubai',
         'sc_tag': 'Where it all connects.',
         'sc_sub': 'Six interconnected towers on Dubai’s iconic Sheikh Zayed Road — with elevated parks, a retail mall and premium offices, all within one address.',
-        'from': 'Starting from', 'approx_usd': '≈ USD 484,000',
+        'from': 'Starting from', 'approx_usd': '≈ MMK 1,018 million',
         'plan_short': '40% during construction · 60% on completion',
         'cta_price': 'Get the Price List', 'cta_brochure': 'Download Brochure',
         'facts': [('6', 'Towers'), ('G+94', 'Tallest tower'), ('175K', 'Sq.ft. of offices'), ('2029–30', 'Handover by tower')],
@@ -209,7 +213,7 @@ T = {
         'plan_eyebrow': 'Payment Plan',
         'plan_title': 'An easy <span class="gold">payment plan</span>',
         'plan_a': 'During construction', 'plan_b': 'On completion',
-        'plan_note': 'One bedroom from AED 1.78M (≈ USD 484,000); two bedroom from AED 2.47M (≈ USD 672,000). Prices vary by tower, floor and view. USD amounts are approximate.',
+        'plan_note': 'One bedroom from AED 1.78M (≈ MMK 1,018 million); two bedroom from AED 2.47M (≈ MMK 1,412 million). Prices vary by tower, floor and view. ' + MMK_NOTE_EN,
         'amen_eyebrow': 'Amenities',
         'amen_title': 'Everything, <span class="gold">just downstairs</span>',
         'amen': ['Lap & leisure pools', 'Children’s pool', 'Football ground', 'Cricket enclosure', 'Indoor gym', 'Yoga studio', 'Outdoor cinema', 'Family BBQ', 'Children’s play area', 'Gardens', 'Dog park', 'Library', 'Steam & sauna', 'Retail mall'],
@@ -259,6 +263,7 @@ def head(t, lang, page, title, desc):
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(desc)}">
   <meta property="og:image" content="https://espousalsobha.com{IMG}hero-aerial.jpg">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
