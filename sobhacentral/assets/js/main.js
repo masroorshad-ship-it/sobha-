@@ -126,7 +126,8 @@
 
   /* ---------------- floor plans ---------------- */
   var unlocked = false;
-  try { unlocked = localStorage.getItem(ACCESS_KEY) === '1'; } catch (e) {}
+  // Access lasts only for this visit (sessionStorage), so plans are locked again next time.
+  try { localStorage.removeItem(ACCESS_KEY); unlocked = sessionStorage.getItem(ACCESS_KEY) === '1'; } catch (e) {}
   var pendingFp = null;
   var fpGrid = $('#fpGrid'), fpSummary = $('#fpSummary'), fpStatus = $('#fpStatus');
   var LOCK_SVG = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
@@ -194,7 +195,7 @@
   }
   function grantAccess() {
     unlocked = true;
-    try { localStorage.setItem(ACCESS_KEY, '1'); } catch (e) {}
+    try { sessionStorage.setItem(ACCESS_KEY, '1'); } catch (e) {}
     applyAccess();
   }
 
