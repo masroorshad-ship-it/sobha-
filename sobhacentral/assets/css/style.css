@@ -155,7 +155,7 @@ p { margin: 0 0 16px; color: var(--mute); }
 .hero__offer-div { width: 1px; height: 44px; background: var(--line); margin: 0 10px; }
 .hero__offer-note { margin: 0; font-size: 13px; letter-spacing: .08em; }
 .hero__offer-note strong { color: var(--gold-hi); font-weight: 400; }
-.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
 .hero__scroll { position: absolute; left: 50%; bottom: 28px; width: 1px; height: 64px; background: rgba(244, 239, 230, .2); overflow: hidden; }
 .hero__scroll span { position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--gold-hi); animation: drip 2.4s var(--ease) infinite; }
 @keyframes drip { to { top: 110%; } }
@@ -470,6 +470,9 @@ a.cta__meta:hover { color: var(--gold-hi); }
 /* ---------- form fields ---------- */
 .field { display: block; position: relative; }
 .field span { display: block; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.field span em { font-style: normal; text-transform: none; letter-spacing: .04em; color: var(--mute); }
+.btn--wa { gap: 10px; }
+.btn--wa svg { flex: none; }
 .field input {
   width: 100%; height: 48px; padding: 0 2px; font: 300 16px/1 var(--sans); color: var(--ivory);
   background: transparent; border: 0; border-bottom: 1px solid rgba(244, 239, 230, .2); border-radius: 0; outline: 0; transition: border-color .3s;
