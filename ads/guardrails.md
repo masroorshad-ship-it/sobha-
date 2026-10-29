@@ -8,6 +8,7 @@ Any rule that depends on a value still marked `TODO` is skipped (report it as a 
 - Currency: INR
 - Market: India (campaign `SobhaCentral_Leads_IN_Oct26`)
 - Primary objective: Leads. Judge results on the `lead` action only. The custom pixel event (`offsite_conversion.fb_pixel_custom`) is NOT a lead — report it separately, never count it as a conversion.
+- Pixel 806806699194177 (dataset "Espousal website") is shared by espousalsobha.com and mm.espousalconstruction.com, so pixel-wide event totals mix both sites. Judge this account on the leads Meta attributes to its ads, not on dataset totals. On 2026-10-29 the dataset showed 26 Lead events over 28 days, match quality 8.4/10, browser + server, used by 1 ad set. Contact (WhatsApp / call / email taps) showed 534.
 - Owner's lead count is the source of truth: 4 real leads by 2026-10-29 while Meta reported 2. Flag any gap between Meta's lead count and what the owner reports.
 
 ## Targets
