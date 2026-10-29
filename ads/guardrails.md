@@ -1,0 +1,46 @@
+# Meta Ads guardrails
+
+The Meta Ads agent reads this file at the start of every run and never acts outside it.
+Any rule that depends on a value still marked `TODO` is skipped (report it as a recommendation instead).
+
+## Account
+- Ad account: Espousal – Sobha Central (ID 28680537344935012) — the only account the agent may touch
+- Currency: INR
+- Market: India (campaign `SobhaCentral_Leads_IN_Oct26`)
+- Primary objective: Leads. Judge results on the `lead` action; report the custom pixel event (`offsite_conversion.fb_pixel_custom`) separately until the owner confirms what it tracks.
+
+## Targets
+- Target cost per lead: TODO INR
+- Minimum ROAS: n/a (lead gen, no purchase value)
+- Max frequency (7-day) before creative is considered fatigued: 3.5
+
+## Budget limits
+- Total daily spend cap across the account: ₹2,000 (provisional — matches the Oct 2026 run rate; owner to confirm)
+- Max budget change per ad set / campaign per day: 20%
+- Never raise any single budget above: ₹2,000/day (provisional)
+- Budget changes only on entities with 3+ days of data and 50+ conversions in the learning window, or that have exited the learning phase.
+
+## Allowed without approval
+- Pause an ad when, over the last 7 days, spend > 2x target CPA with zero conversions.
+- Pause an ad whose 7-day frequency exceeds the max above and CTR has dropped 30%+ vs. its first 7 days.
+- Shift budget between ad sets in the same campaign, within the per-day limit above.
+- Create new ads, ad sets and campaigns — **always created PAUSED**.
+
+## Never without explicit approval
+- Activate (un-pause) anything, including new drafts.
+- Delete or archive any campaign, ad set or ad.
+- Change the objective, optimisation event, pixel / dataset, or attribution setting.
+- Edit audiences on an active ad set.
+- Exceed the total daily spend cap.
+- Touch any campaign whose name contains `[MANUAL]`.
+
+## Adspirer quota
+The Adspirer plan allows 15 counted actions a month and the agent runs twice a week.
+- Per run: at most 1 performance read and at most 1 write (pause, budget change or new draft). `search_tools` and `get_tool_schema` are free.
+- Call `get_usage_status` first; if fewer than 3 actions remain this month, report only.
+
+## Brand
+- Brand: Espousal – Sobha Central (real estate)
+- Tone: TODO (e.g. playful, premium, late-night)
+- Always / never say: TODO
+- Ad copy must be in: English
