@@ -403,6 +403,8 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var msg = $('.form-msg', form), btn = $('button[type="submit"]', form);
+      // Ignore repeat taps while a submission is on its way (avoids duplicate leads).
+      if (btn.disabled) return;
       msg.className = 'form-msg'; msg.textContent = '';
       if (!validate(form)) { msg.classList.add('is-err'); msg.textContent = 'Please check the highlighted field — name and a valid phone number are required.'; return; }
 
@@ -429,7 +431,7 @@
       };
 
       var original = btn.textContent;
-      btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…';
+      btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…';
 
       // The brochure is delivered whatever the network does — never block the visitor.
       if (ctx === 'brochure') downloadBrochure(form.getAttribute('data-brochure'));
@@ -458,7 +460,7 @@
           '?text=' + encodeURIComponent('Hi, I am ' + data.name + (data.city ? ' from ' + data.city : '') + '. ' + data._subject) +
           '" target="_blank" rel="noopener" style="color:#f1dcaa;text-decoration:underline">message us on WhatsApp</a> instead.';
       }).then(function () {
-        btn.removeAttribute('aria-busy'); btn.textContent = original;
+        btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = original;
       });
     });
   });
