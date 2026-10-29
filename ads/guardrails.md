@@ -7,26 +7,28 @@ Any rule that depends on a value still marked `TODO` is skipped (report it as a 
 - Ad account: Espousal – Sobha Central (ID 28680537344935012) — the only account the agent may touch
 - Currency: INR
 - Market: India (campaign `SobhaCentral_Leads_IN_Oct26`)
-- Primary objective: Leads. Judge results on the `lead` action; report the custom pixel event (`offsite_conversion.fb_pixel_custom`) separately until the owner confirms what it tracks.
+- Primary objective: Leads. Judge results on the `lead` action only. The custom pixel event (`offsite_conversion.fb_pixel_custom`) is NOT a lead — report it separately, never count it as a conversion.
+- Owner's lead count is the source of truth: 4 real leads by 2026-10-29 while Meta reported 2. Flag any gap between Meta's lead count and what the owner reports.
 
 ## Targets
-- Target cost per lead: TODO INR
+- Target cost per lead: ₹200
 - Minimum ROAS: n/a (lead gen, no purchase value)
 - Max frequency (7-day) before creative is considered fatigued: 3.5
 
 ## Budget limits
-- Total daily spend cap across the account: ₹2,000 (provisional — matches the Oct 2026 run rate; owner to confirm)
+- Total daily spend cap across the account: ₹2,000 (confirmed by owner)
 - Max budget change per ad set / campaign per day: 20%
-- Never raise any single budget above: ₹2,000/day (provisional)
+- Never raise any single budget above: ₹2,000/day
 - Budget changes only on entities with 3+ days of data and 50+ conversions in the learning window, or that have exited the learning phase.
 
 ## Allowed without approval
-- Pause an ad when, over the last 7 days, spend > 2x target CPA with zero conversions.
+- Pause an ad when, over the last 7 days, spend > 2x target cost per lead (₹400) with zero `lead` actions.
 - Pause an ad whose 7-day frequency exceeds the max above and CTR has dropped 30%+ vs. its first 7 days.
 - Shift budget between ad sets in the same campaign, within the per-day limit above.
 - Create new ads, ad sets and campaigns — **always created PAUSED**.
 
 ## Never without explicit approval
+- Pause the last active ad in a campaign, or anything that would leave the account with no active ads — recommend it instead.
 - Activate (un-pause) anything, including new drafts.
 - Delete or archive any campaign, ad set or ad.
 - Change the objective, optimisation event, pixel / dataset, or attribution setting.
