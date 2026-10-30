@@ -47,13 +47,28 @@
     window.fbq('track', 'PageView');
   }
   // WhatsApp, call and email taps are high-intent signals for the ad algorithm.
+  // WhatsApp links ask for name, phone and budget first (stops blank chats from casual taps);
+  // visitors who have already enquired go straight through.
+  var pendingWa = '';
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href]');
     if (!a) return;
     var h = a.getAttribute('href');
     var channel = /wa\.me/.test(h) ? 'WhatsApp' : /^tel:/.test(h) ? 'Phone' : /^mailto:/.test(h) ? 'Email' : '';
+    if (channel === 'WhatsApp' && !unlocked && !a.closest('.form-msg')) {
+      e.preventDefault(); e.stopPropagation();
+      pendingWa = h;
+      openModal('whatsapp');
+      return;
+    }
     if (channel) track('Contact', { content_name: 'Sobha Central', content_category: channel });
   }, true);
+  // WhatsApp link to the same number, with the visitor's name and budget in the message.
+  function waLink(href, name, budget) {
+    var num = (/wa\.me\/(\d+)/.exec(href || '') || [])[1] || CONFIG.WHATSAPP;
+    return 'https://wa.me/' + num + '?text=' + encodeURIComponent('Hi, I am ' + name + '. I am interested in Sobha Central on Sheikh Zayed Road' +
+      (budget ? ' (budget ' + budget + ')' : '') + '. Please send me the price list and floor plans.');
+  }
 
   var START_PRICE = { 1: 'AED 1.78 Million', 2: 'AED 2.47 Million', 3: 'AED 4.78 Million' };
   var UNITS = window.SC_UNITS || [];
@@ -66,6 +81,7 @@
     'price-list':   { eyebrow: 'Price List',   title: 'Get Price List & Floor Plans', sub: 'Receive the current price list, floor plans and payment plan for every tower.', cta: 'Send Me the Price List', subject: 'Price List Request' },
     'site-visit':   { eyebrow: 'Site Visit',   title: 'Request a Site Visit',  sub: 'Choose a time that suits you — our advisor will confirm your private viewing.', cta: 'Request Visit', subject: 'Site Visit Request' },
     'meeting':      { eyebrow: 'Meeting',      title: 'Book a Quick Meeting',  sub: 'Share a few details and our advisor will call you shortly.', cta: 'Book a Quick Meeting', subject: 'Quick Meeting Request' },
+    'whatsapp':     { eyebrow: 'WhatsApp',     title: 'Chat on WhatsApp',      sub: 'Share a few details and WhatsApp opens with your enquiry ready to send.', cta: 'Continue to WhatsApp', subject: 'WhatsApp Enquiry' },
     'general':      { eyebrow: 'Enquire',      title: 'Request Details',       sub: 'Share your details and our advisor will be in touch shortly.', cta: 'Submit', subject: 'General Enquiry' }
   };
 
@@ -464,6 +480,16 @@
       // Any registered enquiry unlocks the floor plans, even if the email relay is down.
       grantAccess();
 
+      // Open WhatsApp now, while the tap still counts as a user action (pop-up blockers).
+      if (ctx === 'whatsapp') {
+        var wa = waLink(pendingWa, data.name, budget);
+        pendingWa = '';
+        // ('noopener' would make window.open return null even when it works, so clear opener by hand.)
+        var win = window.open(wa, '_blank');
+        if (win) win.opener = null; else location.href = wa;
+        track('Contact', { content_name: 'Sobha Central', content_category: 'WhatsApp' });
+      }
+
       // Report the Lead as soon as the enquiry is valid, not after the network round trip,
       // so visitors who close the page while it is sending are still counted.
       if (window.fbq) {
@@ -477,6 +503,8 @@
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'floor-plan'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
+          : ctx === 'whatsapp'
+          ? 'Thank you, ' + data.name.split(' ')[0] + '. WhatsApp is opening with your enquiry — just tap send.'
           : ctx === 'meeting'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Our team will call you shortly to fix a meeting time.'
           : ctx === 'brochure'

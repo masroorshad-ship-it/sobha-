@@ -614,12 +614,13 @@
       <img src="assets/img/living.jpg" alt="">
       <div class="modal__side-cap"><span class="brand__mark"><i></i><i></i><i></i><i></i><i></i></span>Sobha Central</div>
     </div>
-    <form class="modal__form js-enquiry" id="modalForm" data-context="general" novalidate>
+    <form class="modal__form js-enquiry" id="modalForm" data-context="general" data-err="Please add your name, a valid phone number and your budget." novalidate>
       <p class="eyebrow" id="modalEyebrow">Enquire</p>
       <h3 class="modal__title" id="modalTitle">Request Details</h3>
       <p class="modal__sub" id="modalSub">Share your details and our advisor will be in touch shortly.</p>
       <label class="field"><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
       <label class="field"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" placeholder="+91 …" required></label>
+      <label class="field"><span>Budget <em>(approx.)</em></span><select name="budget" required><option value="">Select your budget</option><option>Below ₹4 Cr</option><option>₹4 – 6 Cr</option><option>₹6 – 10 Cr</option><option>Above ₹10 Cr</option></select></label>
       <label class="field"><span>Email ID <em>(optional)</em></span><input name="email" type="email" autocomplete="email"></label>
       <label class="field"><span>City <em>(optional)</em></span><input name="city" type="text" autocomplete="address-level2"></label>
       <button class="btn btn--gold btn--block" type="submit" id="modalSubmit">Submit</button>
@@ -671,6 +672,6 @@
 </div>
 
 <script src="assets/js/floorplans.js?v=20261030a"></script>
-<script src="assets/js/main.js?v=20261030c"></script>
+<script src="assets/js/main.js?v=20261030d"></script>
 </body>
 </html>
