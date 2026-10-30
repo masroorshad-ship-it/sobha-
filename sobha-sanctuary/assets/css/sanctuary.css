@@ -1,0 +1,69 @@
+/* Sobha Sanctuary page — additions on top of the shared Sobha Central stylesheet */
+.fp-plates[hidden] { display: none; }
+.fpv.no-key .fpv__toggle { visibility: hidden; }
+.fp-tabs { margin-bottom: 0; }
+.fp-bar--stack { display: block; }
+.fp-bar--stack .fp-summary { margin-top: 18px; }
+
+/* philosophy pillars */
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 46px; border-top: 1px solid var(--line); }
+.pillar { padding: 26px 24px 6px 0; }
+.pillar + .pillar { padding-left: 24px; border-left: 1px solid var(--line-soft); }
+.pillar h3 { margin: 0 0 8px; font: 400 15px/1.2 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-hi); }
+.pillar p { margin: 0; font-size: 15px; color: rgba(244, 239, 230, .78); }
+
+/* price cards: four across */
+.price-grid--4 { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.price-grid--4 .price { padding: 44px 26px 30px; }
+.price__amt--text { font: 400 30px/1.15 var(--display); }
+.price__note { margin: 10px 0 0; font-size: 12px; letter-spacing: .08em; color: var(--mute); }
+
+/* location: wide map */
+.loc--wide { grid-template-columns: 1fr; }
+.loc--wide .loc__map img { aspect-ratio: auto; object-fit: contain; }
+.loc__pin--ss { left: 54.5%; top: 79%; }
+.loc__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+.loc__list--text span { font-size: 18px; }
+
+/* homepage project cards */
+.pj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.pj { display: flex; flex-direction: column; border: 1px solid var(--line-soft); background: linear-gradient(180deg, var(--ink-2), var(--ink)); transition: border-color .5s, transform .6s var(--ease); }
+.pj:hover { border-color: var(--line); transform: translateY(-6px); }
+.pj__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.pj__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+.pj:hover .pj__img img { transform: scale(1.04); }
+.pj__img span { position: absolute; left: 0; bottom: 0; padding: 10px 16px; background: rgba(11, 13, 28, .8); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-hi); }
+.pj__body { display: flex; flex-direction: column; flex: 1; padding: 30px 30px 32px; }
+.pj__name { margin: 6px 0 12px; font: 400 clamp(28px, 3vw, 38px)/1.1 var(--display); text-transform: uppercase; letter-spacing: .03em; }
+.pj__body > p { margin: 0 0 20px; color: rgba(244, 239, 230, .8); }
+.pj__list { list-style: none; margin: 0 0 26px; padding: 0; border-top: 1px solid var(--line); }
+.pj__list li { display: flex; justify-content: space-between; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line-soft); font-size: 14px; }
+.pj__list li span { color: var(--sand); }
+.pj__list li b { font-weight: 400; color: var(--gold-hi); text-align: right; }
+.pj__actions { margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 1100px) {
+  .price-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .pillar:nth-child(3) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 860px) {
+  .price-grid--4, .pj-grid, .loc__cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .pillars { grid-template-columns: 1fr; }
+  .pillar + .pillar { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-soft); }
+  .pj__body { padding: 24px 20px 26px; }
+  .pj__actions .btn { flex: 1 1 100%; }
+}
+
+/* long hero words ("Sanctuary", "Dubai homes") must fit a phone screen */
+.hero__title--long { font-size: clamp(40px, 10.5vw, 160px); }
+@media (max-width: 400px) {
+  .btn { white-space: normal; text-align: center; }
+  .hero__offer { max-width: 100%; }
+  .hero__offer-num { font-size: 32px; }
+  .hero__offer-lbl { font-size: 9px; letter-spacing: .08em; }
+  .hero__offer-plan { gap: 6px; }
+  .brochure__copy, .brochure__cover { min-width: 0; }
+}
