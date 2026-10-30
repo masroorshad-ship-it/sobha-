@@ -65,6 +65,7 @@
     'payment-plan': { eyebrow: 'Payment Plan', title: 'View Payment Plan',     sub: 'Receive the complete payment schedule and current availability.', cta: 'Get Payment Plan', subject: 'Payment Plan Request' },
     'price-list':   { eyebrow: 'Price List',   title: 'Get Price List & Floor Plans', sub: 'Receive the current price list, floor plans and payment plan for every tower.', cta: 'Send Me the Price List', subject: 'Price List Request' },
     'site-visit':   { eyebrow: 'Site Visit',   title: 'Request a Site Visit',  sub: 'Choose a time that suits you — our advisor will confirm your private viewing.', cta: 'Request Visit', subject: 'Site Visit Request' },
+    'meeting':      { eyebrow: 'Meeting',      title: 'Book a Quick Meeting',  sub: 'Share a few details and our advisor will call you shortly.', cta: 'Book a Quick Meeting', subject: 'Quick Meeting Request' },
     'general':      { eyebrow: 'Enquire',      title: 'Request Details',       sub: 'Share your details and our advisor will be in touch shortly.', cta: 'Submit', subject: 'General Enquiry' }
   };
 
@@ -345,14 +346,23 @@
   /* ---------------- form submission ---------------- */
   function validate(form) {
     var ok = true;
-    // Only name and phone are required; email is checked only when filled in.
-    $$('input', form).forEach(function (inp) {
+    // Required fields must be filled; email and phone are checked only when filled in
+    // (the phone is required on every form except those marked data-either).
+    $$('input, select', form).forEach(function (inp) {
       var v = inp.value.trim(), bad = inp.required && !v;
       if (inp.type === 'email' && v) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-      if (inp.type === 'tel') bad = v.replace(/\D/g, '').length < 7;
+      if (inp.type === 'tel' && (v || !form.hasAttribute('data-either'))) bad = v.replace(/\D/g, '').length < 7;
       inp.closest('.field').classList.toggle('is-invalid', bad);
       if (bad) ok = false;
     });
+    // Forms marked data-either need a phone number or an email — at least one.
+    if (form.hasAttribute('data-either')) {
+      var ph = $('input[type="tel"]', form), em = $('input[type="email"]', form);
+      if (!ph.value.trim() && !em.value.trim()) {
+        [ph, em].forEach(function (inp) { inp.closest('.field').classList.add('is-invalid'); });
+        ok = false;
+      }
+    }
     return ok;
   }
   function downloadBrochure(key) {
@@ -406,7 +416,7 @@
   }
 
   $$('.js-enquiry').forEach(function (form) {
-    $$('input', form).forEach(function (inp) {
+    $$('input, select', form).forEach(function (inp) {
       inp.addEventListener('input', function () { inp.closest('.field').classList.remove('is-invalid'); });
     });
     form.addEventListener('submit', function (e) {
@@ -415,18 +425,21 @@
       // Ignore repeat taps while a submission is on its way (avoids duplicate leads).
       if (btn.disabled) return;
       msg.className = 'form-msg'; msg.textContent = '';
-      if (!validate(form)) { msg.classList.add('is-err'); msg.textContent = 'Please check the highlighted field — name and a valid phone number are required.'; return; }
+      if (!validate(form)) { msg.classList.add('is-err'); msg.textContent = form.getAttribute('data-err') || 'Please check the highlighted field — name and a valid phone number are required.'; return; }
 
       var ctx = form.getAttribute('data-context') || 'general';
       var unit = form.getAttribute('data-unit') || '';
       var c = CONTEXTS[ctx] || CONTEXTS.general;
       var f = new FormData(form);
+      function val(k) { return (f.get(k) || '').trim(); }
+      var budget = val('budget');
       var data = {
-        name: f.get('name').trim(),
-        email: f.get('email').trim(),
-        phone: f.get('phone').trim(),
-        city: f.get('city').trim(),
-        enquiry_type: c.subject,
+        name: val('name') || (val('first_name') + ' ' + val('last_name')).trim(),
+        email: val('email'),
+        phone: val('phone'),
+        city: val('city'),
+        enquiry_type: c.subject + (budget ? ' · Budget ' + budget : ''),
+        budget: budget,
         unit_type: unit || '—',
         project: 'Sobha Central by Sobha Realty',
         page: location.href,
@@ -438,7 +451,7 @@
         fbc: cookie('_fbc') || fbcFromUrl(),
         user_agent: navigator.userAgent,
         _subject: 'New Lead: ' + c.subject + (unit ? ' (' + unit + ')' : '') + ' — Sobha Central',
-        _replyto: f.get('email').trim() || undefined,
+        _replyto: val('email') || undefined,
         _template: 'table',
         _captcha: 'false'
       };
@@ -464,6 +477,8 @@
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'floor-plan'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
+          : ctx === 'meeting'
+          ? 'Thank you, ' + data.name.split(' ')[0] + '. Our team will call you shortly to fix a meeting time.'
           : ctx === 'brochure'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Your brochure is downloading — an advisor will follow up shortly.'
           : 'Thank you, ' + data.name.split(' ')[0] + '. Our advisor will contact you shortly.';
