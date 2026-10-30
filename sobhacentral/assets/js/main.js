@@ -253,10 +253,10 @@
           '<p>' + v.units.join(', ') + '</p></details>';
       }).join('');
       $('#fpvEnquire').setAttribute('data-unit', unitLabel(u));
-      $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like the price and availability for Sobha Central ' + bedLabel(u.beds) + ' ' + u.type + ' (' + sqft(u.total) + ').');
+      if ($('#fpvWa')) $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like the price and availability for Sobha Central ' + bedLabel(u.beds) + ' ' + u.type + ' (' + sqft(u.total) + ').');
       $('#fpvCount').textContent = (fpvIdx + 1) + ' / ' + fpvList.length;
     }
-    if (plates) $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like details on Sobha Central floor plans.');
+    if (plates && $('#fpvWa')) $('#fpvWa').href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hi, I would like details on Sobha Central floor plans.');
   }
   function openViewer(id) {
     if (id === 'floor-plates') { fpvList = ['floor-plates']; fpvIdx = 0; }
