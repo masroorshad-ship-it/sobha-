@@ -247,7 +247,7 @@
       $('#fpvFeat').textContent = 'Levels 04–12. Eighteen residences per floor, between the villa community and the park — one bedroom units in light blue, two bedroom units in deep blue.';
       $('#fpvAreas').innerHTML = ''; $('#fpvViews').innerHTML = ''; $('#fpvCount').textContent = '';
       $('#fpvEnquire').setAttribute('data-unit', 'The Woods · Floor plate');
-      $('#fpvWa').href = waLink('Hi, I would like details on The Woods at Sobha Sanctuary floor plans.');
+      if ($('#fpvWa')) $('#fpvWa').href = waLink('Hi, I would like details on The Woods at Sobha Sanctuary floor plans.');
       return;
     }
     fpvImg.alt = u.project + ' ' + bedLabel(u.beds) + ' ' + u.type + (fpvMode === 'key' ? ' key plan' : ' floor plan');
@@ -261,7 +261,7 @@
       return '<details><summary><span>' + esc(v.view) + '</span><b>' + v.units.length + ' units</b></summary><p>' + v.units.join(', ') + '</p></details>';
     }).join('') : '';
     $('#fpvEnquire').setAttribute('data-unit', unitLabel(u));
-    $('#fpvWa').href = waLink('Hi, I would like the price and availability for ' + u.project + ' at Sobha Sanctuary, ' + bedLabel(u.beds) + ' ' + u.type + (u.total ? ' (' + sqft(u.total) + ')' : '') + '.');
+    if ($('#fpvWa')) $('#fpvWa').href = waLink('Hi, I would like the price and availability for ' + u.project + ' at Sobha Sanctuary, ' + bedLabel(u.beds) + ' ' + u.type + (u.total ? ' (' + sqft(u.total) + ')' : '') + '.');
     $('#fpvCount').textContent = (fpvIdx + 1) + ' / ' + fpvList.length;
   }
   function openViewer(id) {
