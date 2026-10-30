@@ -618,7 +618,11 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
 }
 
 /* ---------- hero meeting form ("Talk to Our Team") ---------- */
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 410px); gap: clamp(32px, 5vw, 80px); align-items: center; }
+/* Desktop: title and text on the left, form on the right. Phones: title, then form, then text. */
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 410px); grid-template-areas: "head form" "body form"; column-gap: clamp(32px, 5vw, 80px); align-items: center; }
+.hero__head { grid-area: head; align-self: end; }
+.hero__body { grid-area: body; align-self: start; }
+.hero__grid .hero-form { grid-area: form; }
 .hero__grid .hero__title { font-size: clamp(56px, 7.6vw, 128px); }
 .hero__grid .hero__title--long { font-size: clamp(40px, 6.2vw, 108px); }
 .hero__grid .hero__offer { margin-bottom: 0; }
@@ -640,8 +644,8 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
 .field select option { color: #0b0d1c; }
 .field.is-invalid select { border-color: #e08a7a; }
 @media (max-width: 1100px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero-form { max-width: 520px; }
+  .hero__grid { grid-template-columns: 1fr; grid-template-areas: "head" "form" "body"; }
+  .hero__grid .hero-form { max-width: 520px; margin: 26px 0 30px; }
 }
 @media (max-width: 560px) {
   .hero-form { padding: 24px 20px 20px; }
