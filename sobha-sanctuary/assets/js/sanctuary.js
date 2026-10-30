@@ -397,6 +397,15 @@
     if (document.referrer && document.referrer.indexOf(location.host) === -1) parts.push('ref=' + document.referrer);
     return parts.join(' · ') || 'direct';
   }
+  function cookie(name) {
+    var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  // _fbc is normally set by the Pixel; rebuild it from the ad click ID if it is missing.
+  function fbcFromUrl() {
+    var id = new URLSearchParams(location.search).get('fbclid');
+    return id ? 'fb.1.' + Date.now() + '.' + id : '';
+  }
   // "The Woods · 1 BR Type A" → "The Woods at Sobha Sanctuary"
   function projectOf(unit) {
     var m = /^The (Woods|Greens|Grove)/.exec(unit || '');
@@ -432,6 +441,10 @@
         source: leadSource(),
         submitted_at: new Date().toString(),
         event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+        // Meta browser IDs, so the Sheet script can match its server-side Lead to this visitor.
+        fbp: cookie('_fbp'),
+        fbc: cookie('_fbc') || fbcFromUrl(),
+        user_agent: navigator.userAgent,
         _subject: 'New Lead: ' + c.subject + (unit ? ' (' + unit + ')' : '') + ' — Sobha Sanctuary',
         _replyto: f.get('email').trim() || undefined,
         _template: 'table',
@@ -446,13 +459,16 @@
       // Any registered enquiry unlocks the floor plans, even if the email relay is down.
       grantAccess();
 
+      // Report the Lead as soon as the enquiry is valid, not after the network round trip,
+      // so visitors who close the page while it is sending are still counted.
+      if (window.fbq) {
+        // Advanced matching: the Pixel hashes these before sending them to Meta.
+        var digits = data.phone.replace(/\D/g, '');
+        window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase() || undefined, ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') || undefined });
+        track('Lead', { content_name: c.subject, content_category: project, currency: 'AED', value: 0 }, data.event_id);
+      }
+
       send(data).then(function () {
-        if (window.fbq) {
-          // Advanced matching: the Pixel hashes these before sending them to Meta.
-          var digits = data.phone.replace(/\D/g, '');
-          window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase() || undefined, ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') || undefined });
-          track('Lead', { content_name: c.subject, content_category: project, currency: 'AED', value: 0 }, data.event_id);
-        }
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'floor-plan'
           ? 'Thank you, ' + data.name.split(' ')[0] + '. Opening your floor plan…'
