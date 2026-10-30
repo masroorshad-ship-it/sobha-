@@ -1,7 +1,14 @@
-# Espousal × Sobha — Sobha Central
+# Espousal × Sobha
 
-Static landing page for **Sobha Central by Sobha Realty** (Sheikh Zayed Road, Dubai), presented by Espousal.
-Live at **https://espousalsobha.com/sobhacentral/** (GitHub Pages, published from the `sobha` branch; `CNAME` sets the domain). The root `index.html` redirects to `/sobhacentral/`.
+Static project pages for **Sobha Realty** developments in Dubai, presented by Espousal (GitHub Pages, published from the `sobha` branch; `CNAME` sets the domain).
+
+- **https://espousalsobha.com/** — projects homepage (`index.html`) with a card for each project.
+- **https://espousalsobha.com/sobhacentral/** — Sobha Central (Sheikh Zayed Road).
+- **https://espousalsobha.com/sobha-sanctuary/** — Sobha Sanctuary: The Woods (apartments), The Greens and The Grove (villas). It reuses `sobhacentral/assets/css/style.css`; its own files are `sobha-sanctuary/assets/css/sanctuary.css`, `assets/js/units.js` (floor-plan data) and `assets/js/sanctuary.js`.
+
+Both project pages send leads to the same FormSubmit inbox and Google Sheet; the Sheet's Project column shows which project was enquired about.
+
+## Sobha Central
 
 ## Sections
 About · Exclusive 20/80 offer · Floor plans (1/2/3 BHK tabs) · Price list · Amenities · Gallery · Location & master plan · Virtual tour (YouTube + reel) · Brochure download · WhatsApp / site visit / meeting.
