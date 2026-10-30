@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261030e">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261030f">
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -78,13 +78,24 @@
     <div class="hero__body">
       <p class="hero__sub reveal">Six interconnected towers rising G+60 to G+94 above Dubai’s most iconic corridor — with elevated parks, a tech-powered retail mall and premium offices, all within one address.</p>
 
-      <div class="hero__offer reveal">
+      <div class="hero__offer offer-std reveal">
         <div class="hero__offer-plan">
           <span class="hero__offer-num">40<sup>%</sup></span><span class="hero__offer-lbl">During<br>Construction</span>
           <span class="hero__offer-div"></span>
           <span class="hero__offer-num">60<sup>%</sup></span><span class="hero__offer-lbl">Upon<br>Completion</span>
         </div>
         <p class="hero__offer-note">Starting from <strong>AED 1.78 Million</strong></p>
+      </div>
+      <div class="hero__offer hero__offer--live offer-live reveal" hidden>
+        <p class="hero__offer-flag">Sobha Realty Offer &nbsp;·&nbsp; 30 Oct – 1 Nov 2026</p>
+        <p class="hero__offer-dld"><span class="hero__offer-num">100<sup>%</sup></span><span class="hero__offer-lbl">DLD<br>Waiver</span></p>
+        <div class="hero__offer-plan">
+          <span class="hero__offer-num">30<sup>%</sup></span><span class="hero__offer-lbl">During<br>Construction</span>
+          <span class="hero__offer-div"></span>
+          <span class="hero__offer-num">70<sup>%</sup></span><span class="hero__offer-lbl">Upon<br>Completion</span>
+        </div>
+        <div class="countdown" data-countdown aria-label="Time left in the offer"></div>
+        <p class="hero__offer-note">Starting from <strong>AED 1.78 Million</strong> &nbsp;·&nbsp; <a href="#payment-plan">T&amp;C apply</a></p>
       </div>
     </div>
     <form class="hero-form reveal js-enquiry" id="talk" data-context="meeting" data-either data-err="Please add your first and last name, your budget, and a phone number or email." novalidate>
@@ -276,7 +287,27 @@
 <!-- ============ PAYMENT PLAN ============ -->
 <section class="offer" id="payment-plan" aria-label="Payment plan">
   <div class="offer__bg" aria-hidden="true"><img src="assets/img/living.jpg" alt="" loading="lazy"></div>
-  <div class="wrap offer__inner">
+  <div class="wrap offer__inner offer-live" hidden>
+    <p class="eyebrow reveal">An Exclusive Window · Sobha Realty Offer</p>
+    <h2 class="title title--center reveal">Everything within reach.<br><span class="gold-text">Your moment to call the centre home.</span></h2>
+    <p class="offer__date reveal">30 October – 1 November 2026 &nbsp;·&nbsp; Events Hall, Sobha Sales Office</p>
+    <div class="countdown countdown--lg reveal" data-countdown aria-label="Time left in the offer"></div>
+    <div class="offer__dld reveal"><span class="offer__pct">100<sup>%</sup></span><span class="offer__lbl">DLD Waiver</span></div>
+    <p class="offer__plus reveal" aria-hidden="true">+</p>
+    <div class="offer__plan reveal">
+      <div><span class="offer__pct">30<sup>%</sup></span><span class="offer__lbl">During Construction</span></div>
+      <i aria-hidden="true"></i>
+      <div><span class="offer__pct">70<sup>%</sup></span><span class="offer__lbl">Upon Completion</span></div>
+    </div>
+    <button class="btn btn--gold reveal" data-enquire="payment-plan" data-unit="Offer: 100% DLD waiver + 30/70">Book Before the Offer Ends</button>
+    <ul class="offer__terms reveal">
+      <li>Retail units are not part of this offer.</li>
+      <li>The unit must be booked / PR approved with a 2% booking amount within the offer period.</li>
+      <li>Not applicable on cancel &amp; swap / re-book / upgrade cases of a previous period.</li>
+      <li>Sobha Realty reserves the right to modify the offer at any time. T&amp;C apply.</li>
+    </ul>
+  </div>
+  <div class="wrap offer__inner offer-std">
     <p class="eyebrow reveal">Payment Plan</p>
     <h2 class="title title--center reveal">Central to everything.<br><span class="gold-text">Now closer to yours.</span></h2>
     <p class="offer__date reveal">The Horizon &nbsp;·&nbsp; 1 &amp; 2 Bedroom Residences</p>
@@ -666,6 +697,6 @@
 </div>
 
 <script src="assets/js/floorplans.js?v=20261030a"></script>
-<script src="assets/js/main.js?v=20261030d"></script>
+<script src="assets/js/main.js?v=20261030e"></script>
 </body>
 </html>
