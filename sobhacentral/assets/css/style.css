@@ -663,3 +663,26 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
   .nav__home { padding: 0 9px; margin-right: 4px; }
   .nav__home span { display: none; }
 }
+
+/* ---------- limited-time offer + countdown ---------- */
+.offer-live[hidden], .offer-std[hidden] { display: none !important; }
+.hero__offer--live { border-color: var(--gold); }
+.hero__offer-flag { margin: 0; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-hi); }
+.hero__offer-dld { display: flex; align-items: center; gap: 12px; margin: 0; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.hero__offer-note a { color: var(--gold-hi); text-decoration: underline; text-underline-offset: 3px; }
+.countdown { display: flex; gap: 8px; }
+.countdown span { min-width: 58px; padding: 8px 6px 6px; text-align: center; border: 1px solid var(--line); background: rgba(11, 13, 28, .55); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--sand); }
+.countdown b { display: block; margin-bottom: 3px; font: 400 26px/1 var(--display); color: var(--gold-hi); letter-spacing: .02em; }
+.countdown--lg { justify-content: center; gap: 12px; margin: -14px 0 34px; }
+.countdown--lg span { min-width: 84px; padding: 14px 10px 10px; font-size: 11px; }
+.countdown--lg b { font-size: 40px; }
+.offer__dld { display: flex; align-items: baseline; justify-content: center; gap: 16px; }
+.offer__dld .offer__lbl { font: 400 clamp(26px, 3.4vw, 40px)/1 var(--display); text-transform: uppercase; letter-spacing: .04em; color: var(--ivory); }
+.offer__plus { margin: 6px 0 18px; font: 300 40px/1 var(--display); color: var(--gold-hi); }
+.offer__terms { max-width: 640px; margin: 34px auto 0; padding: 0; list-style: none; font-size: 12px; line-height: 1.9; color: rgba(244, 239, 230, .5); }
+@media (max-width: 560px) {
+  .countdown span { min-width: 0; flex: 1; }
+  .countdown--lg { gap: 8px; width: 100%; }
+  .countdown--lg span { min-width: 0; padding: 12px 4px 8px; font-size: 9.5px; }
+  .countdown--lg b { font-size: 30px; }
+}

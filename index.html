@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sobhacentral/assets/css/style.css?v=20261030e">
+  <link rel="stylesheet" href="sobhacentral/assets/css/style.css?v=20261030f">
   <link rel="stylesheet" href="sobha-sanctuary/assets/css/sanctuary.css?v=20261030c">
   <!-- Meta Pixel Code -->
   <script>
@@ -36,6 +36,7 @@
   <!-- End Meta Pixel Code -->
   <style>
     .hero--home .hero__sub { margin-top: 24px; }
+    .pj__countdown { margin: -10px 0 24px; }
     .home-nav-links { display: flex; gap: 30px; margin-left: auto; margin-right: 26px; }
     .home-nav-links a { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--sand); }
     .home-nav-links a:hover { color: var(--gold-hi); }
@@ -123,9 +124,11 @@
           <ul class="pj__list">
             <li><span>Residences</span><b>1, 2 &amp; 3 Bedroom</b></li>
             <li><span>Starting price</span><b>AED 1.78 Million</b></li>
-            <li><span>Payment plan</span><b>40% construction · 60% completion</b></li>
+            <li class="offer-std"><span>Payment plan</span><b>40% construction · 60% completion</b></li>
+            <li class="offer-live" hidden><span>Offer · 30 Oct – 1 Nov</span><b>100% DLD waiver + 30/70 plan</b></li>
             <li><span>Handover</span><b>Dec 2029 – Dec 2030</b></li>
           </ul>
+          <div class="countdown pj__countdown offer-live" data-countdown hidden aria-label="Time left in the Sobha Central offer"></div>
           <div class="pj__actions">
             <a class="btn btn--gold" href="sobhacentral/">Explore Sobha Central</a>
             <a class="btn btn--line" href="#talk">Book a Meeting</a>
@@ -214,6 +217,25 @@
     }, { threshold: .12 });
     els.forEach(function (el) { io.observe(el); });
   } else { els.forEach(function (el) { el.classList.add('is-in'); }); }
+  /* Sobha Central limited-time offer (Dubai time): shown with a countdown until it ends,
+     then the card falls back to the standard payment plan. */
+  var OFFER_END = new Date('2026-11-01T23:59:59+04:00').getTime();
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function offerTick() {
+    var left = OFFER_END - Date.now(), live = left > 0;
+    document.querySelectorAll('.offer-live').forEach(function (el) { el.hidden = !live; });
+    document.querySelectorAll('.offer-std').forEach(function (el) { el.hidden = live; });
+    if (!live) return false;
+    var t = Math.floor(left / 1000);
+    var parts = [[Math.floor(t / 86400), 'Days'], [pad2(Math.floor(t % 86400 / 3600)), 'Hours'], [pad2(Math.floor(t % 3600 / 60)), 'Mins'], [pad2(t % 60), 'Secs']];
+    var html = parts.map(function (p) { return '<span><b>' + p[0] + '</b>' + p[1] + '</span>'; }).join('');
+    document.querySelectorAll('[data-countdown]').forEach(function (el) { el.innerHTML = html; });
+    return true;
+  }
+  if (offerTick()) {
+    var offerTimer = setInterval(function () { if (!offerTick()) clearInterval(offerTimer); }, 1000);
+  }
+
   /* "Talk to Our Team" form — same lead destinations as the project pages:
      FormSubmit email, the Google Sheet (Apps Script) and a Meta Lead. */
   var ENDPOINT = 'https://formsubmit.co/ajax/masroorshad@gmail.com';
