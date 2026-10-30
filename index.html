@@ -35,7 +35,7 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
   <style>
-    .hero--home { min-height: 86svh; }
+    .hero--home .hero__sub { margin-top: 24px; }
     .home-nav-links { display: flex; gap: 30px; margin-left: auto; margin-right: 26px; }
     .home-nav-links a { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--sand); }
     .home-nav-links a:hover { color: var(--gold-hi); }
@@ -65,17 +65,39 @@
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
 
-  <div class="hero__content wrap">
-    <p class="eyebrow reveal">Espousal &nbsp;·&nbsp; Authorised Channel Partner of Sobha Realty</p>
-    <h1 class="hero__title hero__title--long reveal">
-      <span>Dubai homes</span>
-      <span class="gold-text">by Sobha</span>
-    </h1>
-    <p class="hero__sub reveal">From a landmark address on Sheikh Zayed Road to a nature-led community of apartments and villas — explore Sobha Realty’s projects, with price lists, floor plans and brochures in one place.</p>
-    <div class="hero__actions reveal">
-      <a class="btn btn--gold" href="#projects">Explore Projects</a>
-      <a class="btn btn--ghost" href="sobhacentral/#talk">Talk to Our Team</a>
+  <div class="hero__content wrap hero__grid">
+    <div class="hero__head">
+      <p class="eyebrow reveal">Espousal &nbsp;·&nbsp; Authorised Channel Partner of Sobha Realty</p>
+      <h1 class="hero__title hero__title--long reveal">
+        <span>Dubai homes</span>
+        <span class="gold-text">by Sobha</span>
+      </h1>
     </div>
+    <div class="hero__body">
+      <p class="hero__sub reveal">From a landmark address on Sheikh Zayed Road to a nature-led community of apartments and villas — explore Sobha Realty’s projects, with price lists, floor plans and brochures in one place.</p>
+
+      <div class="hero__actions reveal">
+        <a class="btn btn--gold" href="#projects">Explore Projects</a>
+      </div>
+    </div>
+    <form class="hero-form reveal" id="talk" data-either novalidate>
+      <p class="eyebrow">Talk to Our Team</p>
+      <h2 class="hero-form__title">Book a quick meeting</h2>
+      <p class="hero-form__sub">Share a few details and our advisor will call you with prices, floor plans and availability.</p>
+      <div class="hero-form__row">
+        <label class="field"><span>First Name</span><input name="first_name" type="text" autocomplete="given-name" required></label>
+        <label class="field"><span>Last Name</span><input name="last_name" type="text" autocomplete="family-name" required></label>
+      </div>
+      <label class="field"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" placeholder="+91 …"></label>
+      <label class="field"><span>Email <em>(or phone)</em></span><input name="email" type="email" autocomplete="email"></label>
+      <div class="hero-form__row">
+        <label class="field"><span>Project</span><select name="project" required><option value="">Select</option><option>Sobha Central</option><option>Sobha Sanctuary</option><option>Not sure yet</option></select></label>
+        <label class="field"><span>Budget <em>(approx.)</em></span><select name="budget" required><option value="">Select</option><option>Below ₹2 Cr</option><option>₹2 – 4 Cr</option><option>₹4 – 6 Cr</option><option>₹6 – 10 Cr</option><option>Above ₹10 Cr</option></select></label>
+      </div>
+      <button class="btn btn--gold btn--block" type="submit">Book a Quick Meeting</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+      <p class="modal__privacy">Your details are shared only with the Espousal sales team. <a href="sobhacentral/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></p>
+    </form>
   </div>
   <a href="#projects" class="hero__scroll" aria-label="Scroll to projects"><span></span></a>
 </section>
@@ -195,6 +217,98 @@
     }, { threshold: .12 });
     els.forEach(function (el) { io.observe(el); });
   } else { els.forEach(function (el) { el.classList.add('is-in'); }); }
+  /* "Talk to Our Team" form — same lead destinations as the project pages:
+     FormSubmit email, the Google Sheet (Apps Script) and a Meta Lead. */
+  var ENDPOINT = 'https://formsubmit.co/ajax/masroorshad@gmail.com';
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec';
+  var PROJECTS = { 'Sobha Central': 'Sobha Central by Sobha Realty', 'Sobha Sanctuary': 'Sobha Sanctuary by Sobha Realty' };
+  var form = document.getElementById('talk');
+  var fields = form.querySelectorAll('input, select');
+  function cookie(name) {
+    var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function leadSource() {
+    var q = new URLSearchParams(location.search), parts = [];
+    ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'fbclid'].forEach(function (k) {
+      if (q.get(k)) parts.push(k.replace('utm_', '') + '=' + q.get(k));
+    });
+    if (document.referrer && document.referrer.indexOf(location.host) === -1) parts.push('ref=' + document.referrer);
+    return parts.join(' · ') || 'direct';
+  }
+  function validate() {
+    var ok = true;
+    fields.forEach(function (inp) {
+      var v = inp.value.trim(), bad = inp.required && !v;
+      if (inp.type === 'email' && v) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      if (inp.type === 'tel' && v) bad = v.replace(/\D/g, '').length < 7;
+      inp.closest('.field').classList.toggle('is-invalid', bad);
+      if (bad) ok = false;
+    });
+    var ph = form.phone, em = form.email;
+    if (!ph.value.trim() && !em.value.trim()) {
+      [ph, em].forEach(function (inp) { inp.closest('.field').classList.add('is-invalid'); });
+      ok = false;
+    }
+    return ok;
+  }
+  fields.forEach(function (inp) {
+    inp.addEventListener('input', function () { inp.closest('.field').classList.remove('is-invalid'); });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = form.querySelector('.form-msg'), btn = form.querySelector('button[type="submit"]');
+    // Ignore repeat taps while a submission is on its way (avoids duplicate leads).
+    if (btn.disabled) return;
+    msg.className = 'form-msg'; msg.textContent = '';
+    if (!validate()) { msg.classList.add('is-err'); msg.textContent = 'Please add your first and last name, the project, your budget, and a phone number or email.'; return; }
+    var v = function (k) { return form[k].value.trim(); };
+    var name = (v('first_name') + ' ' + v('last_name')).trim(), budget = v('budget'), choice = v('project');
+    var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random();
+    var fbclid = new URLSearchParams(location.search).get('fbclid');
+    var data = {
+      name: name, email: v('email'), phone: v('phone'), city: '',
+      enquiry_type: 'Quick Meeting Request · Budget ' + budget,
+      budget: budget,
+      unit_type: choice,
+      project: PROJECTS[choice] || 'Sobha Realty — project not decided',
+      page: location.href,
+      source: leadSource(),
+      submitted_at: new Date().toString(),
+      event_id: 'lead-' + id,
+      fbp: cookie('_fbp'),
+      fbc: cookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : ''),
+      user_agent: navigator.userAgent,
+      _subject: 'New Lead: Quick Meeting Request (' + choice + ', ' + budget + ') — Espousal × Sobha',
+      _replyto: v('email') || undefined,
+      _template: 'table',
+      _captcha: 'false'
+    };
+    var original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    if (window.fbq) {
+      window.fbq('init', '806806699194177', { em: data.email.toLowerCase() || undefined, ph: data.phone.replace(/\D/g, ''), fn: v('first_name').toLowerCase() });
+      window.fbq('track', 'Lead', { content_name: 'Quick Meeting Request', content_category: data.project, currency: 'AED', value: 0 }, { eventID: data.event_id });
+    }
+    var email = fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.ok; }, function () { return false; });
+    var body = new URLSearchParams();
+    Object.keys(data).forEach(function (k) { if (k.charAt(0) !== '_') body.append(k, data[k]); });
+    // Apps Script does not answer CORS preflights; a delivered no-cors request counts as success.
+    var sheet = fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: body }).then(function () { return true; }, function () { return false; });
+    Promise.all([email, sheet]).then(function (r) {
+      if (r[0] || r[1]) {
+        msg.classList.add('is-ok');
+        msg.textContent = 'Thank you, ' + v('first_name') + '. Our team will call you shortly to fix a meeting time.';
+        form.reset();
+      } else {
+        msg.classList.add('is-err');
+        msg.innerHTML = 'We couldn’t send that just now. Please <a href="https://wa.me/917980702399" target="_blank" rel="noopener" style="color:#f1dcaa;text-decoration:underline">message us on WhatsApp</a> instead.';
+      }
+      btn.disabled = false; btn.textContent = original;
+    });
+  });
+
   // WhatsApp, call and email taps are high-intent signals for the ad algorithm.
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href]'); if (!a || !window.fbq) return;
