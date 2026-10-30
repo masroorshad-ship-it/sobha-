@@ -650,3 +650,16 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
 @media (max-width: 560px) {
   .hero-form { padding: 24px 20px 20px; }
 }
+
+/* ---------- "Home" link back to the projects homepage ---------- */
+.nav__links a.nav__home-link { color: var(--gold-hi); }
+.nav__links a.nav__home-link::before { content: "‹"; margin-right: 6px; font-size: 14px; }
+.nav__home { display: none; align-items: center; gap: 6px; height: 38px; padding: 0 12px; margin-right: 8px; border: 1px solid var(--line); color: var(--gold-hi); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
+.nav__home:hover { border-color: var(--gold); }
+@media (max-width: 1340px) {
+  .nav__home { display: inline-flex; }
+}
+@media (max-width: 400px) {
+  .nav__home { padding: 0 9px; margin-right: 4px; }
+  .nav__home span { display: none; }
+}
