@@ -67,3 +67,13 @@
   .hero__offer-plan { gap: 6px; }
   .brochure__copy, .brochure__cover { min-width: 0; }
 }
+
+/* villa weekend offer inside a project tab */
+.tw__offer { margin: 0 0 24px; padding: 18px 20px; border: 1px solid var(--gold); background: rgba(201, 163, 95, .07); }
+.tw__offer[hidden] { display: none; }
+.tw__offer-flag { margin: 0 0 8px; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-hi); }
+.tw__offer-plan { margin: 0 0 12px !important; font-size: 15px; color: var(--ivory) !important; }
+.tw__offer-plan b { font: 400 22px/1 var(--display); color: var(--gold-hi); }
+.tw__offer-plan i { font-style: normal; color: var(--mute); margin: 0 4px; }
+.tw__offer-plan span { display: block; margin-top: 6px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--sand); }
+.tw__offer .countdown { max-width: 320px; margin-bottom: 14px; }

@@ -157,7 +157,7 @@
           (n.ends ? '<p class="news-card__ends">Offer ends in</p><div class="countdown" data-ends="' + escH(n.ends) + '"></div>' : '') +
           (n.terms ? '<details class="news-card__terms"><summary>Terms &amp; conditions</summary><ul>' + n.terms.map(function (t) { return '<li>' + escH(t) + '</li>'; }).join('') + '</ul></details>' : '') +
           '<div class="news-card__actions">' +
-            (n.link ? '<a class="btn btn--gold btn--sm" href="' + escH(n.link.href) + '">' + escH(n.link.label) + '</a>' : '') +
+            (n.links || (n.link ? [n.link] : [])).map(function (l) { return '<a class="btn btn--gold btn--sm" href="' + escH(l.href) + '">' + escH(l.label) + '</a>'; }).join('') +
             '<a class="btn btn--line btn--sm" href="#talk">Ask Our Team</a>' +
           '</div>' +
         '</div></article>';

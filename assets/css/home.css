@@ -27,8 +27,6 @@
 .news-teaser .countdown { margin-bottom: 16px; }
 .news-teaser__more { margin-top: auto; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-hi); }
 .news-home__all { margin: 30px 0 0; text-align: center; }
-.countdown--sm span { min-width: 0; flex: 1; padding: 6px 4px 5px; font-size: 8.5px; }
-.countdown--sm b { font-size: 20px; }
 
 /* news page */
 .news-page { padding: calc(var(--nav-h) + 50px) 0 90px; }

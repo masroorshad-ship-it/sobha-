@@ -84,6 +84,26 @@
     a.addEventListener('click', function () { links.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); });
   });
 
+  /* ---------------- limited-time offer ---------------- */
+  // Sobha Realty's villa weekend offer (Dubai time). Until it ends the page shows the offer
+  // (.offer-live) with a countdown; afterwards those boxes disappear.
+  var OFFER_END = new Date('2026-11-01T23:59:59+04:00').getTime();
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function offerTick() {
+    var left = OFFER_END - Date.now(), live = left > 0;
+    $$('.offer-live').forEach(function (el) { el.hidden = !live; });
+    $$('.offer-std').forEach(function (el) { el.hidden = live; });
+    if (!live) return false;
+    var t = Math.floor(left / 1000);
+    var parts = [[Math.floor(t / 86400), 'Days'], [pad2(Math.floor(t % 86400 / 3600)), 'Hours'], [pad2(Math.floor(t % 3600 / 60)), 'Mins'], [pad2(t % 60), 'Secs']];
+    var html = parts.map(function (p) { return '<span><b>' + p[0] + '</b>' + p[1] + '</span>'; }).join('');
+    $$('[data-countdown]').forEach(function (el) { el.innerHTML = html; });
+    return true;
+  }
+  if (offerTick()) {
+    var offerTimer = setInterval(function () { if (!offerTick()) clearInterval(offerTimer); }, 1000);
+  }
+
   /* ---------------- reveal + active nav ---------------- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -123,6 +143,14 @@
       selectProject(tab.getAttribute('data-project'));
       track('ViewContent', { content_name: 'Project: ' + tab.textContent, content_category: 'Project' });
     });
+  });
+  // Links like <a data-goto-project="greens"> open that project's tab.
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-goto-project]');
+    if (!t) return;
+    e.preventDefault();
+    selectProject(t.getAttribute('data-goto-project'));
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
   });
   // Links like <a data-goto-plans="greens-4"> jump to that floor-plan group.
   document.addEventListener('click', function (e) {
