@@ -686,3 +686,18 @@ button[aria-busy="true"] { opacity: .7; pointer-events: none; }
   .countdown--lg span { min-width: 0; padding: 12px 4px 8px; font-size: 9.5px; }
   .countdown--lg b { font-size: 30px; }
 }
+.hero__offer-plan--3 { gap: 8px; }
+.hero__offer-plan--3 .hero__offer-num { font-size: 38px; }
+.hero__offer-plan--3 .hero__offer-lbl { font-size: 10px; letter-spacing: .14em; }
+.hero__offer--link { margin-top: 14px; color: inherit; }
+.hero__offer--link:hover { border-color: var(--gold-hi); }
+.offer__note { margin: -20px 0 34px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
+.countdown--sm span { min-width: 0; flex: 1; padding: 6px 4px 5px; font-size: 8.5px; }
+.countdown--sm b { font-size: 20px; }
+@media (max-width: 560px) {
+  .offer__plan:has(> div:nth-of-type(3)) { gap: 14px; padding: 22px 14px; }
+  .offer__plan:has(> div:nth-of-type(3)) .offer__pct { font-size: 46px; }
+  .offer__plan:has(> div:nth-of-type(3)) .offer__lbl { font-size: 15px; }
+  .hero__offer-plan--3 .hero__offer-num { font-size: 30px; }
+  .hero__offer-plan--3 { gap: 5px; }
+}
