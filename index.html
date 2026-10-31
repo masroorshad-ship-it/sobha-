@@ -247,6 +247,15 @@
     var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
     return m ? decodeURIComponent(m[1]) : '';
   }
+  // Indian mobiles are saved as "+91 XXXXX XXXXX". Phone autofill sometimes adds a stray
+  // "+1" or repeats the number ("+1916393069611" → "+91 63930 69611").
+  // Numbers with another country code are kept as typed.
+  function normalizePhone(raw) {
+    var v = String(raw || '').trim(), compact = v.replace(/[\s().-]/g, '');
+    if (compact.charAt(0) === '+' && !/^\+1?91[6-9]/.test(compact)) return v;
+    var m = /^(?:1?91|0)?([6-9]\d{9})/.exec(compact.replace(/\D/g, ''));
+    return m ? '+91 ' + m[1].slice(0, 5) + ' ' + m[1].slice(5) : v;
+  }
   function leadSource() {
     var q = new URLSearchParams(location.search), parts = [];
     ['utm_source', 'utm_medium', 'utm_campaign', 'gclid', 'fbclid'].forEach(function (k) {
@@ -273,6 +282,7 @@
   }
   fields.forEach(function (inp) {
     inp.addEventListener('input', function () { inp.closest('.field').classList.remove('is-invalid'); });
+    if (inp.type === 'tel') inp.addEventListener('blur', function () { inp.value = normalizePhone(inp.value); });
   });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -286,7 +296,7 @@
     var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random();
     var fbclid = new URLSearchParams(location.search).get('fbclid');
     var data = {
-      name: name, email: v('email'), phone: v('phone'), city: '',
+      name: name, email: v('email'), phone: normalizePhone(v('phone')), city: '',
       enquiry_type: 'Quick Meeting Request · Budget ' + budget,
       budget: budget,
       unit_type: choice,
