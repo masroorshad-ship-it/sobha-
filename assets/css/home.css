@@ -1,0 +1,66 @@
+/* Homepage and News page — additions on top of the shared stylesheets */
+.hero--home .hero__sub { margin-top: 24px; }
+.pj__countdown { margin: -10px 0 24px; }
+.home-nav-links { display: flex; gap: 30px; margin-left: auto; margin-right: 26px; }
+.home-nav-links a { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--sand); }
+.home-nav-links a:hover { color: var(--gold-hi); }
+@media (max-width: 860px) { .home-nav-links { display: none; } }
+
+/* "News" link in the nav on phones */
+.nav__news { display: none; align-items: center; white-space: nowrap; height: 36px; padding: 0 14px; border: 1px solid var(--line); color: var(--gold-hi); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; }
+@media (max-width: 860px) { .nav__news { display: inline-flex; } }
+.home-nav-links a.is-current { color: var(--gold-hi); }
+
+/* ---------- Sobha News & Offers ---------- */
+.news-tag { display: inline-block; padding: 4px 10px; border: 1px solid var(--line); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-hi); }
+.news-tag--offer { background: var(--gold-grad); color: var(--ink); border-color: transparent; font-weight: 500; }
+.news-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 14px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
+.news-card__meta span:nth-child(2) { color: var(--sand); }
+
+/* homepage teasers */
+.news-teasers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.news-teaser { display: flex; flex-direction: column; padding: 28px 26px 24px; border: 1px solid var(--line-soft); background: linear-gradient(180deg, var(--ink-2), var(--ink)); transition: border-color .4s, transform .5s var(--ease); }
+.news-teaser:hover { border-color: var(--line); transform: translateY(-4px); }
+.news-teaser[hidden] { display: none; }
+.news-teaser h3 { margin: 0 0 10px; font: 400 22px/1.25 var(--display); text-transform: uppercase; letter-spacing: .03em; }
+.news-teaser p { margin: 0 0 16px; font-size: 14px; color: rgba(244, 239, 230, .72); }
+.news-teaser .countdown { margin-bottom: 16px; }
+.news-teaser__more { margin-top: auto; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-hi); }
+.news-home__all { margin: 30px 0 0; text-align: center; }
+.countdown--sm span { min-width: 0; flex: 1; padding: 6px 4px 5px; font-size: 8.5px; }
+.countdown--sm b { font-size: 20px; }
+
+/* news page */
+.news-page { padding: calc(var(--nav-h) + 50px) 0 90px; }
+.news-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); grid-template-areas: "head form" "feed form"; column-gap: clamp(30px, 4vw, 60px); align-items: start; }
+.news-layout__head { grid-area: head; margin-bottom: 34px; }
+.news-layout__head .head__sub { max-width: 620px; }
+.news-layout .hero-form { grid-area: form; position: sticky; top: calc(var(--nav-h) + 20px); }
+.news-feed { grid-area: feed; display: grid; gap: 26px; }
+.news-card { display: grid; grid-template-columns: 240px minmax(0, 1fr); border: 1px solid var(--line-soft); background: linear-gradient(180deg, var(--ink-2), var(--ink)); }
+.news-card[hidden] { display: none; }
+.news-card:not(:has(.news-card__img)) { grid-template-columns: 1fr; }
+.news-card__img { display: block; overflow: hidden; border-right: 1px solid var(--line-soft); background: #000; }
+.news-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1.2s var(--ease); }
+.news-card__img:hover img { transform: scale(1.03); }
+.news-card__body { padding: 28px 30px 30px; }
+.news-card__title { margin: 0 0 14px; font: 400 clamp(24px, 2.6vw, 32px)/1.2 var(--display); text-transform: uppercase; letter-spacing: .03em; }
+.news-card__body > p { margin: 0 0 12px; color: rgba(244, 239, 230, .82); }
+.news-card__ends { margin: 18px 0 8px !important; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-hi) !important; }
+.news-card .countdown { max-width: 340px; }
+.news-card__terms { margin: 18px 0 0; font-size: 13px; color: rgba(244, 239, 230, .62); }
+.news-card__terms summary { cursor: pointer; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--sand); }
+.news-card__terms ul { margin: 10px 0 0; padding-left: 18px; }
+.news-card__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.news-empty { padding: 40px 0; color: var(--mute); }
+@media (max-width: 1100px) {
+  .news-teasers { grid-template-columns: 1fr 1fr; }
+  .news-layout { grid-template-columns: 1fr; grid-template-areas: "head" "form" "feed"; }
+  .news-layout .hero-form { position: static; max-width: 560px; margin-bottom: 40px; }
+}
+@media (max-width: 700px) {
+  .news-teasers { grid-template-columns: 1fr; }
+  .news-card { grid-template-columns: 1fr; }
+  .news-card__img { border-right: 0; border-bottom: 1px solid var(--line-soft); max-height: 420px; }
+  .news-card__body { padding: 24px 20px 26px; }
+}
