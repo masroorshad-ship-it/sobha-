@@ -13,7 +13,8 @@
     // Brochures, chosen with data-brochure="<key>" on a Download button.
     BROCHURES: {
       orchard: 'assets/docs/The-Orchard-Sobha-City-Abu-Dhabi.pdf',
-      terraces: 'assets/docs/The-Terraces-Sobha-City-Abu-Dhabi.pdf'
+      terraces: 'assets/docs/The-Terraces-Sobha-City-Abu-Dhabi.pdf',
+      river: 'assets/docs/River-Cove-Residences-Sobha-City-Abu-Dhabi.pdf'
     }
   };
 
