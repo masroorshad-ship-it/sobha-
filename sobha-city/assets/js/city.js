@@ -9,7 +9,11 @@
     SHEET_URL: 'https://script.google.com/macros/s/AKfycbzBheV-fJoEvOjwvHDvhi_rW8imKg-EsIJS8Eivz6rcdnDVQUm7kC0zOyJMSjIOLosJCw/exec',
     WHATSAPP: '917980702399',
     META_PIXEL_ID: '806806699194177',
-    PROJECT: 'Sobha City Abu Dhabi'
+    PROJECT: 'Sobha City Abu Dhabi',
+    // Brochures, chosen with data-brochure="<key>" on a Download button.
+    BROCHURES: {
+      orchard: 'assets/docs/The-Orchard-Sobha-City-Abu-Dhabi.pdf'
+    }
   };
 
   /* ---------------- Meta Pixel ---------------- */
@@ -27,6 +31,7 @@
   }, true);
 
   var CONTEXTS = {
+    'brochure':     { eyebrow: 'Brochure',     title: 'Download the Brochure', sub: 'Fill in your details — your download begins as soon as you submit.', cta: 'Submit & Download', subject: 'Brochure Download' },
     'factbook':     { eyebrow: 'Fact Book',    title: 'Get the Fact Book',     sub: 'Share your details and our advisor will send you the Sobha City Fact Book with layouts and specifications.', cta: 'Send Me the Fact Book', subject: 'Fact Book Request' },
     'price-list':   { eyebrow: 'Price List',   title: 'Get Prices & Payment Plan', sub: 'Receive the launch price list, payment plan and current availability.', cta: 'Send Me the Price List', subject: 'Price List Request' },
     'floor-plan':   { eyebrow: 'Floor Plans',  title: 'Get Floor Plans',       sub: 'Receive the layouts and areas for this home type.', cta: 'Send Me the Floor Plans', subject: 'Floor Plan Request' },
@@ -122,10 +127,11 @@
 
   /* ---------------- modal ---------------- */
   var modal = $('#modal'), modalForm = $('#modalForm'), lastFocus = null;
-  function openModal(ctx, unit) {
+  function openModal(ctx, unit, brochure) {
     var c = CONTEXTS[ctx] || CONTEXTS.general;
     modalForm.setAttribute('data-context', ctx);
     modalForm.setAttribute('data-unit', unit || '');
+    modalForm.setAttribute('data-brochure', brochure || '');
     $('#modalEyebrow').textContent = c.eyebrow + (unit ? ' · ' + unit : '');
     $('#modalTitle').textContent = c.title;
     $('#modalSub').textContent = c.sub;
@@ -145,7 +151,7 @@
     var t = e.target.closest('[data-enquire]');
     if (!t) return;
     e.preventDefault();
-    openModal(t.getAttribute('data-enquire'), t.getAttribute('data-unit'));
+    openModal(t.getAttribute('data-enquire'), t.getAttribute('data-unit'), t.getAttribute('data-brochure'));
   });
   $$('[data-close]', modal).forEach(function (b) { b.addEventListener('click', closeModal); });
 
@@ -167,6 +173,13 @@
       }
     }
     return ok;
+  }
+  function downloadBrochure(key) {
+    var url = CONFIG.BROCHURES[key];
+    if (!url) return;
+    var a = document.createElement('a');
+    a.href = url; a.download = url.split('/').pop();
+    document.body.appendChild(a); a.click(); a.remove();
   }
   function sendEmail(data) {
     return fetch(CONFIG.ENDPOINT, {
@@ -268,6 +281,9 @@
       var original = btn.textContent;
       btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…';
 
+      // The brochure is delivered whatever the network does — never block the visitor.
+      if (ctx === 'brochure') downloadBrochure(form.getAttribute('data-brochure'));
+
       if (window.fbq) {
         var digits = data.phone.replace(/\D/g, '');
         window.fbq('init', CONFIG.META_PIXEL_ID, { em: data.email.toLowerCase() || undefined, ph: digits, fn: data.name.split(' ')[0].toLowerCase(), ct: data.city.toLowerCase().replace(/\s/g, '') || undefined });
@@ -279,6 +295,8 @@
         msg.classList.add('is-ok');
         msg.textContent = ctx === 'meeting'
           ? 'Thank you, ' + first + '. Our team will call you shortly to fix a meeting time.'
+          : ctx === 'brochure'
+          ? 'Thank you, ' + first + '. Your brochure is downloading — an advisor will follow up shortly.'
           : ctx === 'factbook'
           ? 'Thank you, ' + first + '. Our advisor will send you the Fact Book shortly.'
           : 'Thank you, ' + first + '. Our advisor will contact you shortly.';
