@@ -1,8 +1,26 @@
 /* Sobha News & Offers — newest first.
    Each item: date (YYYY-MM-DD), tag (Offer · Launch · Price Update · Event · Update), project,
    title, body (paragraphs), optional terms, image (path inside /news/), link {label, href} or links [..],
-   and ends (ISO time, Dubai) for offers: the item disappears automatically after it. */
+   and ends (ISO time, Dubai): the item disappears automatically after it. For an event, add
+   countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
+  {
+    date: '2026-11-03',
+    tag: 'Event',
+    project: 'Sobha Realty',
+    title: 'An evening of traditional live music at the Sobha Sales Gallery',
+    body: [
+      'Let the celebrations begin on a harmonious note. Sobha Realty welcomes guests to an enchanting evening of soulful melodies and timeless Indian musical traditions, setting the tone for a beautiful season of festivities.',
+      'Tuesday, 3 November 2026 · 6:00 – 7:00 PM (Dubai time) · Sobha Sales Gallery, Dubai.',
+      'In Dubai this evening? Join us for music and celebration — and a private walkthrough of Sobha Central and Sobha Sanctuary with our team.'
+    ],
+    image: 'img/2026-11-03-sobha-live-music-evening.jpg',
+    links: [{ label: 'Plan a Visit With Us', href: '#talk' }],
+    countdownTo: '2026-11-03T18:00:00+04:00',
+    countdownLabel: 'Starts in',
+    liveLabel: 'Happening now — until 7:00 PM',
+    ends: '2026-11-03T19:00:00+04:00'
+  },
   {
     date: '2026-10-31',
     tag: 'Offer',

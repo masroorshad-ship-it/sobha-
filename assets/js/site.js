@@ -145,6 +145,12 @@
   function liveNews() {
     return (window.ESPOUSAL_NEWS || []).filter(function (n) { return !n.ends || new Date(n.ends).getTime() > Date.now(); });
   }
+  // data-ends hides the item; data-to is what the countdown counts to (an event's start time,
+  // for example); between the two it shows data-live ("Happening now").
+  function countdownDiv(n, cls) {
+    return '<div class="countdown' + cls + '" data-ends="' + escH(n.ends) + '" data-to="' + escH(n.countdownTo || n.ends) + '"' +
+      (n.liveLabel ? ' data-live="' + escH(n.liveLabel) + '"' : '') + '></div>';
+  }
   var feed = document.getElementById('newsFeed');
   if (feed) {
     var items = liveNews();
@@ -154,7 +160,7 @@
         '<div class="news-card__body">' + newsMeta(n) +
           '<h2 class="news-card__title">' + escH(n.title) + '</h2>' +
           n.body.map(function (b) { return '<p>' + escH(b) + '</p>'; }).join('') +
-          (n.ends ? '<p class="news-card__ends">Offer ends in</p><div class="countdown" data-ends="' + escH(n.ends) + '"></div>' : '') +
+          (n.ends ? '<p class="news-card__ends">' + escH(n.countdownLabel || 'Offer ends in') + '</p>' + countdownDiv(n, '') : '') +
           (n.terms ? '<details class="news-card__terms"><summary>Terms &amp; conditions</summary><ul>' + n.terms.map(function (t) { return '<li>' + escH(t) + '</li>'; }).join('') + '</ul></details>' : '') +
           '<div class="news-card__actions">' +
             (n.links || (n.link ? [n.link] : [])).map(function (l) { return '<a class="btn btn--gold btn--sm" href="' + escH(l.href) + '">' + escH(l.label) + '</a>'; }).join('') +
@@ -170,7 +176,7 @@
     teaser.innerHTML = latest.map(function (n) {
       return '<a class="news-teaser reveal is-in" href="news/#' + newsId(n) + '">' + newsMeta(n) +
         '<h3>' + escH(n.title) + '</h3><p>' + escH(n.body[0].length > 150 ? n.body[0].slice(0, 147) + '…' : n.body[0]) + '</p>' +
-        (n.ends ? '<div class="countdown countdown--sm" data-ends="' + escH(n.ends) + '"></div>' : '') +
+        (n.ends ? countdownDiv(n, ' countdown--sm') : '') +
         '<span class="news-teaser__more">Read more ›</span></a>';
     }).join('');
   }
@@ -178,9 +184,10 @@
   function newsTick() {
     var any = false;
     document.querySelectorAll('[data-ends]').forEach(function (el) {
-      var left = new Date(el.getAttribute('data-ends')).getTime() - Date.now();
-      if (left <= 0) { var card = el.closest('.news-card, .news-teaser'); if (card) card.hidden = true; return; }
+      if (new Date(el.getAttribute('data-ends')).getTime() <= Date.now()) { var card = el.closest('.news-card, .news-teaser'); if (card) card.hidden = true; return; }
       any = true;
+      var left = new Date(el.getAttribute('data-to')).getTime() - Date.now();
+      if (left <= 0) { el.innerHTML = '<span class="countdown__live">' + escH(el.getAttribute('data-live') || 'Happening now') + '</span>'; return; }
       var t = Math.floor(left / 1000);
       el.innerHTML = [[Math.floor(t / 86400), 'Days'], [pad2(Math.floor(t % 86400 / 3600)), 'Hours'], [pad2(Math.floor(t % 3600 / 60)), 'Mins'], [pad2(t % 60), 'Secs']]
         .map(function (p) { return '<span><b>' + p[0] + '</b>' + p[1] + '</span>'; }).join('');
