@@ -5,6 +5,9 @@
 .home-nav-links a { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--sand); }
 .home-nav-links a:hover { color: var(--gold-hi); }
 @media (max-width: 860px) { .home-nav-links { display: none; } }
+.home-nav-links a { white-space: nowrap; }
+@media (max-width: 1240px) { .home-nav-links { gap: 18px; margin-right: 18px; } .home-nav-links a { letter-spacing: .14em; font-size: 11px; } }
+@media (max-width: 1080px) { .home-nav-links a[href="#projects"], .home-nav-links a[href="#contact"] { display: none; } }
 
 /* "News" link in the nav on phones */
 .nav__news { display: none; align-items: center; white-space: nowrap; height: 36px; padding: 0 14px; border: 1px solid var(--line); color: var(--gold-hi); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; }
@@ -63,3 +66,14 @@
   .news-card__body { padding: 24px 20px 26px; }
 }
 .countdown__live { flex: 1; padding: 10px 12px; text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink) !important; background: var(--gold-grad); }
+
+/* three project cards side by side on wide screens */
+@media (min-width: 1240px) {
+  .pj-grid--3 { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pj-grid--3 .pj__body { padding: 26px 24px 28px; }
+  .pj-grid--3 .pj__actions .btn { flex: 1 1 auto; }
+}
+@media (min-width: 861px) and (max-width: 1239px) {
+  .pj-grid--3 .pj:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .pj-grid--3 .pj:last-child .pj__img { aspect-ratio: auto; min-height: 100%; }
+}
