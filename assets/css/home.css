@@ -62,3 +62,4 @@
   .news-card__img { border-right: 0; border-bottom: 1px solid var(--line-soft); max-height: 420px; }
   .news-card__body { padding: 24px 20px 26px; }
 }
+.countdown__live { flex: 1; padding: 10px 12px; text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink) !important; background: var(--gold-grad); }
