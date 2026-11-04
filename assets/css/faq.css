@@ -1,0 +1,11 @@
+/* Frequently asked questions — shared by the homepage and the project pages */
+.faq__list { max-width: 900px; margin: 34px auto 0; border-top: 1px solid var(--line); }
+.faq__item { border-bottom: 1px solid var(--line-soft); }
+.faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 20px 0; cursor: pointer; list-style: none;
+  font: 400 clamp(17px, 1.6vw, 20px)/1.35 var(--serif); color: var(--ivory); }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: "+"; flex: none; font: 300 24px/1 var(--sans); color: var(--gold-hi); transition: transform .3s; }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item summary:hover { color: var(--gold-hi); }
+.faq__item p { margin: 0 0 22px; max-width: 760px; font-size: 15px; line-height: 1.7; color: rgba(244, 239, 230, .8); }
+.faq__note { max-width: 900px; margin: 18px auto 0; font-size: 12px; color: var(--mute); }
