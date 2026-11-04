@@ -4,6 +4,17 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   var nav = document.getElementById('nav');
   function onScroll() { nav.classList.toggle('is-solid', window.scrollY > 40); }
+
+  /* "Projects" drop-down: tap to open on phones; hover also works on desktop */
+  var dd = document.querySelector('.nav-dd');
+  if (dd) {
+    var ddBtn = dd.querySelector('.nav-dd__btn');
+    var setDd = function (open) { dd.classList.toggle('is-open', open); ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+    ddBtn.addEventListener('click', function (e) { e.stopPropagation(); setDd(!dd.classList.contains('is-open')); });
+    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) setDd(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setDd(false); });
+    dd.querySelectorAll('.nav-dd__menu a').forEach(function (a) { a.addEventListener('click', function () { setDd(false); }); });
+  }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
