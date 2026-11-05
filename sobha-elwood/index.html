@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://espousalsobha.com/sobha-elwood/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://espousalsobha.com/sobha-elwood/">
+  <link rel="preload" as="image" href="assets/img/hero.webp" imagesrcset="assets/img/hero-800.webp 800w, assets/img/hero.webp 1591w" imagesizes="100vw" fetchpriority="high">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
@@ -26,7 +27,9 @@
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="../sobhacentral/assets/css/style.css?v=20261031b">
   <link rel="stylesheet" href="../sobha-sanctuary/assets/css/sanctuary.css?v=20261031b">
   <link rel="stylesheet" href="assets/css/elwood.css?v=20261104a">
@@ -38,7 +41,7 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  var go=function(){s.parentNode.insertBefore(t,s)};if(b.readyState==='complete')setTimeout(go,1200);else f.addEventListener('load',function(){setTimeout(go,1200)})}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '806806699194177');
   fbq('track', 'PageView');
@@ -75,7 +78,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__media" aria-hidden="true">
-    <img src="assets/img/hero.jpg" alt="">
+    <img fetchpriority="high" srcset="assets/img/hero-800.webp 800w, assets/img/hero.webp 1591w" sizes="100vw" src="assets/img/hero.webp" alt="">
     <video muted loop playsinline preload="none" poster="assets/img/hero.jpg" data-src="assets/video/sobha-elwood-launch.mp4"></video>
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
@@ -159,10 +162,10 @@
       </div>
       <div class="about__visual">
         <figure class="frame frame--tall reveal">
-          <img src="assets/img/about-green.jpg" alt="Green spaces at Sobha Elwood" loading="lazy">
+          <img srcset="assets/img/about-green-800.webp 800w, assets/img/about-green.webp 1591w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/about-green.webp" alt="Green spaces at Sobha Elwood" loading="lazy">
         </figure>
         <figure class="frame frame--float reveal">
-          <img src="assets/img/about-villa.jpg" alt="Villa at Sobha Elwood" loading="lazy">
+          <img srcset="assets/img/about-villa-800.webp 800w, assets/img/about-villa.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/about-villa.webp" alt="Villa at Sobha Elwood" loading="lazy">
         </figure>
         <div class="about__badge reveal"><span>Presented by</span><img src="../sobhacentral/assets/img/espousal-logo.png" alt="Espousal Construction" width="220" height="182" loading="lazy"></div>
       </div>
@@ -195,7 +198,7 @@
     </div>
 
     <article class="tw is-active" id="pj-4" data-project="v4" role="tabpanel">
-      <figure class="tw__img"><img src="assets/img/villa-4br.jpg" alt="4 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>4 Bedroom Villa</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/villa-4br-800.webp 800w, assets/img/villa-4br.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-4br.webp" alt="4 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>4 Bedroom Villa</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">01 · Four Bedrooms</p>
         <h3 class="tw__name">The family <span class="gold-text">villa</span></h3>
@@ -219,7 +222,7 @@
     </article>
 
     <article class="tw" id="pj-5" data-project="v5" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/villa-5br.jpg" alt="5 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>5 Bedroom Villa</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/villa-5br-800.webp 800w, assets/img/villa-5br.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-5br.webp" alt="5 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>5 Bedroom Villa</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">02 · Five Bedrooms</p>
         <h3 class="tw__name">Room to <span class="gold-text">entertain</span></h3>
@@ -243,7 +246,7 @@
     </article>
 
     <article class="tw" id="pj-6" data-project="v6" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/villa-6br.jpg" alt="6 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>6 Bedroom Villa</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/villa-6br-800.webp 800w, assets/img/villa-6br.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-6br.webp" alt="6 bedroom villa at Sobha Elwood" loading="lazy"><figcaption>6 Bedroom Villa</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">03 · Six Bedrooms</p>
         <h3 class="tw__name">The <span class="gold-text">signature</span> villa</h3>
@@ -319,7 +322,7 @@
 
 <!-- ============ PAYMENT PLAN ============ -->
 <section class="offer" id="payment-plan" aria-label="Payment plan">
-  <div class="offer__bg" aria-hidden="true"><img src="assets/img/living.jpg" alt="" loading="lazy"></div>
+  <div class="offer__bg" aria-hidden="true"><img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1485w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="" loading="lazy"></div>
   <div class="wrap offer__inner">
     <p class="eyebrow reveal">Payment Plan</p>
     <h2 class="title title--center reveal">A forest home.<br><span class="gold-text">Paid at an easy pace.</span></h2>
@@ -345,13 +348,13 @@
       <p class="head__sub reveal">Seven parks, each inspired by one of the world’s most enchanting forests — bringing the wonder of nature into everyday life.</p>
     </div>
     <div class="parks">
-      <figure class="park reveal"><img src="assets/img/park-daintree.jpg" alt="Park inspired by the Daintree Rainforest" loading="lazy"><figcaption><b>Daintree Rainforest</b><span>Australia</span><p>Towering trees and lush foliage, inspired by one of the oldest rainforests on Earth.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-baobab.jpg" alt="Park inspired by the Baobab Forest" loading="lazy"><figcaption><b>Baobab Forest</b><span>South Africa</span><p>Majestic baobabs with iconic silhouettes and unique textures.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-bristlecone.jpg" alt="Park inspired by the Bristlecone Forest" loading="lazy"><figcaption><b>Bristlecone Forest</b><span>California</span><p>The enduring beauty of the oldest living trees on the planet.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-bialowieza.jpg" alt="Park inspired by the Białowieża Forest" loading="lazy"><figcaption><b>Białowieża Forest</b><span>Poland</span><p>A mystical primeval forest of towering oaks and ancient pines.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-amazon.jpg" alt="Park inspired by the Amazon Rainforest" loading="lazy"><figcaption><b>Amazon Rainforest</b><span>South America</span><p>The vibrant landscape of the world’s largest tropical rainforest.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-yakushima.jpg" alt="Park inspired by the Yakushima Forest" loading="lazy"><figcaption><b>Yakushima Forest</b><span>Japan</span><p>Ancient cedars that create a fairy-tale setting.</p></figcaption></figure>
-      <figure class="park reveal"><img src="assets/img/park-taiga.jpg" alt="Park inspired by the Taiga Forest" loading="lazy"><figcaption><b>Taiga Forest</b><span>Russia · Canada</span><p>The vast, untamed wilderness of the boreal forest.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-daintree-800.webp 800w, assets/img/park-daintree.webp 1008w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-daintree.webp" alt="Park inspired by the Daintree Rainforest" loading="lazy"><figcaption><b>Daintree Rainforest</b><span>Australia</span><p>Towering trees and lush foliage, inspired by one of the oldest rainforests on Earth.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-baobab-800.webp 800w, assets/img/park-baobab.webp 1195w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-baobab.webp" alt="Park inspired by the Baobab Forest" loading="lazy"><figcaption><b>Baobab Forest</b><span>South Africa</span><p>Majestic baobabs with iconic silhouettes and unique textures.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-bristlecone-800.webp 800w, assets/img/park-bristlecone.webp 1162w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-bristlecone.webp" alt="Park inspired by the Bristlecone Forest" loading="lazy"><figcaption><b>Bristlecone Forest</b><span>California</span><p>The enduring beauty of the oldest living trees on the planet.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-bialowieza-800.webp 800w, assets/img/park-bialowieza.webp 1043w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-bialowieza.webp" alt="Park inspired by the Białowieża Forest" loading="lazy"><figcaption><b>Białowieża Forest</b><span>Poland</span><p>A mystical primeval forest of towering oaks and ancient pines.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-amazon-800.webp 800w, assets/img/park-amazon.webp 1029w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-amazon.webp" alt="Park inspired by the Amazon Rainforest" loading="lazy"><figcaption><b>Amazon Rainforest</b><span>South America</span><p>The vibrant landscape of the world’s largest tropical rainforest.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-yakushima-800.webp 800w, assets/img/park-yakushima.webp 1029w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-yakushima.webp" alt="Park inspired by the Yakushima Forest" loading="lazy"><figcaption><b>Yakushima Forest</b><span>Japan</span><p>Ancient cedars that create a fairy-tale setting.</p></figcaption></figure>
+      <figure class="park reveal"><img srcset="assets/img/park-taiga-800.webp 800w, assets/img/park-taiga.webp 1286w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-taiga.webp" alt="Park inspired by the Taiga Forest" loading="lazy"><figcaption><b>Taiga Forest</b><span>Russia · Canada</span><p>The vast, untamed wilderness of the boreal forest.</p></figcaption></figure>
     </div>
     <div class="about__actions reveal" style="margin-top:28px">
       <button class="btn btn--line" data-enquire="brochure" data-unit="The Seven Parks" data-brochure="parks">Download The Seven Parks</button>
@@ -368,7 +371,7 @@
       <p class="head__sub reveal">A dedicated clubhouse for villa residents, plus gardens, water, sport and play across the community.</p>
     </div>
     <div class="am-hero reveal">
-      <img src="assets/img/amenities.jpg" alt="Clubhouse and lagoon pool at Sobha Elwood" loading="lazy">
+      <img srcset="assets/img/amenities-800.webp 800w, assets/img/amenities.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/amenities.webp" alt="Clubhouse and lagoon pool at Sobha Elwood" loading="lazy">
       <div class="am-hero__cap"><span>The Clubhouse</span>A dedicated facility for villa residents</div>
     </div>
     <ul class="am-list reveal">
@@ -415,21 +418,21 @@
       <p class="head__sub reveal">Tap any image to view it full screen.</p>
     </div>
     <div class="g-grid" id="gallery-grid">
-      <button class="g g--wide reveal" data-src="assets/img/villa-4br-front.jpg"><img src="assets/img/villa-4br-front.jpg" alt="4 bedroom villa" loading="lazy"><span>4 BR Villa</span></button>
-      <button class="g reveal" data-src="assets/img/living.jpg"><img src="assets/img/living.jpg" alt="Living room" loading="lazy"><span>Living Room</span></button>
-      <button class="g reveal" data-src="assets/img/bedroom.jpg"><img src="assets/img/bedroom.jpg" alt="Master bedroom" loading="lazy"><span>Master Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/villa-5br-pool.jpg"><img src="assets/img/villa-5br-pool.jpg" alt="5 bedroom villa with pool" loading="lazy"><span>5 BR Villa · Pool</span></button>
-      <button class="g reveal" data-src="assets/img/dining.jpg"><img src="assets/img/dining.jpg" alt="Dining area" loading="lazy"><span>Dining</span></button>
-      <button class="g reveal" data-src="assets/img/kitchen.jpg"><img src="assets/img/kitchen.jpg" alt="Kitchen" loading="lazy"><span>Kitchen</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/clubhouse.jpg"><img src="assets/img/clubhouse.jpg" alt="Clubhouse" loading="lazy"><span>The Clubhouse</span></button>
-      <button class="g reveal" data-src="assets/img/villa-6br-pool.jpg"><img src="assets/img/villa-6br-pool.jpg" alt="6 bedroom villa" loading="lazy"><span>6 BR Villa</span></button>
-      <button class="g reveal" data-src="assets/img/living-2.jpg"><img src="assets/img/living-2.jpg" alt="Family lounge" loading="lazy"><span>Family Lounge</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/park-baobab.jpg"><img src="assets/img/park-baobab.jpg" alt="Baobab park" loading="lazy"><span>Baobab Park</span></button>
-      <button class="g reveal" data-src="assets/img/villa-4br-c.jpg"><img src="assets/img/villa-4br-c.jpg" alt="4 bedroom villa Type C" loading="lazy"><span>4 BR Villa · Type C</span></button>
-      <button class="g reveal" data-src="assets/img/park-yakushima.jpg"><img src="assets/img/park-yakushima.jpg" alt="Yakushima park" loading="lazy"><span>Yakushima Park</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/hero.jpg"><img src="assets/img/hero.jpg" alt="Lagoon and parks from above" loading="lazy"><span>The Community</span></button>
-      <button class="g reveal" data-src="assets/img/about-green.jpg"><img src="assets/img/about-green.jpg" alt="Pond and forest walk" loading="lazy"><span>Forest Walk</span></button>
-      <button class="g reveal" data-src="assets/img/meadow.jpg"><img src="assets/img/meadow.jpg" alt="Open green spaces" loading="lazy"><span>Open Greens</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/villa-4br-front.webp"><img srcset="assets/img/villa-4br-front-800.webp 800w, assets/img/villa-4br-front.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-4br-front.webp" alt="4 bedroom villa" loading="lazy"><span>4 BR Villa</span></button>
+      <button class="g reveal" data-src="assets/img/living.webp"><img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1485w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="Living room" loading="lazy"><span>Living Room</span></button>
+      <button class="g reveal" data-src="assets/img/bedroom.webp"><img srcset="assets/img/bedroom-800.webp 800w, assets/img/bedroom.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/bedroom.webp" alt="Master bedroom" loading="lazy"><span>Master Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/villa-5br-pool.webp"><img srcset="assets/img/villa-5br-pool-800.webp 800w, assets/img/villa-5br-pool.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-5br-pool.webp" alt="5 bedroom villa with pool" loading="lazy"><span>5 BR Villa · Pool</span></button>
+      <button class="g reveal" data-src="assets/img/dining.webp"><img srcset="assets/img/dining-800.webp 800w, assets/img/dining.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/dining.webp" alt="Dining area" loading="lazy"><span>Dining</span></button>
+      <button class="g reveal" data-src="assets/img/kitchen.webp"><img srcset="assets/img/kitchen-800.webp 800w, assets/img/kitchen.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/kitchen.webp" alt="Kitchen" loading="lazy"><span>Kitchen</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/clubhouse.webp"><img srcset="assets/img/clubhouse-800.webp 800w, assets/img/clubhouse.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/clubhouse.webp" alt="Clubhouse" loading="lazy"><span>The Clubhouse</span></button>
+      <button class="g reveal" data-src="assets/img/villa-6br-pool.webp"><img srcset="assets/img/villa-6br-pool-800.webp 800w, assets/img/villa-6br-pool.webp 1494w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-6br-pool.webp" alt="6 bedroom villa" loading="lazy"><span>6 BR Villa</span></button>
+      <button class="g reveal" data-src="assets/img/living-2.webp"><img srcset="assets/img/living-2-800.webp 800w, assets/img/living-2.webp 1486w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living-2.webp" alt="Family lounge" loading="lazy"><span>Family Lounge</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/park-baobab.webp"><img srcset="assets/img/park-baobab-800.webp 800w, assets/img/park-baobab.webp 1195w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-baobab.webp" alt="Baobab park" loading="lazy"><span>Baobab Park</span></button>
+      <button class="g reveal" data-src="assets/img/villa-4br-c.webp"><img srcset="assets/img/villa-4br-c-800.webp 800w, assets/img/villa-4br-c.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-4br-c.webp" alt="4 bedroom villa Type C" loading="lazy"><span>4 BR Villa · Type C</span></button>
+      <button class="g reveal" data-src="assets/img/park-yakushima.webp"><img srcset="assets/img/park-yakushima-800.webp 800w, assets/img/park-yakushima.webp 1029w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/park-yakushima.webp" alt="Yakushima park" loading="lazy"><span>Yakushima Park</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/hero.webp"><img srcset="assets/img/hero-800.webp 800w, assets/img/hero.webp 1591w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/hero.webp" alt="Lagoon and parks from above" loading="lazy"><span>The Community</span></button>
+      <button class="g reveal" data-src="assets/img/about-green.webp"><img srcset="assets/img/about-green-800.webp 800w, assets/img/about-green.webp 1591w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/about-green.webp" alt="Pond and forest walk" loading="lazy"><span>Forest Walk</span></button>
+      <button class="g reveal" data-src="assets/img/meadow.webp"><img srcset="assets/img/meadow-800.webp 800w, assets/img/meadow.webp 1591w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/meadow.webp" alt="Open green spaces" loading="lazy"><span>Open Greens</span></button>
     </div>
   </div>
 </section>
@@ -452,8 +455,8 @@
           <li><span>Al Maktoum International Airport (DWC)</span><b>30</b><small>min</small></li>
         </ul>
         <div>
-          <button class="loc__plan reveal" data-src="assets/img/location-map.jpg">
-            <img src="assets/img/location-map.jpg" alt="Sobha Elwood location map, Dubai" loading="lazy">
+          <button class="loc__plan reveal" data-src="assets/img/location-map.webp">
+            <img srcset="assets/img/location-map-800.webp 800w, assets/img/location-map.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/location-map.webp" alt="Sobha Elwood location map, Dubai" loading="lazy">
             <span>View Map</span>
           </button>
           <p class="loc__note reveal">Approximate drive times as published in the Sobha Elwood brochure.</p>
@@ -567,7 +570,7 @@
   <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal__close" data-close aria-label="Close">×</button>
     <div class="modal__side" aria-hidden="true">
-      <img src="assets/img/living.jpg" alt="">
+      <img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1485w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="">
       <div class="modal__side-cap"><span class="brand__mark"><i></i><i></i><i></i><i></i><i></i></span>Sobha Elwood</div>
     </div>
     <form class="modal__form js-enquiry" id="modalForm" data-context="general" novalidate>
