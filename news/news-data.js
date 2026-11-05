@@ -1,9 +1,30 @@
 /* Sobha News & Offers — newest first.
    Each item: date (YYYY-MM-DD), tag (Offer · Launch · Price Update · Event · Update), project,
-   title, body (paragraphs), optional terms, image (path inside /news/), link {label, href} or links [..],
+   title, body (paragraphs), optional terms, image (path inside /news/), optional video (mp4; image is its poster), link {label, href} or links [..],
    and ends (ISO time, Dubai): the item disappears automatically after it (add noCountdown: true to hide the timer). For an event, add
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
+  {
+    date: '2026-11-05',
+    tag: 'Update',
+    project: 'Sobha Realty · Luxury villa',
+    title: 'For sale: a signature Sobha villa — AED 25 Million',
+    body: [
+      'A newly shared Sobha Realty villa is available for sale at AED 25 Million (≈ ₹57 Cr*).',
+      'Take the video tour: a striking three-level modern façade, a double-height living room with designer lighting, a private swimming pool, a fully fitted kitchen with island, a study, a large master suite with a stone-clad bathroom and a rooftop terrace with city views.',
+      'Buy a home of AED 2 million or more and our team takes care of your 10-year UAE Golden Visa application (final approval is issued by the UAE authorities).',
+      'For the floor plan, size, location and a private viewing, speak to our team.'
+    ],
+    terms: [
+      'As announced to Sobha Realty channel partners; subject to availability and change without notice.',
+      '*Indian rupee figure is approximate — please check the current exchange rate.'
+    ],
+    video: 'video/2026-11-05-sobha-villa-25m.mp4',
+    image: 'img/2026-11-05-sobha-villa-25m.jpg',
+    links: [{ label: 'Request a Private Viewing', href: '#talk' }],
+    ends: '2026-11-26T23:59:59+04:00',
+    noCountdown: true
+  },
   {
     date: '2026-11-05',
     tag: 'Price Update',

@@ -113,3 +113,8 @@
   .pj-grid--3 .pj:last-child .pj__img { aspect-ratio: auto; min-height: 100%; }
 }
 @media (min-width: 861px) { .nav-dd__menu .nav-dd__all { border-bottom: 0; } }
+
+/* news post with a video */
+.news-card__img--video { display: flex; align-items: center; }
+.news-card__img--video video { display: block; width: 100%; max-height: 640px; background: #000; }
+@media (max-width: 860px) { .news-card__img--video { max-height: none; } }
