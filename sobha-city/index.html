@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://espousalsobha.com/sobha-city/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://espousalsobha.com/sobha-city/">
+  <link rel="preload" as="image" href="assets/img/hero-marina.webp" imagesrcset="assets/img/hero-marina-800.webp 800w, assets/img/hero-marina.webp 1024w" imagesizes="100vw" fetchpriority="high">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
@@ -26,7 +27,9 @@
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="../sobhacentral/assets/css/style.css?v=20261031b">
   <link rel="stylesheet" href="../sobha-sanctuary/assets/css/sanctuary.css?v=20261031b">
   <link rel="stylesheet" href="assets/css/city.css?v=20261103b">
@@ -38,7 +41,7 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  var go=function(){s.parentNode.insertBefore(t,s)};if(b.readyState==='complete')setTimeout(go,1200);else f.addEventListener('load',function(){setTimeout(go,1200)})}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '806806699194177');
   fbq('track', 'PageView');
@@ -74,7 +77,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__media" aria-hidden="true">
-    <img src="assets/img/hero-marina.jpg" alt="">
+    <img fetchpriority="high" srcset="assets/img/hero-marina-800.webp 800w, assets/img/hero-marina.webp 1024w" sizes="100vw" src="assets/img/hero-marina.webp" alt="">
     <video muted loop playsinline preload="none" poster="assets/img/hero-marina.jpg" data-src="assets/video/sobha-city-launch.mp4"></video>
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
@@ -155,10 +158,10 @@
       </div>
       <div class="about__visual">
         <figure class="frame frame--tall reveal">
-          <img src="assets/img/community-park.jpg" alt="Family park at Sobha City Abu Dhabi" loading="lazy">
+          <img srcset="assets/img/community-park-800.webp 800w, assets/img/community-park.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/community-park.webp" alt="Family park at Sobha City Abu Dhabi" loading="lazy">
         </figure>
         <figure class="frame frame--float reveal">
-          <img src="assets/img/villa-terrace.jpg" alt="Villa terrace at Sobha City Abu Dhabi" loading="lazy">
+          <img srcset="assets/img/villa-terrace-800.webp 800w, assets/img/villa-terrace.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-terrace.webp" alt="Villa terrace at Sobha City Abu Dhabi" loading="lazy">
         </figure>
         <div class="about__badge reveal"><span>Presented by</span><img src="../sobhacentral/assets/img/espousal-logo.png" alt="Espousal Construction" width="220" height="182" loading="lazy"></div>
       </div>
@@ -191,7 +194,7 @@
     </div>
 
     <article class="tw is-active" id="pj-orchard" data-project="orchard" role="tabpanel">
-      <figure class="tw__img"><img src="assets/img/orchard-5br.jpg" alt="5 bedroom estate villa with private pool at The Orchard, Sobha City Abu Dhabi" loading="lazy"><figcaption>Estate Villa · 5 Bedroom</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/orchard-5br-800.webp 800w, assets/img/orchard-5br.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-5br.webp" alt="5 bedroom estate villa with private pool at The Orchard, Sobha City Abu Dhabi" loading="lazy"><figcaption>Estate Villa · 5 Bedroom</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">01 · The Orchard</p>
         <h3 class="tw__name">Estate villas, <span class="gold-text">made for family</span></h3>
@@ -216,7 +219,7 @@
     </article>
 
     <article class="tw" id="pj-terraces" data-project="terraces" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/terraces-4br-semi.jpg" alt="4 bedroom + Majlis garden villas at The Terraces, Sobha City Abu Dhabi" loading="lazy"><figcaption>Garden Villas · 4 Bedroom + Majlis</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/terraces-4br-semi-800.webp 800w, assets/img/terraces-4br-semi.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-4br-semi.webp" alt="4 bedroom + Majlis garden villas at The Terraces, Sobha City Abu Dhabi" loading="lazy"><figcaption>Garden Villas · 4 Bedroom + Majlis</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">02 · The Terraces</p>
         <h3 class="tw__name">Garden villas <span class="gold-text">with a Majlis</span></h3>
@@ -241,7 +244,7 @@
     </article>
 
     <article class="tw" id="pj-river" data-project="river" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/river-towers.jpg" alt="River Cove Residences towers on the waterfront, Sobha City Abu Dhabi" loading="lazy"><figcaption>River Cove Residences · Towers A, B &amp; C</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/river-towers-800.webp 800w, assets/img/river-towers.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-towers.webp" alt="River Cove Residences towers on the waterfront, Sobha City Abu Dhabi" loading="lazy"><figcaption>River Cove Residences · Towers A, B &amp; C</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">03 · River Cove Residences</p>
         <h3 class="tw__name">Apartments <span class="gold-text">by the water</span></h3>
@@ -321,7 +324,7 @@
 <section class="section" id="waterfront" aria-label="Golf and waterfront">
   <div class="wrap">
     <div class="feature">
-      <figure class="feature__img reveal"><img src="assets/img/golf.jpg" alt="Par 3 executive golf course at Sobha City Abu Dhabi" loading="lazy"><figcaption>Par 3 executive golf course</figcaption></figure>
+      <figure class="feature__img reveal"><img srcset="assets/img/golf-800.webp 800w, assets/img/golf.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/golf.webp" alt="Par 3 executive golf course at Sobha City Abu Dhabi" loading="lazy"><figcaption>Par 3 executive golf course</figcaption></figure>
       <div class="feature__copy">
         <p class="eyebrow reveal">04 — Golf</p>
         <h2 class="title reveal">A Par 3 course by <span class="gold-text">Greg Norman</span></h2>
@@ -330,7 +333,7 @@
       </div>
     </div>
     <div class="feature feature--flip">
-      <figure class="feature__img reveal"><img src="assets/img/marina.jpg" alt="Yacht marina and community mall at Sobha City" loading="lazy"><figcaption>Yacht marina &amp; community mall</figcaption></figure>
+      <figure class="feature__img reveal"><img srcset="assets/img/marina-800.webp 800w, assets/img/marina.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/marina.webp" alt="Yacht marina and community mall at Sobha City" loading="lazy"><figcaption>Yacht marina &amp; community mall</figcaption></figure>
       <div class="feature__copy">
         <p class="eyebrow reveal">The Waterfront</p>
         <h2 class="title reveal">Life along <span class="gold-text">the water</span></h2>
@@ -350,32 +353,32 @@
       <p class="head__sub reveal">Crafted around the human experience — spaces that restore, inspire and invite a deeper way of living.</p>
     </div>
     <div class="am-hero reveal">
-      <img src="assets/img/lagoon.jpg" alt="Lagoon pool at Sobha City Abu Dhabi" loading="lazy">
+      <img srcset="assets/img/lagoon-800.webp 800w, assets/img/lagoon.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/lagoon.webp" alt="Lagoon pool at Sobha City Abu Dhabi" loading="lazy">
       <div class="am-hero__cap"><span>Lagoon Pools</span>Resort living, every day of the week</div>
     </div>
     <div class="am-grid am-grid--6">
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/plaza.jpg" alt="Community plaza with fountains" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/plaza-800.webp 800w, assets/img/plaza.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/plaza.webp" alt="Community plaza with fountains" loading="lazy"></div>
         <div class="am__body"><h3>Community &amp; Social</h3><ul><li>Community mall</li><li>Waterfront promenade</li><li>Yacht marina &amp; clubhouse</li><li>Jogging &amp; cycling tracks</li><li>Golf course</li><li>Pavilion &amp; social decks</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/family-pool.jpg" alt="Family time by the pool" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/family-pool-800.webp 800w, assets/img/family-pool.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/family-pool.webp" alt="Family time by the pool" loading="lazy"></div>
         <div class="am__body"><h3>Family &amp; Children</h3><ul><li>Kids’ play areas</li><li>Schools</li><li>Family parks</li><li>Barbecue areas</li><li>Pet park</li><li>Lagoon pools</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/sailing.jpg" alt="Sailing off Abu Dhabi" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/sailing-800.webp 800w, assets/img/sailing.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/sailing.webp" alt="Sailing off Abu Dhabi" loading="lazy"></div>
         <div class="am__body"><h3>Recreation &amp; Play</h3><ul><li>Nature play zone</li><li>Trampoline park</li><li>Outdoor games zone</li><li>Mini skate park &amp; parkour zone</li><li>Bouldering play</li><li>Martial arts lawn</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/forest-deck.jpg" alt="Forest yoga decks" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/forest-deck-800.webp 800w, assets/img/forest-deck.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/forest-deck.webp" alt="Forest yoga decks" loading="lazy"></div>
         <div class="am__body"><h3>Wellness &amp; Movement</h3><ul><li>Wellness &amp; cycling loops</li><li>Outdoor fitness zone</li><li>Open-air jungle gym</li><li>Sports courts</li><li>Multipurpose lawn</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/community-park.jpg" alt="Landscaped gardens and family park" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/community-park-800.webp 800w, assets/img/community-park.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/community-park.webp" alt="Landscaped gardens and family park" loading="lazy"></div>
         <div class="am__body"><h3>Nature &amp; Mindful</h3><ul><li>Sculpture, fragrant &amp; botanical gardens</li><li>Sensory garden &amp; reflexology path</li><li>Forest trails &amp; shaded seating</li><li>Forest yoga decks</li><li>Meditation zone</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/waterfront-night.jpg" alt="Sobha City by night" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/waterfront-night-800.webp 800w, assets/img/waterfront-night.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/waterfront-night.webp" alt="Sobha City by night" loading="lazy"></div>
         <div class="am__body"><h3>Education, Health &amp; Faith</h3><ul><li>International school</li><li>Clinic</li><li>Community services</li><li>Jumu’ah mosque</li></ul></div>
       </article>
     </div>
@@ -417,36 +420,36 @@
       <p class="head__sub reveal">Tap any image to view it full screen.</p>
     </div>
     <div class="g-grid" id="gallery-grid">
-      <button class="g g--wide reveal" data-src="assets/img/orchard-4br.jpg"><img src="assets/img/orchard-4br.jpg" alt="4 bedroom estate villa" loading="lazy"><span>The Orchard · 4 BR Villa</span></button>
-      <button class="g reveal" data-src="assets/img/orchard-living.jpg"><img src="assets/img/orchard-living.jpg" alt="Double-height living room" loading="lazy"><span>Villa Living Room</span></button>
-      <button class="g reveal" data-src="assets/img/orchard-bedroom.jpg"><img src="assets/img/orchard-bedroom.jpg" alt="Master bedroom" loading="lazy"><span>Master Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/orchard-6br.jpg"><img src="assets/img/orchard-6br.jpg" alt="6 bedroom estate villa" loading="lazy"><span>The Orchard · 6 BR Villa</span></button>
-      <button class="g reveal" data-src="assets/img/orchard-dining.jpg"><img src="assets/img/orchard-dining.jpg" alt="Dining area and kitchen" loading="lazy"><span>Dining &amp; Kitchen</span></button>
-      <button class="g reveal" data-src="assets/img/orchard-bathroom.jpg"><img src="assets/img/orchard-bathroom.jpg" alt="Master bathroom" loading="lazy"><span>Master Bathroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/terraces-3br.jpg"><img src="assets/img/terraces-3br.jpg" alt="3 bedroom + Majlis garden villas" loading="lazy"><span>The Terraces · 3 BR + Majlis</span></button>
-      <button class="g reveal" data-src="assets/img/terraces-living.jpg"><img src="assets/img/terraces-living.jpg" alt="Garden villa living room" loading="lazy"><span>Garden Villa Living</span></button>
-      <button class="g reveal" data-src="assets/img/terraces-bedroom.jpg"><img src="assets/img/terraces-bedroom.jpg" alt="Garden villa master bedroom" loading="lazy"><span>Garden Villa Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/terraces-4br.jpg"><img src="assets/img/terraces-4br.jpg" alt="4 bedroom + Majlis standalone garden villa" loading="lazy"><span>The Terraces · 4 BR Standalone</span></button>
-      <button class="g reveal" data-src="assets/img/terraces-dining.jpg"><img src="assets/img/terraces-dining.jpg" alt="Garden villa dining area" loading="lazy"><span>Garden Villa Dining</span></button>
-      <button class="g reveal" data-src="assets/img/terraces-family.jpg"><img src="assets/img/terraces-family.jpg" alt="Children playing in the garden" loading="lazy"><span>Garden Living</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/hero-marina.jpg"><img src="assets/img/hero-marina.jpg" alt="Waterfront at Sobha City" loading="lazy"><span>The Waterfront</span></button>
-      <button class="g reveal" data-src="assets/img/orchard-garage.jpg"><img src="assets/img/orchard-garage.jpg" alt="Villa entrance and garage" loading="lazy"><span>Arrival &amp; Garage</span></button>
-      <button class="g reveal" data-src="assets/img/family-pool.jpg"><img src="assets/img/family-pool.jpg" alt="Family by the private pool" loading="lazy"><span>Private Pool</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/golf.jpg"><img src="assets/img/golf.jpg" alt="Par 3 golf course" loading="lazy"><span>Par 3 Golf Course</span></button>
-      <button class="g reveal" data-src="assets/img/river-living.jpg"><img src="assets/img/river-living.jpg" alt="River Cove apartment living room" loading="lazy"><span>River Cove · Living</span></button>
-      <button class="g reveal" data-src="assets/img/forest-deck.jpg"><img src="assets/img/forest-deck.jpg" alt="Forest yoga decks" loading="lazy"><span>Forest Yoga Decks</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/river-towers.jpg"><img src="assets/img/river-towers.jpg" alt="River Cove Residences towers" loading="lazy"><span>River Cove Residences</span></button>
-      <button class="g reveal" data-src="assets/img/river-bedroom.jpg"><img src="assets/img/river-bedroom.jpg" alt="River Cove apartment bedroom" loading="lazy"><span>River Cove · Bedroom</span></button>
-      <button class="g reveal" data-src="assets/img/river-kitchen.jpg"><img src="assets/img/river-kitchen.jpg" alt="River Cove kitchen and dining" loading="lazy"><span>River Cove · Kitchen</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/river-pool.jpg"><img src="assets/img/river-pool.jpg" alt="Lagoon pool by the River Cove towers" loading="lazy"><span>Lagoon Pool</span></button>
-      <button class="g reveal" data-src="assets/img/river-promenade.jpg"><img src="assets/img/river-promenade.jpg" alt="Waterfront promenade" loading="lazy"><span>The Promenade</span></button>
-      <button class="g reveal" data-src="assets/img/river-bathroom.jpg"><img src="assets/img/river-bathroom.jpg" alt="River Cove bathroom" loading="lazy"><span>River Cove · Bathroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/marina.jpg"><img src="assets/img/marina.jpg" alt="Yacht marina" loading="lazy"><span>Yacht Marina</span></button>
-      <button class="g reveal" data-src="assets/img/plaza.jpg"><img src="assets/img/plaza.jpg" alt="Community plaza" loading="lazy"><span>Community Plaza</span></button>
-      <button class="g reveal" data-src="assets/img/lagoon.jpg"><img src="assets/img/lagoon.jpg" alt="Lagoon pools" loading="lazy"><span>Lagoon Pools</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/orchard-masterplan.jpg"><img src="assets/img/orchard-masterplan.jpg" alt="The Orchard neighbourhood plan" loading="lazy"><span>The Orchard · Site Plan</span></button>
-      <button class="g reveal" data-src="assets/img/community-park.jpg"><img src="assets/img/community-park.jpg" alt="Family park" loading="lazy"><span>Family Parks</span></button>
-      <button class="g reveal" data-src="assets/img/villa-terrace.jpg"><img src="assets/img/villa-terrace.jpg" alt="Villa terrace" loading="lazy"><span>Terrace Living</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/orchard-4br.webp"><img srcset="assets/img/orchard-4br-800.webp 800w, assets/img/orchard-4br.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-4br.webp" alt="4 bedroom estate villa" loading="lazy"><span>The Orchard · 4 BR Villa</span></button>
+      <button class="g reveal" data-src="assets/img/orchard-living.webp"><img srcset="assets/img/orchard-living-800.webp 800w, assets/img/orchard-living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-living.webp" alt="Double-height living room" loading="lazy"><span>Villa Living Room</span></button>
+      <button class="g reveal" data-src="assets/img/orchard-bedroom.webp"><img srcset="assets/img/orchard-bedroom-800.webp 800w, assets/img/orchard-bedroom.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-bedroom.webp" alt="Master bedroom" loading="lazy"><span>Master Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/orchard-6br.webp"><img srcset="assets/img/orchard-6br-800.webp 800w, assets/img/orchard-6br.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-6br.webp" alt="6 bedroom estate villa" loading="lazy"><span>The Orchard · 6 BR Villa</span></button>
+      <button class="g reveal" data-src="assets/img/orchard-dining.webp"><img srcset="assets/img/orchard-dining-800.webp 800w, assets/img/orchard-dining.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-dining.webp" alt="Dining area and kitchen" loading="lazy"><span>Dining &amp; Kitchen</span></button>
+      <button class="g reveal" data-src="assets/img/orchard-bathroom.webp"><img srcset="assets/img/orchard-bathroom-800.webp 800w, assets/img/orchard-bathroom.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-bathroom.webp" alt="Master bathroom" loading="lazy"><span>Master Bathroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/terraces-3br.webp"><img srcset="assets/img/terraces-3br-800.webp 800w, assets/img/terraces-3br.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-3br.webp" alt="3 bedroom + Majlis garden villas" loading="lazy"><span>The Terraces · 3 BR + Majlis</span></button>
+      <button class="g reveal" data-src="assets/img/terraces-living.webp"><img srcset="assets/img/terraces-living-800.webp 800w, assets/img/terraces-living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-living.webp" alt="Garden villa living room" loading="lazy"><span>Garden Villa Living</span></button>
+      <button class="g reveal" data-src="assets/img/terraces-bedroom.webp"><img srcset="assets/img/terraces-bedroom-800.webp 800w, assets/img/terraces-bedroom.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-bedroom.webp" alt="Garden villa master bedroom" loading="lazy"><span>Garden Villa Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/terraces-4br.webp"><img srcset="assets/img/terraces-4br-800.webp 800w, assets/img/terraces-4br.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-4br.webp" alt="4 bedroom + Majlis standalone garden villa" loading="lazy"><span>The Terraces · 4 BR Standalone</span></button>
+      <button class="g reveal" data-src="assets/img/terraces-dining.webp"><img srcset="assets/img/terraces-dining-800.webp 800w, assets/img/terraces-dining.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-dining.webp" alt="Garden villa dining area" loading="lazy"><span>Garden Villa Dining</span></button>
+      <button class="g reveal" data-src="assets/img/terraces-family.webp"><img srcset="assets/img/terraces-family-800.webp 800w, assets/img/terraces-family.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/terraces-family.webp" alt="Children playing in the garden" loading="lazy"><span>Garden Living</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/hero-marina.webp"><img srcset="assets/img/hero-marina-800.webp 800w, assets/img/hero-marina.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/hero-marina.webp" alt="Waterfront at Sobha City" loading="lazy"><span>The Waterfront</span></button>
+      <button class="g reveal" data-src="assets/img/orchard-garage.webp"><img srcset="assets/img/orchard-garage-800.webp 800w, assets/img/orchard-garage.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-garage.webp" alt="Villa entrance and garage" loading="lazy"><span>Arrival &amp; Garage</span></button>
+      <button class="g reveal" data-src="assets/img/family-pool.webp"><img srcset="assets/img/family-pool-800.webp 800w, assets/img/family-pool.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/family-pool.webp" alt="Family by the private pool" loading="lazy"><span>Private Pool</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/golf.webp"><img srcset="assets/img/golf-800.webp 800w, assets/img/golf.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/golf.webp" alt="Par 3 golf course" loading="lazy"><span>Par 3 Golf Course</span></button>
+      <button class="g reveal" data-src="assets/img/river-living.webp"><img srcset="assets/img/river-living-800.webp 800w, assets/img/river-living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-living.webp" alt="River Cove apartment living room" loading="lazy"><span>River Cove · Living</span></button>
+      <button class="g reveal" data-src="assets/img/forest-deck.webp"><img srcset="assets/img/forest-deck-800.webp 800w, assets/img/forest-deck.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/forest-deck.webp" alt="Forest yoga decks" loading="lazy"><span>Forest Yoga Decks</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/river-towers.webp"><img srcset="assets/img/river-towers-800.webp 800w, assets/img/river-towers.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-towers.webp" alt="River Cove Residences towers" loading="lazy"><span>River Cove Residences</span></button>
+      <button class="g reveal" data-src="assets/img/river-bedroom.webp"><img srcset="assets/img/river-bedroom-800.webp 800w, assets/img/river-bedroom.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-bedroom.webp" alt="River Cove apartment bedroom" loading="lazy"><span>River Cove · Bedroom</span></button>
+      <button class="g reveal" data-src="assets/img/river-kitchen.webp"><img srcset="assets/img/river-kitchen-800.webp 800w, assets/img/river-kitchen.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-kitchen.webp" alt="River Cove kitchen and dining" loading="lazy"><span>River Cove · Kitchen</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/river-pool.webp"><img srcset="assets/img/river-pool-800.webp 800w, assets/img/river-pool.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-pool.webp" alt="Lagoon pool by the River Cove towers" loading="lazy"><span>Lagoon Pool</span></button>
+      <button class="g reveal" data-src="assets/img/river-promenade.webp"><img srcset="assets/img/river-promenade-800.webp 800w, assets/img/river-promenade.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-promenade.webp" alt="Waterfront promenade" loading="lazy"><span>The Promenade</span></button>
+      <button class="g reveal" data-src="assets/img/river-bathroom.webp"><img srcset="assets/img/river-bathroom-800.webp 800w, assets/img/river-bathroom.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/river-bathroom.webp" alt="River Cove bathroom" loading="lazy"><span>River Cove · Bathroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/marina.webp"><img srcset="assets/img/marina-800.webp 800w, assets/img/marina.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/marina.webp" alt="Yacht marina" loading="lazy"><span>Yacht Marina</span></button>
+      <button class="g reveal" data-src="assets/img/plaza.webp"><img srcset="assets/img/plaza-800.webp 800w, assets/img/plaza.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/plaza.webp" alt="Community plaza" loading="lazy"><span>Community Plaza</span></button>
+      <button class="g reveal" data-src="assets/img/lagoon.webp"><img srcset="assets/img/lagoon-800.webp 800w, assets/img/lagoon.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/lagoon.webp" alt="Lagoon pools" loading="lazy"><span>Lagoon Pools</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/orchard-masterplan.webp"><img srcset="assets/img/orchard-masterplan-800.webp 800w, assets/img/orchard-masterplan.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-masterplan.webp" alt="The Orchard neighbourhood plan" loading="lazy"><span>The Orchard · Site Plan</span></button>
+      <button class="g reveal" data-src="assets/img/community-park.webp"><img srcset="assets/img/community-park-800.webp 800w, assets/img/community-park.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/community-park.webp" alt="Family park" loading="lazy"><span>Family Parks</span></button>
+      <button class="g reveal" data-src="assets/img/villa-terrace.webp"><img srcset="assets/img/villa-terrace-800.webp 800w, assets/img/villa-terrace.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/villa-terrace.webp" alt="Villa terrace" loading="lazy"><span>Terrace Living</span></button>
     </div>
   </div>
 </section>
@@ -473,8 +476,8 @@
           <li><span>Louvre Abu Dhabi</span><b>25</b><small>min</small></li>
         </ul>
         <div>
-          <button class="loc__plan reveal" data-src="assets/img/masterplan.jpg">
-            <img src="assets/img/masterplan.jpg" alt="Sobha City illustrative masterplan" loading="lazy">
+          <button class="loc__plan reveal" data-src="assets/img/masterplan.webp">
+            <img srcset="assets/img/masterplan-800.webp 800w, assets/img/masterplan.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/masterplan.webp" alt="Sobha City illustrative masterplan" loading="lazy">
             <span>View Masterplan</span>
           </button>
           <p class="loc__note reveal">Approximate drive times as published in the Sobha City Fact Book.</p>
@@ -587,7 +590,7 @@
   <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal__close" data-close aria-label="Close">×</button>
     <div class="modal__side" aria-hidden="true">
-      <img src="assets/img/orchard-living.jpg" alt="">
+      <img srcset="assets/img/orchard-living-800.webp 800w, assets/img/orchard-living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/orchard-living.webp" alt="">
       <div class="modal__side-cap"><span class="brand__mark"><i></i><i></i><i></i><i></i><i></i></span>Sobha City Abu Dhabi</div>
     </div>
     <form class="modal__form js-enquiry" id="modalForm" data-context="general" novalidate>

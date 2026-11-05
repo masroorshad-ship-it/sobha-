@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://espousalsobha.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://espousalsobha.com/">
+  <link rel="preload" as="image" href="sobhacentral/assets/img/hero-aerial.webp" imagesrcset="sobhacentral/assets/img/hero-aerial-800.webp 800w, sobhacentral/assets/img/hero-aerial.webp 1600w" imagesizes="100vw" fetchpriority="high">
   <meta name="google-site-verification" content="EGLDnPVO8U37VaB2arNm9_ocT5Ypfet1BwkpqWdPrwk" />
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -27,7 +28,9 @@
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="sobhacentral/assets/css/style.css?v=20261031b">
   <link rel="stylesheet" href="sobha-sanctuary/assets/css/sanctuary.css?v=20261031b">
   <!-- Meta Pixel Code -->
@@ -38,7 +41,7 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  var go=function(){s.parentNode.insertBefore(t,s)};if(b.readyState==='complete')setTimeout(go,1200);else f.addEventListener('load',function(){setTimeout(go,1200)})}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '806806699194177');
   fbq('track', 'PageView');
@@ -66,10 +69,12 @@
         <a href="sobha-city/"><b>Sobha City</b><span>Villas &amp; apartments · Abu Dhabi</span></a>
         <a class="nav-dd__all" href="#projects">View all projects ›</a>
         <a class="nav-dd__mob" href="news/">News</a>
+        <a class="nav-dd__mob" href="guides/">Guides</a>
         <a class="nav-dd__mob" href="#contact">Contact</a>
       </div>
     </div>
     <a href="news/">News</a>
+    <a href="guides/">Guides</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="nav__news" href="news/">News</a>
@@ -79,7 +84,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero hero--home" id="top">
   <div class="hero__media" aria-hidden="true">
-    <img src="sobhacentral/assets/img/hero-aerial.jpg" alt="">
+    <img fetchpriority="high" srcset="sobhacentral/assets/img/hero-aerial-800.webp 800w, sobhacentral/assets/img/hero-aerial.webp 1600w" sizes="100vw" src="sobhacentral/assets/img/hero-aerial.webp" alt="">
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
 
@@ -133,7 +138,7 @@
 
     <div class="pj-grid">
       <article class="pj reveal">
-        <a class="pj__img" href="sobhacentral/"><img src="sobhacentral/assets/img/towers.jpg" alt="Sobha Central towers on Sheikh Zayed Road" loading="lazy"><span>Sheikh Zayed Road</span></a>
+        <a class="pj__img" href="sobhacentral/"><img srcset="sobhacentral/assets/img/towers-800.webp 800w, sobhacentral/assets/img/towers.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="sobhacentral/assets/img/towers.webp" alt="Sobha Central towers on Sheikh Zayed Road" loading="lazy"><span>Sheikh Zayed Road</span></a>
         <div class="pj__body">
           <p class="eyebrow">Apartments · 6 Towers</p>
           <h3 class="pj__name">Sobha <span class="gold-text">Central</span></h3>
@@ -154,7 +159,7 @@
       </article>
 
       <article class="pj reveal">
-        <a class="pj__img" href="sobha-sanctuary/"><img src="sobha-sanctuary/assets/img/hero-lagoon.jpg" alt="Beach lagoon at Sobha Sanctuary" loading="lazy"><span>Nature-led Community</span></a>
+        <a class="pj__img" href="sobha-sanctuary/"><img srcset="sobha-sanctuary/assets/img/hero-lagoon-800.webp 800w, sobha-sanctuary/assets/img/hero-lagoon.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="sobha-sanctuary/assets/img/hero-lagoon.webp" alt="Beach lagoon at Sobha Sanctuary" loading="lazy"><span>Nature-led Community</span></a>
         <div class="pj__body">
           <p class="eyebrow">Apartments &amp; Villas · 3 Neighbourhoods</p>
           <h3 class="pj__name">Sobha <span class="gold-text">Sanctuary</span></h3>
@@ -173,7 +178,7 @@
         </div>
       </article>
       <article class="pj reveal">
-        <a class="pj__img" href="sobha-city/"><img src="sobha-city/assets/img/hero-marina.jpg" alt="Waterfront at Sobha City Abu Dhabi" loading="lazy"><span>New Launch · Abu Dhabi</span></a>
+        <a class="pj__img" href="sobha-city/"><img srcset="sobha-city/assets/img/hero-marina-800.webp 800w, sobha-city/assets/img/hero-marina.webp 1024w" sizes="(max-width: 860px) 100vw, 50vw" src="sobha-city/assets/img/hero-marina.webp" alt="Waterfront at Sobha City Abu Dhabi" loading="lazy"><span>New Launch · Abu Dhabi</span></a>
         <div class="pj__body">
           <p class="eyebrow">Villas &amp; Apartments · 3 Neighbourhoods</p>
           <h3 class="pj__name">Sobha <span class="gold-text">City</span></h3>
@@ -191,7 +196,7 @@
         </div>
       </article>
       <article class="pj reveal">
-        <a class="pj__img" href="sobha-elwood/"><img src="sobha-elwood/assets/img/villa-4br.jpg" alt="Villa with private pool at Sobha Elwood" loading="lazy"><span>Villas · Dubai–Al Ain Road</span></a>
+        <a class="pj__img" href="sobha-elwood/"><img srcset="sobha-elwood/assets/img/villa-4br-800.webp 800w, sobha-elwood/assets/img/villa-4br.webp 1495w" sizes="(max-width: 860px) 100vw, 50vw" src="sobha-elwood/assets/img/villa-4br.webp" alt="Villa with private pool at Sobha Elwood" loading="lazy"><span>Villas · Dubai–Al Ain Road</span></a>
         <div class="pj__body">
           <p class="eyebrow">Standalone Villas · Private Pools</p>
           <h3 class="pj__name">Sobha <span class="gold-text">Elwood</span></h3>
@@ -237,7 +242,7 @@
     </div>
     <div class="faq__list reveal">
       <details class="faq__item"><summary>Which Sobha Realty projects can I buy through Espousal?</summary><p>Espousal presents Sobha Central on Sheikh Zayed Road (apartments from AED 1.78 Million), Sobha Sanctuary (The Woods apartments from AED 999K, plus The Greens and The Grove villas), Sobha Elwood (4, 5 and 6 bedroom villas from AED 7.93 Million) and Sobha City in Abu Dhabi (villas and apartments).</p></details>
-      <details class="faq__item"><summary>Can Indians buy property in Dubai?</summary><p>Yes. Foreign nationals, including Indian residents, can buy freehold property in Dubai’s designated areas. Payments from India are usually sent under the RBI’s Liberalised Remittance Scheme (currently USD 250,000 per person per financial year) — please confirm the current rules with your bank or chartered accountant. A payment plan spreads the payments over the construction period.</p></details>
+      <details class="faq__item"><summary>Can Indians buy property in Dubai?</summary><p>Yes. Foreign nationals, including Indian residents, can buy freehold property in Dubai’s designated areas. Payments from India are usually sent under the RBI’s Liberalised Remittance Scheme (currently USD 250,000 per person per financial year) — please confirm the current rules with your bank or chartered accountant. A payment plan spreads the payments over the construction period. <a href="guides/buy-property-in-dubai-from-india/" style="color:var(--gold-hi);text-decoration:underline">Read our full guide</a>.</p></details>
       <details class="faq__item"><summary>What payment plans does Sobha Realty offer?</summary><p>Plans differ by project: Sobha Central offers 40% during construction and 60% on completion; The Woods at Sobha Sanctuary and Sobha Elwood offer 60% during construction and 40% on completion. Plans can change, so ask our advisor for the current schedule.</p></details>
       <details class="faq__item"><summary>Do I need to travel to Dubai to buy?</summary><p>No. Our team can share prices, floor plans and availability on a call or video meeting, and arrange a site visit whenever you are in the UAE.</p></details>
       <details class="faq__item"><summary>Is Espousal the same as Sobha Realty?</summary><p>No. Espousal is an independent company and an Authorised Channel Partner of Sobha Realty. Sobha Realty is the developer of all the projects on this website.</p></details>
@@ -282,7 +287,7 @@
       <p class="footer__by">Presented by Espousal – Authorised Channel Partner of Sobha Realty</p>
     </div>
     <nav class="footer__links" aria-label="Footer">
-      <a href="sobhacentral/">Sobha Central</a><a href="sobha-sanctuary/">Sobha Sanctuary</a><a href="sobha-elwood/">Sobha Elwood</a><a href="sobha-city/">Sobha City Abu Dhabi</a><a href="https://espousalconstruction.com">espousalconstruction.com</a><a href="sobhacentral/privacy.html">Privacy Policy</a>
+      <a href="sobhacentral/">Sobha Central</a><a href="sobha-sanctuary/">Sobha Sanctuary</a><a href="sobha-elwood/">Sobha Elwood</a><a href="sobha-city/">Sobha City Abu Dhabi</a><a href="guides/">Buying Guides</a><a href="https://espousalconstruction.com">espousalconstruction.com</a><a href="sobhacentral/privacy.html">Privacy Policy</a>
     </nav>
     <p class="footer__disc">Disclaimer: This website is operated by Espousal, an independent marketing partner, and is not the official website of Sobha Realty. Images are computer-generated renderings for illustration only. Prices, payment plans and information are indicative, subject to approvals from local authorities and may change without prior notice.</p>
     <p class="footer__copy">© <span id="yr">2026</span> Espousal. All rights reserved.</p>

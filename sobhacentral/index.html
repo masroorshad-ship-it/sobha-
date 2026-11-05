@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://espousalsobha.com/sobhacentral/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://espousalsobha.com/sobhacentral/">
+  <link rel="preload" as="image" href="assets/img/hero-aerial.webp" imagesrcset="assets/img/hero-aerial-800.webp 800w, assets/img/hero-aerial.webp 1600w" imagesizes="100vw" fetchpriority="high">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
@@ -26,7 +27,9 @@
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/style.css?v=20261031b">
   <!-- Meta Pixel Code -->
   <script>
@@ -36,7 +39,7 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  var go=function(){s.parentNode.insertBefore(t,s)};if(b.readyState==='complete')setTimeout(go,1200);else f.addEventListener('load',function(){setTimeout(go,1200)})}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '806806699194177');
   fbq('track', 'PageView');
@@ -74,7 +77,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__media" aria-hidden="true">
-    <img src="assets/img/hero-aerial.jpg" alt="">
+    <img fetchpriority="high" srcset="assets/img/hero-aerial-800.webp 800w, assets/img/hero-aerial.webp 1600w" sizes="100vw" src="assets/img/hero-aerial.webp" alt="">
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="hero__pillars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -166,10 +169,10 @@
     </div>
     <div class="about__visual">
       <figure class="frame frame--tall reveal">
-        <img src="assets/img/towers.jpg" alt="Sobha Central towers on Sheikh Zayed Road" loading="lazy">
+        <img srcset="assets/img/towers-800.webp 800w, assets/img/towers.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers.webp" alt="Sobha Central towers on Sheikh Zayed Road" loading="lazy">
       </figure>
       <figure class="frame frame--float reveal">
-        <img src="assets/img/towers-night.jpg" alt="Sobha Central skyline at night" loading="lazy">
+        <img srcset="assets/img/towers-night-800.webp 800w, assets/img/towers-night.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers-night.webp" alt="Sobha Central skyline at night" loading="lazy">
       </figure>
       <div class="about__badge reveal"><span>Presented by</span><img src="assets/img/espousal-logo.png" alt="Espousal Construction" width="220" height="182" loading="lazy"></div>
     </div>
@@ -197,7 +200,7 @@
     </div>
 
     <article class="tw is-active" id="tw-horizon" role="tabpanel">
-      <figure class="tw__img"><img src="assets/img/towers/tower-horizon.jpg" alt="The Horizon at Sobha Central" loading="lazy"><figcaption>The first tower</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers/tower-horizon-800.webp 800w, assets/img/towers/tower-horizon.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/tower-horizon.webp" alt="The Horizon at Sobha Central" loading="lazy"><figcaption>The first tower</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">01 · The Horizon</p>
         <h3 class="tw__name">Life, on a <span class="gold-text">higher level</span></h3>
@@ -216,7 +219,7 @@
     </article>
 
     <article class="tw" id="tw-mirage" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/towers/tower-mirage.jpg" alt="The Mirage at Sobha Central" loading="lazy"><figcaption>The cornermost tower</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers/tower-mirage-800.webp 800w, assets/img/towers/tower-mirage.webp 1258w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/tower-mirage.webp" alt="The Mirage at Sobha Central" loading="lazy"><figcaption>The cornermost tower</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">02 · The Mirage</p>
         <h3 class="tw__name">The crown of <span class="gold-text">the community</span></h3>
@@ -235,7 +238,7 @@
     </article>
 
     <article class="tw" id="tw-pinnacle" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/towers/tower-pinnacle.jpg" alt="The Pinnacle at Sobha Central" loading="lazy"><figcaption>The tallest residential tower</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers/tower-pinnacle-800.webp 800w, assets/img/towers/tower-pinnacle.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/tower-pinnacle.webp" alt="The Pinnacle at Sobha Central" loading="lazy"><figcaption>The tallest residential tower</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">03 · The Pinnacle</p>
         <h3 class="tw__name">Where elevation <span class="gold-text">becomes expression</span></h3>
@@ -254,7 +257,7 @@
     </article>
 
     <article class="tw" id="tw-serene" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/towers/tower-serene.jpg" alt="View from The Serene at Sobha Central" loading="lazy"><figcaption>Above the rush</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers/tower-serene-800.webp 800w, assets/img/towers/tower-serene.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/tower-serene.webp" alt="View from The Serene at Sobha Central" loading="lazy"><figcaption>Above the rush</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">04 · The Serene</p>
         <h3 class="tw__name">Above the rush. <span class="gold-text">Beyond the expected.</span></h3>
@@ -273,7 +276,7 @@
     </article>
 
     <article class="tw tw--private" id="tw-tranquil" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/towers/tower-tranquil.jpg" alt="The Tranquil at Sobha Central" loading="lazy"><figcaption>Details on request</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers/tower-tranquil-800.webp 800w, assets/img/towers/tower-tranquil.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/tower-tranquil.webp" alt="The Tranquil at Sobha Central" loading="lazy"><figcaption>Details on request</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">05 · The Tranquil</p>
         <h3 class="tw__name">Details <span class="gold-text">on request</span></h3>
@@ -285,7 +288,7 @@
     </article>
 
     <article class="tw tw--private" id="tw-eden" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/towers-night.jpg" alt="Sobha Central at night" loading="lazy"><figcaption>Details on request</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/towers-night-800.webp 800w, assets/img/towers-night.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers-night.webp" alt="Sobha Central at night" loading="lazy"><figcaption>Details on request</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">06 · The Eden</p>
         <h3 class="tw__name">Details <span class="gold-text">on request</span></h3>
@@ -301,7 +304,7 @@
 
 <!-- ============ PAYMENT PLAN ============ -->
 <section class="offer" id="payment-plan" aria-label="Payment plan">
-  <div class="offer__bg" aria-hidden="true"><img src="assets/img/living.jpg" alt="" loading="lazy"></div>
+  <div class="offer__bg" aria-hidden="true"><img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="" loading="lazy"></div>
   <div class="wrap offer__inner offer-live" hidden>
     <p class="eyebrow reveal">An Exclusive Window · Sobha Realty Offer</p>
     <h2 class="title title--center reveal">Everything within reach.<br><span class="gold-text">Your moment to call the centre home.</span></h2>
@@ -440,33 +443,33 @@
     </div>
 
     <div class="am-hero reveal">
-      <img src="assets/img/podium.jpg" alt="Sobha Central podium amenities deck" loading="lazy">
+      <img srcset="assets/img/podium-800.webp 800w, assets/img/podium.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/podium.webp" alt="Sobha Central podium amenities deck" loading="lazy">
       <div class="am-hero__cap"><span>The Podium Deck</span>Parks, courts and pools in the sky</div>
     </div>
 
     <div class="am-grid">
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/water.jpg" alt="Children's pool" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/water.webp" alt="Children's pool" loading="lazy"></div>
         <div class="am__body"><h3>Water</h3><ul><li>Children’s pool</li><li>Lap pool</li><li>Leisure pool</li><li>Jacuzzi</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/fitness.jpg" alt="Football ground" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/fitness.webp" alt="Football ground" loading="lazy"></div>
         <div class="am__body"><h3>Fitness &amp; Sport</h3><ul><li>Outdoor exercise space</li><li>Jogging track</li><li>Mini putt-putt course</li><li>Football ground</li><li>Cricket batting enclosure</li><li>Calisthenic gym</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/recreation.jpg" alt="Outdoor cinema" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/recreation.webp" alt="Outdoor cinema" loading="lazy"></div>
         <div class="am__body"><h3>Recreation</h3><ul><li>Outdoor cinema / movie lawn</li><li>Outdoor games</li><li>Open activity / picnic / event lawn</li><li>Main activity boulevard</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/green.jpg" alt="Gardens" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/green.webp" alt="Gardens" loading="lazy"></div>
         <div class="am__body"><h3>Green Spaces</h3><ul><li>Ornamental, sensory, fragrance &amp; medicinal gardens</li><li>Open plaza with water feature &amp; sculpture</li><li>Outdoor courtyard</li><li>Open amphitheatre lawn</li><li>Outdoor sitting area pocket</li><li>Seating tree courtyard</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/family.jpg" alt="Family barbeque" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/family.webp" alt="Family barbeque" loading="lazy"></div>
         <div class="am__body"><h3>Family &amp; Children</h3><ul><li>Artificial turf play mounds</li><li>Activity mound</li><li>Climbing walls</li><li>Family barbeque / gathering space</li><li>Dog park</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/indoor.jpg" alt="Indoor gym" loading="lazy"></div>
+        <div class="am__img"><img src="assets/img/indoor.webp" alt="Indoor gym" loading="lazy"></div>
         <div class="am__body"><h3>Indoor</h3><ul class="cols"><li>Gym</li><li>Yoga studio</li><li>Steam &amp; sauna</li><li>Multipurpose hall</li><li>Children’s play area</li><li>Library</li><li>Leisure lounge</li><li>Fitness &amp; spinning</li><li>Indoor theatre</li><li>Meditation room</li><li>Business centre</li></ul></div>
       </article>
     </div>
@@ -491,22 +494,22 @@
       <p class="head__sub reveal">Every detail designed for sophistication and comfort. Tap any image to view it full screen.</p>
     </div>
     <div class="g-grid" id="gallery-grid">
-      <button class="g g--wide reveal" data-src="assets/img/hero-aerial.jpg"><img src="assets/img/hero-aerial.jpg" alt="Aerial view of Sobha Central" loading="lazy"><span>Aerial View</span></button>
-      <button class="g g--tall reveal" data-src="assets/img/towers.jpg"><img src="assets/img/towers.jpg" alt="Sobha Central towers" loading="lazy"><span>The Towers</span></button>
-      <button class="g reveal" data-src="assets/img/living.jpg"><img src="assets/img/living.jpg" alt="Living room" loading="lazy"><span>Living</span></button>
-      <button class="g reveal" data-src="assets/img/bedroom.jpg"><img src="assets/img/bedroom.jpg" alt="Bedroom" loading="lazy"><span>Bedroom</span></button>
-      <button class="g reveal" data-src="assets/img/towers/g-lobby.jpg"><img src="assets/img/towers/g-lobby.jpg" alt="Residents' lobby" loading="lazy"><span>Residents' Lobby</span></button>
-      <button class="g reveal" data-src="assets/img/towers/g-living-1br.jpg"><img src="assets/img/towers/g-living-1br.jpg" alt="One bedroom living and kitchen" loading="lazy"><span>Living · 1 Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/towers/g-park.jpg"><img src="assets/img/towers/g-park.jpg" alt="Elevated podium park" loading="lazy"><span>Elevated Parks</span></button>
-      <button class="g reveal" data-src="assets/img/towers/g-living-view.jpg"><img src="assets/img/towers/g-living-view.jpg" alt="Living room with city view" loading="lazy"><span>City Views</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/towers/g-pinnacle-sunset.jpg"><img src="assets/img/towers/g-pinnacle-sunset.jpg" alt="The Pinnacle at sunset" loading="lazy"><span>The Pinnacle at Dusk</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/pool.jpg"><img src="assets/img/pool.jpg" alt="Leisure pool" loading="lazy"><span>Leisure Pool</span></button>
-      <button class="g reveal" data-src="assets/img/amphitheatre-lawn.jpg"><img src="assets/img/amphitheatre-lawn.jpg" alt="Amphitheatre lawn" loading="lazy"><span>Amphitheatre Lawn</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/sports-deck.jpg"><img src="assets/img/sports-deck.jpg" alt="Sports deck" loading="lazy"><span>Sports Deck</span></button>
-      <button class="g reveal" data-src="assets/img/towers-night.jpg"><img src="assets/img/towers-night.jpg" alt="Towers at night" loading="lazy"><span>By Night</span></button>
-      <button class="g reveal" data-src="assets/img/szr.jpg"><img src="assets/img/szr.jpg" alt="Sheikh Zayed Road" loading="lazy"><span>Sheikh Zayed Road</span></button>
-      <button class="g reveal" data-src="assets/img/masterplan.jpg"><img src="assets/img/masterplan.jpg" alt="Master plan" loading="lazy"><span>Master Plan</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/podium.jpg"><img src="assets/img/podium.jpg" alt="Podium" loading="lazy"><span>Podium &amp; Mall</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/hero-aerial.webp"><img srcset="assets/img/hero-aerial-800.webp 800w, assets/img/hero-aerial.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/hero-aerial.webp" alt="Aerial view of Sobha Central" loading="lazy"><span>Aerial View</span></button>
+      <button class="g g--tall reveal" data-src="assets/img/towers.webp"><img srcset="assets/img/towers-800.webp 800w, assets/img/towers.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers.webp" alt="Sobha Central towers" loading="lazy"><span>The Towers</span></button>
+      <button class="g reveal" data-src="assets/img/living.webp"><img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="Living room" loading="lazy"><span>Living</span></button>
+      <button class="g reveal" data-src="assets/img/bedroom.webp"><img srcset="assets/img/bedroom-800.webp 800w, assets/img/bedroom.webp 1200w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/bedroom.webp" alt="Bedroom" loading="lazy"><span>Bedroom</span></button>
+      <button class="g reveal" data-src="assets/img/towers/g-lobby.webp"><img srcset="assets/img/towers/g-lobby-800.webp 800w, assets/img/towers/g-lobby.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/g-lobby.webp" alt="Residents' lobby" loading="lazy"><span>Residents' Lobby</span></button>
+      <button class="g reveal" data-src="assets/img/towers/g-living-1br.webp"><img srcset="assets/img/towers/g-living-1br-800.webp 800w, assets/img/towers/g-living-1br.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/g-living-1br.webp" alt="One bedroom living and kitchen" loading="lazy"><span>Living · 1 Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/towers/g-park.webp"><img srcset="assets/img/towers/g-park-800.webp 800w, assets/img/towers/g-park.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/g-park.webp" alt="Elevated podium park" loading="lazy"><span>Elevated Parks</span></button>
+      <button class="g reveal" data-src="assets/img/towers/g-living-view.webp"><img srcset="assets/img/towers/g-living-view-800.webp 800w, assets/img/towers/g-living-view.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/g-living-view.webp" alt="Living room with city view" loading="lazy"><span>City Views</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/towers/g-pinnacle-sunset.webp"><img srcset="assets/img/towers/g-pinnacle-sunset-800.webp 800w, assets/img/towers/g-pinnacle-sunset.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers/g-pinnacle-sunset.webp" alt="The Pinnacle at sunset" loading="lazy"><span>The Pinnacle at Dusk</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/pool.webp"><img srcset="assets/img/pool-800.webp 800w, assets/img/pool.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/pool.webp" alt="Leisure pool" loading="lazy"><span>Leisure Pool</span></button>
+      <button class="g reveal" data-src="assets/img/amphitheatre-lawn.webp"><img srcset="assets/img/amphitheatre-lawn-800.webp 800w, assets/img/amphitheatre-lawn.webp 1200w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/amphitheatre-lawn.webp" alt="Amphitheatre lawn" loading="lazy"><span>Amphitheatre Lawn</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/sports-deck.webp"><img srcset="assets/img/sports-deck-800.webp 800w, assets/img/sports-deck.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/sports-deck.webp" alt="Sports deck" loading="lazy"><span>Sports Deck</span></button>
+      <button class="g reveal" data-src="assets/img/towers-night.webp"><img srcset="assets/img/towers-night-800.webp 800w, assets/img/towers-night.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/towers-night.webp" alt="Towers at night" loading="lazy"><span>By Night</span></button>
+      <button class="g reveal" data-src="assets/img/szr.webp"><img src="assets/img/szr.webp" alt="Sheikh Zayed Road" loading="lazy"><span>Sheikh Zayed Road</span></button>
+      <button class="g reveal" data-src="assets/img/masterplan.webp"><img srcset="assets/img/masterplan-800.webp 800w, assets/img/masterplan.webp 1200w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/masterplan.webp" alt="Master plan" loading="lazy"><span>Master Plan</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/podium.webp"><img srcset="assets/img/podium-800.webp 800w, assets/img/podium.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/podium.webp" alt="Podium" loading="lazy"><span>Podium &amp; Mall</span></button>
     </div>
   </div>
 </section>
@@ -521,8 +524,8 @@
     </div>
 
     <div class="loc">
-      <button class="loc__map reveal" data-src="assets/img/location-map.jpg" aria-label="Enlarge location map">
-        <img src="assets/img/location-map.jpg" alt="Sobha Central location map, Dubai" loading="lazy">
+      <button class="loc__map reveal" data-src="assets/img/location-map.webp" aria-label="Enlarge location map">
+        <img srcset="assets/img/location-map-800.webp 800w, assets/img/location-map.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/location-map.webp" alt="Sobha Central location map, Dubai" loading="lazy">
         <span class="loc__pin" aria-hidden="true"></span>
       </button>
       <div class="loc__side">
@@ -536,8 +539,8 @@
           <li><span>Dubai Int’l Airport</span><b>28</b><small>min</small></li>
         </ul>
         <p class="note">Approximate drive times, subject to traffic.</p>
-        <button class="loc__plan reveal" data-src="assets/img/masterplan.jpg">
-          <img src="assets/img/masterplan.jpg" alt="Sobha Central master plan" loading="lazy">
+        <button class="loc__plan reveal" data-src="assets/img/masterplan.webp">
+          <img srcset="assets/img/masterplan-800.webp 800w, assets/img/masterplan.webp 1200w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/masterplan.webp" alt="Sobha Central master plan" loading="lazy">
           <span>View Master Plan</span>
         </button>
       </div>
@@ -675,7 +678,7 @@
   <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal__close" data-close aria-label="Close">×</button>
     <div class="modal__side" aria-hidden="true">
-      <img src="assets/img/living.jpg" alt="">
+      <img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="">
       <div class="modal__side-cap"><span class="brand__mark"><i></i><i></i><i></i><i></i><i></i></span>Sobha Central</div>
     </div>
     <form class="modal__form js-enquiry" id="modalForm" data-context="general" novalidate>

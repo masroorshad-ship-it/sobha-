@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://espousalsobha.com/sobha-sanctuary/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://espousalsobha.com/sobha-sanctuary/">
+  <link rel="preload" as="image" href="assets/img/hero-lagoon.webp" imagesrcset="assets/img/hero-lagoon-800.webp 800w, assets/img/hero-lagoon.webp 1600w" imagesizes="100vw" fetchpriority="high">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
@@ -26,7 +27,9 @@
   <meta name="theme-color" content="#0b0d1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="../sobhacentral/assets/css/style.css?v=20261031b">
   <link rel="stylesheet" href="assets/css/sanctuary.css?v=20261031b">
   <!-- Meta Pixel Code -->
@@ -37,7 +40,7 @@
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  var go=function(){s.parentNode.insertBefore(t,s)};if(b.readyState==='complete')setTimeout(go,1200);else f.addEventListener('load',function(){setTimeout(go,1200)})}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '806806699194177');
   fbq('track', 'PageView');
@@ -74,7 +77,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__media" aria-hidden="true">
-    <img src="assets/img/hero-lagoon.jpg" alt="">
+    <img fetchpriority="high" srcset="assets/img/hero-lagoon-800.webp 800w, assets/img/hero-lagoon.webp 1600w" sizes="100vw" src="assets/img/hero-lagoon.webp" alt="">
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
 
@@ -158,10 +161,10 @@
       </div>
       <div class="about__visual">
         <figure class="frame frame--tall reveal">
-          <img src="assets/img/garden-fountain.jpg" alt="Gardens and fountain at Sobha Sanctuary" loading="lazy">
+          <img srcset="assets/img/garden-fountain-800.webp 800w, assets/img/garden-fountain.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/garden-fountain.webp" alt="Gardens and fountain at Sobha Sanctuary" loading="lazy">
         </figure>
         <figure class="frame frame--float reveal">
-          <img src="assets/img/family.jpg" alt="Family time in the park at Sobha Sanctuary" loading="lazy">
+          <img srcset="assets/img/family-800.webp 800w, assets/img/family.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/family.webp" alt="Family time in the park at Sobha Sanctuary" loading="lazy">
         </figure>
         <div class="about__badge reveal"><span>Presented by</span><img src="../sobhacentral/assets/img/espousal-logo.png" alt="Espousal Construction" width="220" height="182" loading="lazy"></div>
       </div>
@@ -194,7 +197,7 @@
     </div>
 
     <article class="tw is-active" id="pj-woods" data-project="woods" role="tabpanel">
-      <figure class="tw__img"><img src="assets/img/woods-facade.jpg" alt="The Woods at Sobha Sanctuary" loading="lazy"><figcaption>Six towers around a landscaped garden</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/woods-facade-800.webp 800w, assets/img/woods-facade.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-facade.webp" alt="The Woods at Sobha Sanctuary" loading="lazy"><figcaption>Six towers around a landscaped garden</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">01 · The Woods</p>
         <h3 class="tw__name">A private <span class="gold-text">woodland enclave</span></h3>
@@ -213,7 +216,7 @@
     </article>
 
     <article class="tw" id="pj-greens" data-project="greens" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/greens-garden-villas.jpg" alt="Garden Villas at The Greens, Sobha Sanctuary" loading="lazy"><figcaption>Garden Villas</figcaption></figure>
+      <figure class="tw__img"><img srcset="assets/img/greens-garden-villas-800.webp 800w, assets/img/greens-garden-villas.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-garden-villas.webp" alt="Garden Villas at The Greens, Sobha Sanctuary" loading="lazy"><figcaption>Garden Villas</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">02 · The Greens</p>
         <h3 class="tw__name">Where serenity <span class="gold-text">finds its home</span></h3>
@@ -238,7 +241,7 @@
     </article>
 
     <article class="tw" id="pj-grove" data-project="grove" role="tabpanel" hidden>
-      <figure class="tw__img"><img src="assets/img/grove-estate-villa.jpg" alt="Estate Villa with private pool at The Grove, Sobha Sanctuary" loading="lazy"><figcaption>Estate Villas · private pool</figcaption></figure>
+      <figure class="tw__img"><img src="assets/img/grove-estate-villa.webp" alt="Estate Villa with private pool at The Grove, Sobha Sanctuary" loading="lazy"><figcaption>Estate Villas · private pool</figcaption></figure>
       <div class="tw__copy">
         <p class="eyebrow">03 · The Grove</p>
         <h3 class="tw__name">Luxury in its <span class="gold-text">purest form</span></h3>
@@ -267,7 +270,7 @@
 
 <!-- ============ PAYMENT PLAN ============ -->
 <section class="offer" id="payment-plan" aria-label="Payment plan">
-  <div class="offer__bg" aria-hidden="true"><img src="assets/img/woods-living.jpg" alt="" loading="lazy"></div>
+  <div class="offer__bg" aria-hidden="true"><img srcset="assets/img/woods-living-800.webp 800w, assets/img/woods-living.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-living.webp" alt="" loading="lazy"></div>
   <div class="wrap offer__inner">
     <p class="eyebrow reveal">Payment Plan</p>
     <h2 class="title title--center reveal">A home in the woods.<br><span class="gold-text">Paid at an easy pace.</span></h2>
@@ -400,33 +403,33 @@
     </div>
 
     <div class="am-hero reveal">
-      <img src="assets/img/water-pool.jpg" alt="Beach lagoon at Sobha Sanctuary" loading="lazy">
+      <img srcset="assets/img/water-pool-800.webp 800w, assets/img/water-pool.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/water-pool.webp" alt="Beach lagoon at Sobha Sanctuary" loading="lazy">
       <div class="am-hero__cap"><span>The Beach Lagoon</span>A resort-style retreat at the heart of the community</div>
     </div>
 
     <div class="am-grid">
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/nature-lake.jpg" alt="Parks and lake" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/nature-lake-800.webp 800w, assets/img/nature-lake.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/nature-lake.webp" alt="Parks and lake" loading="lazy"></div>
         <div class="am__body"><h3>Nature</h3><ul><li>~800,000 sq.ft. central park</li><li>Forest walks &amp; shaded trails</li><li>Botanical &amp; sensory gardens</li><li>Zen rock gardens &amp; meditation lawns</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/hero-lagoon.jpg" alt="Beach lagoon" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/hero-lagoon-800.webp 800w, assets/img/hero-lagoon.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/hero-lagoon.webp" alt="Beach lagoon" loading="lazy"></div>
         <div class="am__body"><h3>Water</h3><ul><li>Beach lagoon &amp; lazy river</li><li>Splash pad</li><li>Water sculpture plazas</li><li>Hydrotherapy, saunas &amp; steam rooms</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/fitness.jpg" alt="Sports district" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/fitness-800.webp 800w, assets/img/fitness.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/fitness.webp" alt="Sports district" loading="lazy"></div>
         <div class="am__body"><h3>Fitness &amp; Sport</h3><ul><li>9+ km wellness loop &amp; ~5 km leisure loop</li><li>Full-size football field</li><li>Tennis court &amp; cricket ground</li><li>Open-air training spaces</li><li>~20 km cycling network</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/mall.jpg" alt="Community mall" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/mall-800.webp 800w, assets/img/mall.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/mall.webp" alt="Community mall" loading="lazy"></div>
         <div class="am__body"><h3>Community</h3><ul><li>Community mall &amp; walkable retail</li><li>Social club &amp; farmers’ market</li><li>Event lawns &amp; amphitheatre</li><li>Co-working spaces &amp; multipurpose halls</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/pets.jpg" alt="Pet park" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/pets-800.webp 800w, assets/img/pets.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/pets.webp" alt="Pet park" loading="lazy"></div>
         <div class="am__body"><h3>Family &amp; Pets</h3><ul><li>Forest adventure playground</li><li>Children’s play &amp; family zones</li><li>Wellness areas for seniors</li><li>Pet therapy gardens &amp; play zones</li></ul></div>
       </article>
       <article class="am reveal">
-        <div class="am__img"><img src="assets/img/woods-fitness.jpg" alt="The Woods outdoor fitness zone" loading="lazy"></div>
+        <div class="am__img"><img srcset="assets/img/woods-fitness-800.webp 800w, assets/img/woods-fitness.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-fitness.webp" alt="The Woods outdoor fitness zone" loading="lazy"></div>
         <div class="am__body"><h3>At The Woods</h3><ul class="cols"><li>Swimming pool &amp; kids’ pool</li><li>Jacuzzi &amp; wet deck</li><li>Gymnasium</li><li>Outdoor fitness zone</li><li>Yoga &amp; meditation studio</li><li>Co-working space</li><li>Library &amp; leisure lounge</li><li>Multipurpose hall</li><li>Dog park &amp; BBQ area</li><li>Sports court</li><li>Nursery (paid)</li><li>Serenity garden</li></ul></div>
       </article>
     </div>
@@ -451,28 +454,28 @@
       <p class="head__sub reveal">Tap any image to view it full screen.</p>
     </div>
     <div class="g-grid" id="gallery-grid">
-      <button class="g g--wide reveal" data-src="assets/img/woods-aerial.jpg"><img src="assets/img/woods-aerial.jpg" alt="The Woods from above" loading="lazy"><span>The Woods</span></button>
-      <button class="g g--tall reveal" data-src="assets/img/woods-terrace.jpg"><img src="assets/img/woods-terrace.jpg" alt="Garden terrace at The Woods" loading="lazy"><span>Garden Terraces</span></button>
-      <button class="g reveal" data-src="assets/img/woods-living.jpg"><img src="assets/img/woods-living.jpg" alt="Living room at The Woods" loading="lazy"><span>Living · The Woods</span></button>
-      <button class="g reveal" data-src="assets/img/woods-bedroom.jpg"><img src="assets/img/woods-bedroom.jpg" alt="Master bedroom at The Woods" loading="lazy"><span>Bedroom · The Woods</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/woods-towers.jpg"><img src="assets/img/woods-towers.jpg" alt="The Woods towers and gardens" loading="lazy"><span>Park-side Living</span></button>
-      <button class="g reveal" data-src="assets/img/greens-courtyard-villas.jpg"><img src="assets/img/greens-courtyard-villas.jpg" alt="Courtyard Villas at The Greens" loading="lazy"><span>Courtyard Villas</span></button>
-      <button class="g reveal" data-src="assets/img/greens-living.jpg"><img src="assets/img/greens-living.jpg" alt="Villa living room" loading="lazy"><span>Villa Living</span></button>
-      <button class="g reveal" data-src="assets/img/greens-dining.jpg"><img src="assets/img/greens-dining.jpg" alt="Villa dining area" loading="lazy"><span>Villa Dining</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/greens-aerial.jpg"><img src="assets/img/greens-aerial.jpg" alt="The Greens villa community" loading="lazy"><span>The Greens</span></button>
-      <button class="g reveal" data-src="assets/img/greens-bedroom.jpg"><img src="assets/img/greens-bedroom.jpg" alt="Villa master bedroom" loading="lazy"><span>Villa Master Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/grove-estate-villa.jpg"><img src="assets/img/grove-estate-villa.jpg" alt="Estate Villa with private pool at The Grove" loading="lazy"><span>The Grove · Estate Villa</span></button>
-      <button class="g reveal" data-src="assets/img/grove-living.jpg"><img src="assets/img/grove-living.jpg" alt="Estate villa living area" loading="lazy"><span>Grove · Living</span></button>
-      <button class="g reveal" data-src="assets/img/grove-kitchen.jpg"><img src="assets/img/grove-kitchen.jpg" alt="Estate villa kitchen" loading="lazy"><span>Grove · Kitchen</span></button>
-      <button class="g reveal" data-src="assets/img/grove-dining.jpg"><img src="assets/img/grove-dining.jpg" alt="Estate villa dining area" loading="lazy"><span>Grove · Dining</span></button>
-      <button class="g reveal" data-src="assets/img/grove-bedroom.jpg"><img src="assets/img/grove-bedroom.jpg" alt="Estate villa master bedroom" loading="lazy"><span>Grove · Master Bedroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/grove-bathroom.jpg"><img src="assets/img/grove-bathroom.jpg" alt="Estate villa master bathroom" loading="lazy"><span>Grove · Master Bathroom</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/social.jpg"><img src="assets/img/social.jpg" alt="Community promenade" loading="lazy"><span>Social Gathering</span></button>
-      <button class="g reveal" data-src="assets/img/yoga-lawn.jpg"><img src="assets/img/yoga-lawn.jpg" alt="Yoga on the lawn" loading="lazy"><span>Wellness</span></button>
-      <button class="g reveal" data-src="assets/img/meditation.jpg"><img src="assets/img/meditation.jpg" alt="Meditation lawns" loading="lazy"><span>Meditation Lawns</span></button>
-      <button class="g g--wide reveal" data-src="assets/img/green-walk.jpg"><img src="assets/img/green-walk.jpg" alt="Green walkways" loading="lazy"><span>Green Corridors</span></button>
-      <button class="g reveal" data-src="assets/img/forest.jpg"><img src="assets/img/forest.jpg" alt="Forest walk" loading="lazy"><span>Forest Walks</span></button>
-      <button class="g reveal" data-src="assets/img/masterplan.jpg"><img src="assets/img/masterplan.jpg" alt="Sobha Sanctuary masterplan" loading="lazy"><span>Masterplan</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/woods-aerial.webp"><img srcset="assets/img/woods-aerial-800.webp 800w, assets/img/woods-aerial.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-aerial.webp" alt="The Woods from above" loading="lazy"><span>The Woods</span></button>
+      <button class="g g--tall reveal" data-src="assets/img/woods-terrace.webp"><img srcset="assets/img/woods-terrace-800.webp 800w, assets/img/woods-terrace.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-terrace.webp" alt="Garden terrace at The Woods" loading="lazy"><span>Garden Terraces</span></button>
+      <button class="g reveal" data-src="assets/img/woods-living.webp"><img srcset="assets/img/woods-living-800.webp 800w, assets/img/woods-living.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-living.webp" alt="Living room at The Woods" loading="lazy"><span>Living · The Woods</span></button>
+      <button class="g reveal" data-src="assets/img/woods-bedroom.webp"><img srcset="assets/img/woods-bedroom-800.webp 800w, assets/img/woods-bedroom.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-bedroom.webp" alt="Master bedroom at The Woods" loading="lazy"><span>Bedroom · The Woods</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/woods-towers.webp"><img srcset="assets/img/woods-towers-800.webp 800w, assets/img/woods-towers.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-towers.webp" alt="The Woods towers and gardens" loading="lazy"><span>Park-side Living</span></button>
+      <button class="g reveal" data-src="assets/img/greens-courtyard-villas.webp"><img srcset="assets/img/greens-courtyard-villas-800.webp 800w, assets/img/greens-courtyard-villas.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-courtyard-villas.webp" alt="Courtyard Villas at The Greens" loading="lazy"><span>Courtyard Villas</span></button>
+      <button class="g reveal" data-src="assets/img/greens-living.webp"><img srcset="assets/img/greens-living-800.webp 800w, assets/img/greens-living.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-living.webp" alt="Villa living room" loading="lazy"><span>Villa Living</span></button>
+      <button class="g reveal" data-src="assets/img/greens-dining.webp"><img srcset="assets/img/greens-dining-800.webp 800w, assets/img/greens-dining.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-dining.webp" alt="Villa dining area" loading="lazy"><span>Villa Dining</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/greens-aerial.webp"><img srcset="assets/img/greens-aerial-800.webp 800w, assets/img/greens-aerial.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-aerial.webp" alt="The Greens villa community" loading="lazy"><span>The Greens</span></button>
+      <button class="g reveal" data-src="assets/img/greens-bedroom.webp"><img srcset="assets/img/greens-bedroom-800.webp 800w, assets/img/greens-bedroom.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/greens-bedroom.webp" alt="Villa master bedroom" loading="lazy"><span>Villa Master Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/grove-estate-villa.webp"><img src="assets/img/grove-estate-villa.webp" alt="Estate Villa with private pool at The Grove" loading="lazy"><span>The Grove · Estate Villa</span></button>
+      <button class="g reveal" data-src="assets/img/grove-living.webp"><img src="assets/img/grove-living.webp" alt="Estate villa living area" loading="lazy"><span>Grove · Living</span></button>
+      <button class="g reveal" data-src="assets/img/grove-kitchen.webp"><img src="assets/img/grove-kitchen.webp" alt="Estate villa kitchen" loading="lazy"><span>Grove · Kitchen</span></button>
+      <button class="g reveal" data-src="assets/img/grove-dining.webp"><img src="assets/img/grove-dining.webp" alt="Estate villa dining area" loading="lazy"><span>Grove · Dining</span></button>
+      <button class="g reveal" data-src="assets/img/grove-bedroom.webp"><img src="assets/img/grove-bedroom.webp" alt="Estate villa master bedroom" loading="lazy"><span>Grove · Master Bedroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/grove-bathroom.webp"><img src="assets/img/grove-bathroom.webp" alt="Estate villa master bathroom" loading="lazy"><span>Grove · Master Bathroom</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/social.webp"><img srcset="assets/img/social-800.webp 800w, assets/img/social.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/social.webp" alt="Community promenade" loading="lazy"><span>Social Gathering</span></button>
+      <button class="g reveal" data-src="assets/img/yoga-lawn.webp"><img srcset="assets/img/yoga-lawn-800.webp 800w, assets/img/yoga-lawn.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/yoga-lawn.webp" alt="Yoga on the lawn" loading="lazy"><span>Wellness</span></button>
+      <button class="g reveal" data-src="assets/img/meditation.webp"><img srcset="assets/img/meditation-800.webp 800w, assets/img/meditation.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/meditation.webp" alt="Meditation lawns" loading="lazy"><span>Meditation Lawns</span></button>
+      <button class="g g--wide reveal" data-src="assets/img/green-walk.webp"><img srcset="assets/img/green-walk-800.webp 800w, assets/img/green-walk.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/green-walk.webp" alt="Green walkways" loading="lazy"><span>Green Corridors</span></button>
+      <button class="g reveal" data-src="assets/img/forest.webp"><img srcset="assets/img/forest-800.webp 800w, assets/img/forest.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/forest.webp" alt="Forest walk" loading="lazy"><span>Forest Walks</span></button>
+      <button class="g reveal" data-src="assets/img/masterplan.webp"><img srcset="assets/img/masterplan-800.webp 800w, assets/img/masterplan.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/masterplan.webp" alt="Sobha Sanctuary masterplan" loading="lazy"><span>Masterplan</span></button>
     </div>
   </div>
 </section>
@@ -487,8 +490,8 @@
     </div>
 
     <div class="loc loc--wide">
-      <button class="loc__map reveal" data-src="assets/img/location-map.jpg" aria-label="Enlarge location map">
-        <img src="assets/img/location-map.jpg" alt="Sobha Sanctuary location map, Dubai" loading="lazy">
+      <button class="loc__map reveal" data-src="assets/img/location-map.webp" aria-label="Enlarge location map">
+        <img srcset="assets/img/location-map-800.webp 800w, assets/img/location-map.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/location-map.webp" alt="Sobha Sanctuary location map, Dubai" loading="lazy">
       </button>
       <div class="loc__cols">
         <ul class="loc__list loc__list--text reveal">
@@ -497,8 +500,8 @@
           <li><span>The Woods sits close to a key educational institution</span></li>
           <li><span>Smart mobility &amp; ~20 km connected cycling network</span></li>
         </ul>
-        <button class="loc__plan reveal" data-src="assets/img/masterplan.jpg">
-          <img src="assets/img/masterplan.jpg" alt="Sobha Sanctuary masterplan" loading="lazy">
+        <button class="loc__plan reveal" data-src="assets/img/masterplan.webp">
+          <img srcset="assets/img/masterplan-800.webp 800w, assets/img/masterplan.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/masterplan.webp" alt="Sobha Sanctuary masterplan" loading="lazy">
           <span>View Masterplan</span>
         </button>
       </div>
@@ -611,7 +614,7 @@
   <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal__close" data-close aria-label="Close">×</button>
     <div class="modal__side" aria-hidden="true">
-      <img src="assets/img/woods-living.jpg" alt="">
+      <img srcset="assets/img/woods-living-800.webp 800w, assets/img/woods-living.webp 1400w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/woods-living.webp" alt="">
       <div class="modal__side-cap"><span class="brand__mark"><i></i><i></i><i></i><i></i><i></i></span>Sobha Sanctuary</div>
     </div>
     <form class="modal__form js-enquiry" id="modalForm" data-context="general" novalidate>
