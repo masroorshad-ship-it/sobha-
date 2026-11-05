@@ -1,9 +1,28 @@
 /* Sobha News & Offers — newest first.
    Each item: date (YYYY-MM-DD), tag (Offer · Launch · Price Update · Event · Update), project,
    title, body (paragraphs), optional terms, image (path inside /news/), link {label, href} or links [..],
-   and ends (ISO time, Dubai): the item disappears automatically after it. For an event, add
+   and ends (ISO time, Dubai): the item disappears automatically after it (add noCountdown: true to hide the timer). For an event, add
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
+  {
+    date: '2026-11-05',
+    tag: 'Price Update',
+    project: 'Sobha Realty · Available now',
+    title: 'Selected Sobha homes available now — 1 to 4 bedrooms from AED 1.59 Million',
+    body: [
+      'A fresh list of available Sobha Realty homes has just come in — from one bedroom apartments to a four bedroom residence at Sobha One:',
+      '1 BR from AED 1.59M (≈ ₹3.6 Cr*) · 1.5 BR AED 1.81M · 2 BR from AED 2.37M (≈ ₹5.4 Cr*) · 2.5 BR AED 3.59M · 3 BR AED 4.47M · 4 BR at Sobha One AED 5.05M — the best value per sq.ft. on the list.',
+      'Buy a home of AED 2 million or more and our team takes care of your 10-year UAE Golden Visa application (final approval is issued by the UAE authorities).',
+      'Units are limited. Ask our team for the full list with unit numbers, sizes, floor plans and the payment schedule.'
+    ],
+    terms: [
+      'Prices as per the latest availability list; subject to availability and change without notice.',
+      '*Indian rupee figures are approximate — please check the current exchange rate.'
+    ],
+    links: [{ label: 'Get the Full Unit List', href: '#talk' }],
+    ends: '2026-11-19T23:59:59+04:00',
+    noCountdown: true
+  },
   {
     date: '2026-11-03',
     tag: 'Event',

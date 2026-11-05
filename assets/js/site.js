@@ -171,7 +171,7 @@
         '<div class="news-card__body">' + newsMeta(n) +
           '<h2 class="news-card__title">' + escH(n.title) + '</h2>' +
           n.body.map(function (b) { return '<p>' + escH(b) + '</p>'; }).join('') +
-          (n.ends ? '<p class="news-card__ends">' + escH(n.countdownLabel || 'Offer ends in') + '</p>' + countdownDiv(n, '') : '') +
+          (n.ends && !n.noCountdown ? '<p class="news-card__ends">' + escH(n.countdownLabel || 'Offer ends in') + '</p>' + countdownDiv(n, '') : '') +
           (n.terms ? '<details class="news-card__terms"><summary>Terms &amp; conditions</summary><ul>' + n.terms.map(function (t) { return '<li>' + escH(t) + '</li>'; }).join('') + '</ul></details>' : '') +
           '<div class="news-card__actions">' +
             (n.links || (n.link ? [n.link] : [])).map(function (l) { return '<a class="btn btn--gold btn--sm" href="' + escH(l.href) + '">' + escH(l.label) + '</a>'; }).join('') +
@@ -187,7 +187,7 @@
     teaser.innerHTML = latest.map(function (n) {
       return '<a class="news-teaser reveal is-in" href="news/#' + newsId(n) + '">' + newsMeta(n) +
         '<h3>' + escH(n.title) + '</h3><p>' + escH(n.body[0].length > 150 ? n.body[0].slice(0, 147) + '…' : n.body[0]) + '</p>' +
-        (n.ends ? countdownDiv(n, ' countdown--sm') : '') +
+        (n.ends && !n.noCountdown ? countdownDiv(n, ' countdown--sm') : '') +
         '<span class="news-teaser__more">Read more ›</span></a>';
     }).join('');
   }
