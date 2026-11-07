@@ -13,3 +13,5 @@ The agent appends one entry per change it makes (newest at the top). Format:
 2026-11-02 GST | no changes | review run | — | read-only run (campaign-level data only); see ads/reports/2026-11-02.md
 2026-11-02 GST | no changes | owner-requested check run | — | ad-set level read, no writes; push-access check; see ads/reports/2026-11-02-check.md
 2026-11-05 GST | no changes | review run | — | report-only: Adspirer quota 14/15; see ads/reports/2026-11-05.md
+2026-11-03 GST | owner edit in Ads Manager | ad set India_Metros_35-60_Website – strict (120251701296170345) | Advantage+ placements → Facebook + Instagram only (feed, story, reels, marketplace/explore); Audience Network, Messenger, Threads removed | confirmed via API on 2026-11-07
+2026-11-07 GST | diagnosis, no changes | campaign SobhaCentral_Leads_IN_Oct26 | — | spend fell to ~₹3.5k in 7 days (budget ₹14k): account active per Meta support, ads active; likely audience too narrow (reach 3,426 in 7 days). Adspirer quota exhausted until 2026-11-28
