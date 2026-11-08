@@ -5,6 +5,19 @@
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
   {
+    date: '2026-11-08',
+    tag: 'Update',
+    project: 'Espousal',
+    title: 'Happy Diwali from Team Espousal',
+    body: [
+      'Wishing you and your family a very Happy Diwali. May the festival of lights fill your home with joy, good health and prosperity — and bring bright new beginnings in the year ahead.',
+      'Thank you for your trust. If a new home in Dubai is part of your plans for the year ahead, our team is here to help whenever you are ready.'
+    ],
+    links: [{ label: 'Explore Sobha Projects', href: '/#projects' }],
+    ends: '2026-11-08T23:59:59+05:30',
+    noCountdown: true
+  },
+  {
     date: '2026-11-05',
     tag: 'Update',
     project: 'Sobha Realty · Luxury villa',
