@@ -7,6 +7,7 @@ Static project pages for **Sobha Realty** developments in Dubai, presented by Es
 - **https://espousalsobha.com/sobha-sanctuary/** — Sobha Sanctuary: The Woods (apartments), The Greens and The Grove (villas). It reuses `sobhacentral/assets/css/style.css`; its own files are `sobha-sanctuary/assets/css/sanctuary.css`, `assets/js/units.js` (floor-plan data) and `assets/js/sanctuary.js`.
 - **https://espousalsobha.com/sobha-city/** — Sobha City Abu Dhabi: The Orchard (estate villas), The Terraces (garden villas) and River Cove Residences (apartments). It reuses the Sobha Central and Sanctuary stylesheets; its own files are `sobha-city/assets/css/city.css`, `assets/js/city.js` and the launch film in `assets/video/`.
 - **https://espousalsobha.com/sobha-elwood/** — Sobha Elwood: 4, 5 & 6 bedroom villas. Reuses the shared stylesheets; its own files are `sobha-elwood/assets/css/elwood.css`, `assets/js/elwood.js`, the launch film in `assets/video/` and the brochures in `assets/docs/`.
+- **https://espousalsobha.com/the-element/** — The Element at Sobha One: 1 to 4 bedroom apartments. Own files in `the-element/assets/` (element.css, element.js, images and the two brochures).
 
 Both project pages send leads to the same FormSubmit inbox and Google Sheet; the Sheet's Project column shows which project was enquired about.
 

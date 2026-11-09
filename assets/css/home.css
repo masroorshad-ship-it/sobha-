@@ -118,3 +118,8 @@
 .news-card__img--video { display: flex; align-items: center; }
 .news-card__img--video video { display: block; width: 100%; max-height: 640px; background: #000; }
 @media (max-width: 860px) { .news-card__img--video { max-height: none; } }
+/* odd number of project cards: the last one spans the row, image beside text */
+@media (min-width: 861px) {
+  .pj-grid--odd .pj:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .pj-grid--odd .pj:last-child .pj__img { aspect-ratio: auto; min-height: 100%; }
+}
