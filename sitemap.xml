@@ -30,6 +30,13 @@
     <image:image><image:loc>https://espousalsobha.com/sobha-elwood/assets/img/villa-4br.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://espousalsobha.com/the-element/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://espousalsobha.com/the-element/assets/img/hero.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://espousalsobha.com/sobha-city/</loc>
     <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
