@@ -25,7 +25,7 @@
   } else { els.forEach(function (el) { el.classList.add('is-in'); }); }
   /* Sobha Central limited-time offer (Dubai time): shown with a countdown until it ends,
      then the card falls back to the standard payment plan. */
-  var OFFER_END = new Date('2026-11-01T23:59:59+04:00').getTime();
+  var OFFER_END = new Date('2026-11-13T23:59:59+04:00').getTime(); // Sobha 20/80 window, 10 – 13 Nov 2026 (Dubai time)
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function offerTick() {
     var left = OFFER_END - Date.now(), live = left > 0;
@@ -168,7 +168,7 @@
     feed.innerHTML = items.length ? items.map(function (n) {
       return '<article class="news-card" id="' + newsId(n) + '">' +
         (n.video ? '<div class="news-card__img news-card__img--video"><video controls playsinline preload="none" poster="' + escH(n.image || '') + '"><source src="' + escH(n.video) + '" type="video/mp4"></video></div>' :
-         n.image ? '<a class="news-card__img" href="' + escH(n.image) + '" target="_blank" rel="noopener"><img src="' + escH(n.image) + '" alt="' + escH(n.title) + '" loading="lazy"></a>' : '') +
+         n.image ? '<a class="news-card__img' + (n.fit === 'contain' ? ' news-card__img--contain' : '') + '" href="' + escH(n.image) + '" target="_blank" rel="noopener"><img src="' + escH(n.image) + '" alt="' + escH(n.title) + '" loading="lazy"></a>' : '') +
         '<div class="news-card__body">' + newsMeta(n) +
           '<h2 class="news-card__title">' + escH(n.title) + '</h2>' +
           n.body.map(function (b) { return '<p>' + escH(b) + '</p>'; }).join('') +
