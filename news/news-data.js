@@ -1,6 +1,6 @@
 /* Sobha News & Offers — newest first.
    Each item: date (YYYY-MM-DD), tag (Offer · Launch · Price Update · Event · Update), project,
-   title, body (paragraphs), optional terms, image (path inside /news/), optional video (mp4; image is its poster), link {label, href} or links [..],
+   title, body (paragraphs), optional terms, image (path inside /news/; add fit: 'contain' to show a floor plan whole), optional video (mp4; image is its poster), link {label, href} or links [..],
    and ends (ISO time, Dubai): the item disappears automatically after it (add noCountdown: true to hide the timer). For an event, add
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
@@ -41,6 +41,28 @@ window.ESPOUSAL_NEWS = [
     image: 'img/2026-11-10-sobha-sanctuary-villas-20-80.jpg',
     links: [{ label: 'View Sanctuary Villas', href: '/sobha-sanctuary/#projects' }],
     ends: '2026-11-13T23:59:59+04:00'
+  },
+  {
+    date: '2026-11-10',
+    tag: 'Update',
+    project: 'Sobha Realty · 2 Bedroom',
+    title: 'Coming soon: a high-floor 2 bedroom facing the lagoons and the skyline — around AED 2.4 Million',
+    body: [
+      'A Sobha Realty 2 bedroom apartment is coming up for sale soon at around AED 2.4 Million (≈ ₹5.5 Cr*), with handover in December 2027.',
+      'Type C, Variant 1: about 911 sq.ft. in total (791 sq.ft. suite + 119 sq.ft. balcony). Two bedrooms, two bathrooms, a separate kitchen, an open living and dining room and two balconies. It sits on the high levels (49, 55, 59 and 69) and looks over the lagoons and the community, towards the Downtown and Dubai skylines.',
+      'Buy a home of AED 2 million or more and our team takes care of your 10-year UAE Golden Visa application (final approval is issued by the UAE authorities).',
+      'Units like this go quickly. Register your interest now and we will share the details the moment it is released.'
+    ],
+    terms: [
+      'As announced to Sobha Realty channel partners; price is indicative and subject to availability and change without notice.',
+      'Sizes are as per the developer floor plan and are approximate.',
+      '*Indian rupee figure is approximate — please check the current exchange rate.'
+    ],
+    image: 'img/2026-11-10-sobha-2br-lagoon-skyline.jpg',
+    fit: 'contain',
+    links: [{ label: 'Register Your Interest', href: '#talk' }],
+    ends: '2026-12-01T23:59:59+04:00',
+    noCountdown: true
   },
   {
     date: '2026-11-08',

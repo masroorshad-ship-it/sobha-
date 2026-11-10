@@ -168,7 +168,7 @@
     feed.innerHTML = items.length ? items.map(function (n) {
       return '<article class="news-card" id="' + newsId(n) + '">' +
         (n.video ? '<div class="news-card__img news-card__img--video"><video controls playsinline preload="none" poster="' + escH(n.image || '') + '"><source src="' + escH(n.video) + '" type="video/mp4"></video></div>' :
-         n.image ? '<a class="news-card__img" href="' + escH(n.image) + '" target="_blank" rel="noopener"><img src="' + escH(n.image) + '" alt="' + escH(n.title) + '" loading="lazy"></a>' : '') +
+         n.image ? '<a class="news-card__img' + (n.fit === 'contain' ? ' news-card__img--contain' : '') + '" href="' + escH(n.image) + '" target="_blank" rel="noopener"><img src="' + escH(n.image) + '" alt="' + escH(n.title) + '" loading="lazy"></a>' : '') +
         '<div class="news-card__body">' + newsMeta(n) +
           '<h2 class="news-card__title">' + escH(n.title) + '</h2>' +
           n.body.map(function (b) { return '<p>' + escH(b) + '</p>'; }).join('') +
