@@ -5,6 +5,44 @@
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
   {
+    date: '2026-11-10',
+    tag: 'Offer',
+    project: 'Sobha Central',
+    title: 'A prime address. A standout way to own — 20/80 at Sobha Central',
+    body: [
+      'For four days only, from 10 to 13 November 2026, Sobha Realty is offering a 20/80 payment plan at Sobha Central on Sheikh Zayed Road: 20% on booking and the remaining 80% upon completion.',
+      'One bedroom residences start from AED 1.78 Million. The offer runs at the Events Hall, Sobha Sales Office — speak to our team to reserve your unit within the window.'
+    ],
+    terms: [
+      'Unit must be booked / PR approved with a 2% booking amount within the offer period.',
+      'Retail units are part of this offer.',
+      'Not applicable on cancel & swap / re-book / upgrade cases of a previous period.',
+      'Sobha Realty reserves the right to modify the offer at any time. T&C apply.'
+    ],
+    image: 'img/2026-11-10-sobha-central-20-80.jpg',
+    links: [{ label: 'View Sobha Central', href: '/sobhacentral/#payment-plan' }],
+    ends: '2026-11-13T23:59:59+04:00'
+  },
+  {
+    date: '2026-11-10',
+    tag: 'Offer',
+    project: 'Sobha Sanctuary · Villas',
+    title: 'A greener way of living — 20/80 on Sobha Sanctuary villas',
+    body: [
+      'From 10 to 13 November 2026, Sobha Realty is offering a 20/80 payment plan — 20% on booking, 80% upon completion — on the Estate Villas, Garden Villas and Courtyard Villas at Sobha Sanctuary.',
+      'The offer runs at the Events Hall, Sobha Sales Office. Units are limited; ask our team which villas are available.'
+    ],
+    terms: [
+      'Unit must be booked / PR approved with a 2% booking amount within the offer period.',
+      'Offer not applicable on Sobha Sanctuary Apartments.',
+      'Not applicable on cancel & swap / re-book / upgrade cases of a previous period.',
+      'Sobha Realty reserves the right to modify the offer at any time. T&C apply.'
+    ],
+    image: 'img/2026-11-10-sobha-sanctuary-villas-20-80.jpg',
+    links: [{ label: 'View Sanctuary Villas', href: '/sobha-sanctuary/#projects' }],
+    ends: '2026-11-13T23:59:59+04:00'
+  },
+  {
     date: '2026-11-08',
     tag: 'Update',
     project: 'Espousal',

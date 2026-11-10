@@ -87,7 +87,7 @@
   /* ---------------- limited-time offer ---------------- */
   // Sobha Realty's villa weekend offer (Dubai time). Until it ends the page shows the offer
   // (.offer-live) with a countdown; afterwards those boxes disappear.
-  var OFFER_END = new Date('2026-11-01T23:59:59+04:00').getTime();
+  var OFFER_END = new Date('2026-11-13T23:59:59+04:00').getTime(); // Sobha 20/80 window, 10 – 13 Nov 2026 (Dubai time)
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function offerTick() {
     var left = OFFER_END - Date.now(), live = left > 0;

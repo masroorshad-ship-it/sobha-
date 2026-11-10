@@ -25,7 +25,7 @@
   } else { els.forEach(function (el) { el.classList.add('is-in'); }); }
   /* Sobha Central limited-time offer (Dubai time): shown with a countdown until it ends,
      then the card falls back to the standard payment plan. */
-  var OFFER_END = new Date('2026-11-01T23:59:59+04:00').getTime();
+  var OFFER_END = new Date('2026-11-13T23:59:59+04:00').getTime(); // Sobha 20/80 window, 10 – 13 Nov 2026 (Dubai time)
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function offerTick() {
     var left = OFFER_END - Date.now(), live = left > 0;
