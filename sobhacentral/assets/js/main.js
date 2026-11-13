@@ -90,18 +90,27 @@
   /* ---------------- limited-time offer ---------------- */
   // Sobha Realty's offer window (Dubai time). Until it ends the page shows the offer
   // (.offer-live) with a countdown; afterwards it falls back to the standard plan (.offer-std).
-  var OFFER_END = new Date('2026-11-13T23:59:59+04:00').getTime(); // Sobha 20/80 window, 10 – 13 Nov 2026 (Dubai time)
+  var OFFER_END = new Date('2026-11-19T23:59:59+04:00').getTime(); // end of the latest Sobha offer window (Dubai time): 30/70 + DLD waiver, 12 – 19 Nov 2026
+  // An offer box can carry its own window: data-offer-from / data-offer-to (ISO time). Without them it runs until OFFER_END.
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
-  function offerTick() {
-    var left = OFFER_END - Date.now(), live = left > 0;
-    $$('.offer-live').forEach(function (el) { el.hidden = !live; });
-    $$('.offer-std').forEach(function (el) { el.hidden = live; });
-    if (!live) return false;
+  function offerWin(el) { var f = el.getAttribute('data-offer-from'), t = el.getAttribute('data-offer-to'); return [f ? Date.parse(f) : 0, t ? Date.parse(t) : OFFER_END]; }
+  function cdHtml(left) {
     var t = Math.floor(left / 1000);
     var parts = [[Math.floor(t / 86400), 'Days'], [pad2(Math.floor(t % 86400 / 3600)), 'Hours'], [pad2(Math.floor(t % 3600 / 60)), 'Mins'], [pad2(t % 60), 'Secs']];
-    var html = parts.map(function (p) { return '<span><b>' + p[0] + '</b>' + p[1] + '</span>'; }).join('');
-    $$('[data-countdown]').forEach(function (el) { el.innerHTML = html; });
-    return true;
+    return parts.map(function (p) { return '<span><b>' + p[0] + '</b>' + p[1] + '</span>'; }).join('');
+  }
+  function offerTick() {
+    var now = Date.now(), any = false, more = false;
+    $$('.offer-live').forEach(function (el) {
+      var w = offerWin(el), live = now >= w[0] && now < w[1];
+      el.hidden = !live;
+      if (now < w[1]) more = true;
+      if (!live) return;
+      any = true;
+      (el.hasAttribute('data-countdown') ? [el] : $$('[data-countdown]', el)).forEach(function (c) { c.innerHTML = cdHtml(w[1] - now); });
+    });
+    $$('.offer-std').forEach(function (el) { el.hidden = any; });
+    return more;
   }
   if (offerTick()) {
     var offerTimer = setInterval(function () { if (!offerTick()) clearInterval(offerTimer); }, 1000);
