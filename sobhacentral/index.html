@@ -102,7 +102,7 @@
         </div>
         <p class="hero__offer-note">Starting from <strong>AED 1.78 Million</strong></p>
       </div>
-      <div class="hero__offer hero__offer--live offer-live reveal" hidden>
+      <div class="hero__offer hero__offer--live offer-live reveal" data-offer-to="2026-11-13T23:59:59+04:00" hidden>
         <p class="hero__offer-flag">An Exclusive Window &nbsp;·&nbsp; 10 – 13 Nov 2026</p>
         <div class="hero__offer-plan">
           <span class="hero__offer-num">20<sup>%</sup></span><span class="hero__offer-lbl">On<br>Booking</span>
@@ -111,6 +111,16 @@
         </div>
         <div class="countdown" data-countdown aria-label="Time left in the offer"></div>
         <p class="hero__offer-note">Starting from <strong>AED 1.78 Million</strong> &nbsp;·&nbsp; <a href="#payment-plan">T&amp;C apply</a></p>
+      </div>
+      <div class="hero__offer hero__offer--live offer-live reveal" data-offer-from="2026-11-13T23:59:59+04:00" hidden>
+        <p class="hero__offer-flag">An Exclusive Window &nbsp;·&nbsp; 12 – 19 Nov 2026</p>
+        <div class="hero__offer-plan">
+          <span class="hero__offer-num">30<sup>%</sup></span><span class="hero__offer-lbl">During<br>Construction</span>
+          <span class="hero__offer-div"></span>
+          <span class="hero__offer-num">70<sup>%</sup></span><span class="hero__offer-lbl">Upon<br>Completion</span>
+        </div>
+        <div class="countdown" data-countdown aria-label="Time left in the offer"></div>
+        <p class="hero__offer-note"><strong>100% DLD fee waiver</strong> &nbsp;·&nbsp; from <strong>AED 1.78 Million</strong> &nbsp;·&nbsp; <a href="#payment-plan">T&amp;C apply</a></p>
       </div>
     </div>
     <form class="hero-form reveal js-enquiry" id="talk" data-context="meeting" data-either data-err="Please add your first and last name, your budget, and a phone number or email." novalidate>
@@ -302,7 +312,7 @@
 <!-- ============ PAYMENT PLAN ============ -->
 <section class="offer" id="payment-plan" aria-label="Payment plan">
   <div class="offer__bg" aria-hidden="true"><img srcset="assets/img/living-800.webp 800w, assets/img/living.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" src="assets/img/living.webp" alt="" loading="lazy"></div>
-  <div class="wrap offer__inner offer-live" hidden>
+  <div class="wrap offer__inner offer-live" data-offer-to="2026-11-13T23:59:59+04:00" hidden>
     <p class="eyebrow reveal">An Exclusive Window · Sobha Realty Offer</p>
     <h2 class="title title--center reveal">A prime address.<br><span class="gold-text">A standout way to own.</span></h2>
     <p class="offer__date reveal">10 – 13 November 2026 &nbsp;·&nbsp; Events Hall, Sobha Sales Office</p>
@@ -318,6 +328,25 @@
       <li>Retail units are part of this offer.</li>
       <li>The unit must be booked / PR approved with a 2% booking amount within the offer period.</li>
       <li>Not applicable on cancel &amp; swap / re-book / upgrade cases of a previous period.</li>
+      <li>Sobha Realty reserves the right to modify the offer at any time. T&amp;C apply.</li>
+    </ul>
+  </div>
+  <div class="wrap offer__inner offer-live" data-offer-from="2026-11-13T23:59:59+04:00" hidden>
+    <p class="eyebrow reveal">An Exclusive Window · Sobha Realty Offer</p>
+    <h2 class="title title--center reveal">A greener way to live.<br><span class="gold-text">A greater way to own.</span></h2>
+    <p class="offer__date reveal">12 – 19 November 2026 &nbsp;·&nbsp; Limited units</p>
+    <div class="countdown countdown--lg reveal" data-countdown aria-label="Time left in the offer"></div>
+    <div class="offer__plan reveal">
+      <div><span class="offer__pct">30<sup>%</sup></span><span class="offer__lbl">During Construction</span></div>
+      <i aria-hidden="true"></i>
+      <div><span class="offer__pct">70<sup>%</sup></span><span class="offer__lbl">Upon Completion</span></div>
+    </div>
+    <p class="offer__note reveal">Plus a 100% waiver of the 4% DLD registration fee &nbsp;·&nbsp; on apartments</p>
+    <button class="btn btn--gold reveal" data-enquire="payment-plan" data-unit="Offer: 30/70 + DLD waiver (12 – 19 Nov)">Book Before the Offer Ends</button>
+    <ul class="offer__terms reveal">
+      <li>Apartment units are included in this offer. Retail units are not part of this offer.</li>
+      <li>The unit must be booked / PR approved with a 2% booking amount within the offer period.</li>
+      <li>Not applicable on cancel &amp; swap / downgrade / re-book / upgrade cases of a previous period.</li>
       <li>Sobha Realty reserves the right to modify the offer at any time. T&amp;C apply.</li>
     </ul>
   </div>
@@ -730,7 +759,7 @@
 </div>
 
 <script src="assets/js/floorplans.js?v=20261030a"></script>
-<script src="assets/js/main.js?v=20261110a"></script>
+<script src="assets/js/main.js?v=20261113a"></script>
 <script src="/assets/js/festive.js?v=20261108a" defer></script>
 </body>
 </html>

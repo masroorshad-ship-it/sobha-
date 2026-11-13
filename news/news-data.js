@@ -5,6 +5,26 @@
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
   {
+    date: '2026-11-13',
+    tag: 'Offer',
+    project: 'Sobha Central',
+    title: 'A greener way to live. A greater way to own. — 30/70 and a 100% DLD waiver at Sobha Central',
+    body: [
+      'From 12 to 19 November 2026, Sobha Realty is offering a 30/70 payment plan at Sobha Central on Sheikh Zayed Road: 30% during construction and 70% upon completion.',
+      'On top of that, the 4% Dubai Land Department (DLD) registration fee is waived 100%. On a 1 bedroom home starting from AED 1.78 Million, that is a saving of about AED 71,000 (≈ ₹16 Lakh*). Units are limited — speak to our team to reserve yours within the window.'
+    ],
+    terms: [
+      'Apartment units are included in this offer. Retail units are not part of this offer.',
+      'Unit must be booked / PR approved with a 2% booking amount within the offer period.',
+      'Not applicable on cancel & swap / downgrade / re-book / upgrade cases of a previous period.',
+      'Sobha Realty reserves the right to modify the offer at any time. T&C apply.',
+      '*Indian rupee figure is approximate — please check the current exchange rate.'
+    ],
+    image: 'img/2026-11-13-sobha-central-30-70-dld.jpg',
+    links: [{ label: 'View Sobha Central', href: '/sobhacentral/#payment-plan' }],
+    ends: '2026-11-19T23:59:59+04:00'
+  },
+  {
     date: '2026-11-10',
     tag: 'Offer',
     project: 'Sobha Central',
