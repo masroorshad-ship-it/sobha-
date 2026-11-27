@@ -5,6 +5,42 @@
    countdownTo (its start), countdownLabel ("Starts in") and liveLabel ("Happening now"). */
 window.ESPOUSAL_NEWS = [
   {
+    date: '2026-11-27',
+    tag: 'Offer',
+    project: 'Sobha SeaHaven',
+    title: 'An exceptional estate. An even more exceptional way to own — Sobha SeaHaven',
+    body: [
+      'From 27 to 30 November 2026, Sobha Realty is offering a special plan at Sobha SeaHaven, its waterfront towers beside Dubai Marina: 50% during construction and the remaining 50% spread over 2 years after completion.',
+      'On top of that, the 4% Dubai Land Department (DLD) registration fee is waived 100%. Four days only — speak to our team for available units and prices.'
+    ],
+    terms: [
+      'Unit must be booked / PR approved within the offer period.',
+      'Not applicable on cancel & swap / re-book / upgrade cases of a previous period.',
+      'Sobha Realty reserves the right to modify the offer at any time. T&C apply.'
+    ],
+    image: 'img/2026-11-27-sobha-seahaven-50-50-dld.jpg',
+    links: [{ label: 'Ask for SeaHaven Prices', href: '#talk' }],
+    ends: '2026-11-30T23:59:59+04:00'
+  },
+  {
+    date: '2026-11-27',
+    tag: 'Offer',
+    project: 'Sobha Central',
+    title: 'Own it now, pay half after you move in — 50/50 at Sobha Central',
+    body: [
+      'For four days, from 27 to 30 November 2026, Sobha Central on Sheikh Zayed Road is available with a post-handover plan: 50% until completion and the other 50% spread over 2 years after you receive your keys.',
+      'One bedroom residences start from AED 1.78 Million. Speak to our team to reserve your unit within the window.'
+    ],
+    terms: [
+      'Unit must be booked / PR approved within the offer period.',
+      'Not applicable on cancel & swap / re-book / upgrade cases of a previous period.',
+      'Sobha Realty reserves the right to modify the offer at any time. T&C apply.'
+    ],
+    image: 'img/2026-11-27-sobha-central.jpg',
+    links: [{ label: 'View Sobha Central', href: '/sobhacentral/#payment-plan' }],
+    ends: '2026-11-30T23:59:59+04:00'
+  },
+  {
     date: '2026-11-13',
     tag: 'Offer',
     project: 'Sobha Central',
