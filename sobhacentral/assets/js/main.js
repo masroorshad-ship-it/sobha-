@@ -90,7 +90,7 @@
   /* ---------------- limited-time offer ---------------- */
   // Sobha Realty's offer window (Dubai time). Until it ends the page shows the offer
   // (.offer-live) with a countdown; afterwards it falls back to the standard plan (.offer-std).
-  var OFFER_END = new Date('2026-11-19T23:59:59+04:00').getTime(); // end of the latest Sobha offer window (Dubai time): 30/70 + DLD waiver, 12 – 19 Nov 2026
+  var OFFER_END = new Date('2026-11-30T23:59:59+04:00').getTime(); // end of the latest Sobha offer window (Dubai time): 50/50 post-handover, 27 – 30 Nov 2026
   // An offer box can carry its own window: data-offer-from / data-offer-to (ISO time). Without them it runs until OFFER_END.
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function offerWin(el) { var f = el.getAttribute('data-offer-from'), t = el.getAttribute('data-offer-to'); return [f ? Date.parse(f) : 0, t ? Date.parse(t) : OFFER_END]; }

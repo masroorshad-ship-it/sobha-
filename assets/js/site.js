@@ -26,7 +26,7 @@
   /* Sobha limited-time offers (Dubai time): shown with a countdown until they end,
      then the cards fall back to the standard payment plan. */
   function qsa(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
-  var OFFER_END = new Date('2026-11-19T23:59:59+04:00').getTime(); // end of the latest Sobha offer window (Dubai time): 30/70 + DLD waiver, 12 – 19 Nov 2026
+  var OFFER_END = new Date('2026-11-30T23:59:59+04:00').getTime(); // end of the latest Sobha offer window (Dubai time): 50/50 post-handover, 27 – 30 Nov 2026
   // An offer box can carry its own window: data-offer-from / data-offer-to (ISO time). Without them it runs until OFFER_END.
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function offerWin(el) { var f = el.getAttribute('data-offer-from'), t = el.getAttribute('data-offer-to'); return [f ? Date.parse(f) : 0, t ? Date.parse(t) : OFFER_END]; }
